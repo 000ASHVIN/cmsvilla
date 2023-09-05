@@ -378,27 +378,25 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-11" role="tabpanel" aria-labelledby="v-pills-11-tab">
                             <!-- Tab 11 -->
-                            <form action="{{ url('admin/page/home/2') }}" method="post">
+                            <form action="{{ url('admin/page/home/11') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
-                                    {{-- <input type="text" name="why_choose_title" class="form-control" value="{{ $page_home->why_choose_title }}"> --}}
-                                    <input type="text" name="trusted_title" class="form-control" value="Trusted Companies">
+                                    <input type="text" name="trusted_company_title" class="form-control" value="{{ $page_home->trusted_company_title }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Subtitle</label>
-                                    {{-- <input type="text" name="why_choose_subtitle" class="form-control" value="{{ $page_home->why_choose_subtitle }}"> --}}
-                                    <input type="text" name="why_choose_subtitle" class="form-control" value="750+ Companies Trusted Us">
+                                    <input type="text" name="trusted_company_subtitle" class="form-control" value="{{ $page_home->trusted_company_subtitle }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="why_choose_status" id="rr1" value="Show" @if($page_home->why_choose_status == 'Show') checked @endif>
+                                            <input class="form-check-input" type="radio" name="trusted_company_status" id="rr1" value="Show" @if($page_home->trusted_company_status == 'Show') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr1">Show</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="why_choose_status" id="rr2" value="Hide" @if($page_home->why_choose_status == 'Hide') checked @endif>
+                                            <input class="form-check-input" type="radio" name="trusted_company_status" id="rr2" value="Hide" @if($page_home->trusted_company_status == 'Hide') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
                                         </div>
                                     </div>

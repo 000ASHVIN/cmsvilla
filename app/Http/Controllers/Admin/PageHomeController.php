@@ -253,9 +253,9 @@ class PageHomeController extends Controller
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
         
-        $data['why_choose_title'] = $request->input('why_choose_title');
-        $data['why_choose_subtitle'] = $request->input('why_choose_subtitle');
-        $data['why_choose_status'] = $request->input('why_choose_status');
+        $data['trusted_company_title'] = $request->input('trusted_company_title');
+        $data['trusted_company_subtitle'] = $request->input('trusted_company_subtitle');
+        $data['trusted_company_status'] = $request->input('trusted_company_status');
 
         PageHomeItem::where('id',1)->update($data);
         return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
