@@ -247,4 +247,18 @@ class PageHomeController extends Controller
         return redirect()->back()->with('success', 'Newsletter Section is updated successfully!');
     }
 
+    public function update11(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
+        
+        $data['why_choose_title'] = $request->input('why_choose_title');
+        $data['why_choose_subtitle'] = $request->input('why_choose_subtitle');
+        $data['why_choose_status'] = $request->input('why_choose_status');
+
+        PageHomeItem::where('id',1)->update($data);
+        return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
+    }
+
 }

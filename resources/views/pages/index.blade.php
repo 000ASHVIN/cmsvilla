@@ -7,6 +7,9 @@
             height: 0;
         }
     }
+    .companies_head{
+        color: red !important;
+    }
 
 </style>
 @endsection
@@ -55,7 +58,66 @@
 
     {{-- </div>
 </div> --}}
-
+@if($page_home->why_choose_status == 'Show')
+<div class="feature">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading wow fadeInUp">
+                    {{-- <h3>{{ $page_home->why_choose_subtitle }}</h3>
+                    <h2>{{ $page_home->why_choose_title }}</h2> --}}
+                    <h3 class="companies_head">Trusted Companies</h3>
+                    <h2>750+ Companies Trusted Us</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {{-- @foreach($why_choose_items as $row)
+            <div class="col-md-4">
+                <div class="feature-item wow fadeInUp">
+                    <div class="icon">
+                        <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
+                    </div>
+                    <h4>{{ $row->name }}</h4>
+                    <p>
+                        {!! nl2br(e($row->description)) !!}
+                    </p>
+                </div>
+            </div>
+            @endforeach --}}
+            <div class="col-md-12">
+                <div class="companies-carousel owl-carousel">
+                    <div class="companies-item wow fadeInUp">
+                        <div class="photo">
+                            <a href=""><img src="{{ asset('uploads/banner_about.jpeg') }}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="companies-item wow fadeInUp">
+                        <div class="photo">
+                            <a href=""><img src="{{ asset('uploads/2.png') }}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="companies-item wow fadeInUp">
+                        <div class="photo">
+                            <a href=""><img src="{{ asset('uploads/3.png') }}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="companies-item wow fadeInUp">
+                        <div class="photo">
+                            <a href=""><img src="{{ asset('uploads/1.png') }}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="companies-item wow fadeInUp">
+                        <div class="photo">
+                            <a href=""><img src="{{ asset('uploads/2.png') }}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 @if($page_home->why_choose_status == 'Show')
 <div class="feature">
