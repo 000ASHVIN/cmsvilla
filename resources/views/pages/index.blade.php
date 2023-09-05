@@ -1,15 +1,26 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+    @media only screen and (max-width: 768px) {
+        .slider-table.part-2 {
+            height: 0;
+        }
+    }
+
+</style>
+@endsection
+
 @section('content')
-<div class="slider">
-    <div class="slide-carousel owl-carousel">
+{{-- <div class="slider">
+    <div class="slide-carousel owl-carousel"> --}}
 
         @foreach($sliders as $row)
         <div class="slider-item" style="background-image:url({{ asset('uploads/'.$row->slider_photo) }});">
             <div class="slider-bg"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 col-sm-12">
+                    <div class="col-md-6 col-sm-12">
                         <div class="slider-table">
                             <div class="slider-text">
                                 <div class="text-animated">
@@ -28,13 +39,22 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="slider-table part-2">
+                            <div class="slider-text align-bottom">
+                                <div class="d-sm-none d-md-block">
+                                    <img src="{{ asset('uploads/'.$row->right_side_photo) }}" alt="" class="w-100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         @endforeach
 
-    </div>
-</div>
+    {{-- </div>
+</div> --}}
 
 
 @if($page_home->why_choose_status == 'Show')

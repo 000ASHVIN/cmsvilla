@@ -6,7 +6,7 @@
         <div class="card-header py-3">
             <h6 class="m-0 mt-2 font-weight-bold text-primary">View Sliders</h6>
             <div class="float-right d-inline">
-                <a href="{{ route('admin.slider.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
+                {{-- <a href="{{ route('admin.slider.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a> --}}
             </div>
         </div>
         <div class="card-body">
@@ -16,6 +16,7 @@
                     <tr>
                         <th>SL</th>
                         <th>Photo</th>
+                        <th>Right Photo</th>
                         <th>Slider Heading</th>
                         <th>Action</th>
                     </tr>
@@ -26,6 +27,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td><img src="{{ asset('uploads/'.$row->slider_photo) }}" alt="" class="w_150"></td>
+                            <td><img src="{{ asset('uploads/'.$row->right_side_photo) }}" alt="" class="w_150"></td>
                             <td>{{ $row->slider_heading }}</td>
                             <td>
                                 <a href="{{ URL::to('admin/slider/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>

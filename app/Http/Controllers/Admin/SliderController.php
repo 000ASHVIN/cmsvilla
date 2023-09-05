@@ -82,6 +82,24 @@ class SliderController extends Controller
             $data['slider_photo'] = $final_name;
         }
 
+        if ($request->hasFile('right_side_photo')) {
+
+            $request->validate([
+                'right_side_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+
+            if($slider->right_side_photo)
+                unlink(public_path('uploads/'.$slider->right_side_photo));
+
+            // Uploading the file
+            $ext = $request->file('right_side_photo')->extension();
+            $final_name = 'slider-right-'.$id.'.'.$ext;
+            $request->file('right_side_photo')->move(public_path('uploads/'), $final_name);
+
+            unset($data['right_side_photo']);
+            $data['right_side_photo'] = $final_name;
+        }
+
         $slider->fill($data)->save();
 
         return redirect()->route('admin.slider.index')->with('success', 'Slider is updated successfully!');

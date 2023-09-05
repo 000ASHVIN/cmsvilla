@@ -30,7 +30,8 @@
                 <div class="form-group">
                     <label for="">Slider Button URL</label>
                     <input type="text" name="slider_button_url" class="form-control" value="{{ $slider->slider_button_url }}" autofocus>
-                </div>                
+                </div> 
+
                 <div class="form-group">
                     <label for="">Existing Slider Photo</label>
                     <div>
@@ -41,6 +42,20 @@
                     <label for="">Change Slider Photo</label>
                     <div>
                         <input type="file" name="slider_photo">
+                    </div>
+                </div>
+                @if ($slider->right_side_photo)
+                <div class="form-group">
+                    <label for="">Existing Right Side Photo</label>
+                    <div>
+                        <img src="{{ asset('uploads/'.$slider->right_side_photo) }}" alt="" class="w_200">
+                    </div>
+                </div>
+                @endif
+                <div class="form-group">
+                    <label for="">Change Right Side Photo</label>
+                    <div>
+                        <input type="file" name="right_side_photo">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Update</button>

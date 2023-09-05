@@ -385,7 +385,7 @@ $footer_col_2 = DB::table('footer_columns')->orderBy('column_item_order', 'asc')
         }
     </style>
 
-
+    @yield('css')
 </head>
 <body>
 

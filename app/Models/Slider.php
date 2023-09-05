@@ -11,7 +11,8 @@ class Slider extends Model
         'slider_text',
         'slider_button_text',
         'slider_button_url',
-        'slider_photo'
+        'slider_photo',
+        'right_side_photo'
     ];
 
 }
