@@ -11,9 +11,10 @@
                         <a class="nav-link" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Trusted Companies Section</a>
                         <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Why Choose Us Section</a>
                         <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Special Section</a>
-                        <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Service Section</a>
+                        <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a>
                         <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Testimonial Section</a>
-                        <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Project Section</a>
+                        <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
+                        <a class="nav-link" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Case Studies Section</a>
                         <a class="nav-link" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Team Member Section</a>
                         <a class="nav-link" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Appointment Section</a>
                         <a class="nav-link" id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-9" aria-selected="false">Latest Blog Section</a>
@@ -207,8 +208,9 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
                             <!-- Tab 6 -->
-                            <form action="{{ url('admin/page/home/6') }}" method="post">
+                            <form action="{{ url('admin/page/home/6') }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="current_photo" value="{{ $page_home->project_bg }}">
                                 <div class="form-group">
                                     <label for="">Title</label>
                                     <input type="text" name="project_title" class="form-control" value="{{ $page_home->project_title }}">
@@ -217,6 +219,16 @@
                                     <label for="">Subtitle</label>
                                     <input type="text" name="project_subtitle" class="form-control" value="{{ $page_home->project_subtitle }}">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="">Existing Background</label>
+                                    <div><img src="{{ asset('uploads/'.$page_home->project_bg) }}" alt="" class="w_200"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Change Background</label>
+                                    <div><input type="file" name="project_bg"></div>
+                                </div> 
+
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <div>
@@ -404,6 +416,36 @@
                                 <button type="submit" class="btn btn-success">Update</button>
                             </form>
                             <!-- // Tab 11 -->
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-12-tab">
+                            <!-- Tab 9 -->
+                            <form action="{{ url('admin/page/home/12') }}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="">Title</label>
+                                    <input type="text" name="case_study_title" class="form-control" value="{{ $page_home->case_study_title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Subtitle</label>
+                                    <input type="text" name="case_study_subtitle" class="form-control" value="{{ $page_home->case_study_subtitle }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="case_study_status" id="rr1" value="Show" @if($page_home->case_study_status == 'Show') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr1">Show</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="case_study_status" id="rr2" value="Hide" @if($page_home->case_study_status == 'Hide') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </form>
+                            <!-- // Tab 9 -->
                         </div>
                     </div>
                 </div>

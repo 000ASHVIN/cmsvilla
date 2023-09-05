@@ -327,7 +327,7 @@
         <li class="nav-item {{ Request::is('admin/slider/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.slider.index') }}">
                 <i class="fas fa-sliders-h"></i>
-                <span>Sliders</span>
+                <span>Banner</span>
             </a>
         </li>
         @endif
@@ -379,7 +379,7 @@
         <li class="nav-item {{ Request::is('admin/project/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.project.index') }}">
                 <i class="fas fa-umbrella"></i>
-                <span>Project</span>
+                <span>Features</span>
             </a>
         </li>
         @endif
@@ -473,10 +473,17 @@
         <li class="nav-item {{ Request::is('admin/service/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.service.index') }}">
                 <i class="fas fa-certificate"></i>
-                <span>Service</span>
+                <span>Uses</span>
             </a>
         </li>
         @endif
+
+        <li class="nav-item {{ Request::is('admin/case-study/*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.case-study.index') }}">
+                <i class="fas fa-certificate"></i>
+                <span>Case Studies</span>
+            </a>
+        </li>
 
         <!-- Testimonials -->
         @php if( in_array('Testimonial', $arr_one) || $logged_user_role_id==1 ): @endphp

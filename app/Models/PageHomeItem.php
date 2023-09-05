@@ -45,6 +45,7 @@ class PageHomeItem extends Model
         'project_title',
         'project_subtitle',
         'project_status',
+        'project_bg',
         'team_member_title',
         'team_member_subtitle',
         'team_member_status',
@@ -60,7 +61,10 @@ class PageHomeItem extends Model
         'newsletter_title',
         'newsletter_text',
         'newsletter_bg',
-        'newsletter_status'
+        'newsletter_status',
+        'case_study_title',
+        'case_study_subtitle',
+        'case_study_status',
     ];
 
 }

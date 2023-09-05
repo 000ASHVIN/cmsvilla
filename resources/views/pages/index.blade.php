@@ -11,6 +11,56 @@
         color: red !important;
     }
 
+    .project {
+        padding-top: 70px;
+        padding-bottom: 80px;
+        overflow: hidden;
+        background: #3867D6;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-attachment: fixed;
+        position: relative;
+    }
+
+    .project-bg {
+        background: #3867D6!important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #3867D6;
+        opacity: 0.8;
+    }
+    .project .heading h2 {
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        margin-top: 0;
+    }
+    .project .heading h3 {
+        font-size: 20px;
+        font-weight: 500;
+        color: #fff;
+    }
+    /* .project .project-item .text p {
+        font-size: 15px;
+        color: #fff;
+    } */
+    .project .project-item .text h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+        position: relative;
+        margin-top: 40px;
+    }
+    .project .project-item .text h4 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #fff;
+    }
 </style>
 @endsection
 
@@ -45,7 +95,7 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="slider-table part-2">
                             <div class="slider-text align-bottom">
-                                <div class="d-sm-none d-md-block">
+                                <div class="d-none d-sm-none d-md-block">
                                     <img src="{{ asset('uploads/'.$row->right_side_photo) }}" alt="" class="w-100">
                                 </div>
                             </div>
@@ -117,7 +167,7 @@
 </div>
 @endif
 
-@if($page_home->why_choose_status == 'Show')
+{{-- @if($page_home->why_choose_status == 'Show')
 <div class="feature">
     <div class="container">
         <div class="row">
@@ -145,7 +195,7 @@
         </div>
     </div>
 </div>
-@endif
+@endif --}}
 
 
 @if($page_home->special_status == 'Show')
@@ -214,6 +264,83 @@
 </div>
 @endif
 
+@if($page_home->project_status == 'Show')
+<div class="project" style="background-image: url({{ asset('uploads/'.$page_home->project_bg) }});">
+    <div class="project-bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading wow fadeInUp">
+                    <h2>{{ $page_home->project_title }}</h2>
+                    <h3>{{ $page_home->project_subtitle }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="project-carousel owl-carousel">
+                    @foreach($projects as $row)
+                    <div class="project-item wow fadeInUp">
+                        <div class="photo">
+                            <a href="{{ url('project/'.$row->project_slug) }}"><img src="{{ asset('uploads/'.$row->project_featured_photo) }}" alt=""></a>
+                        </div>
+                        <div class="text">
+                            <h3><a href="{{ url('project/'.$row->project_slug) }}">{{ $row->project_name }}</a></h3>
+                            <p>
+                                {!! nl2br(e($row->project_content_short)) !!}
+                            </p>
+                            <div class="read-more">
+                                <a href="{{ url('project/'.$row->project_slug) }}">{{ READ_MORE }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+
+@if($page_home->case_study_status == 'Show')
+<div class="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading wow fadeInUp">
+                    <h2>{{ $page_home->case_study_title }}</h2>
+                    <h3>{{ $page_home->case_study_subtitle }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="service-carousel owl-carousel">
+                    @foreach($case_studies as $row)
+                    <div class="service-item wow fadeInUp">
+                        <div class="photo">
+                            <a href="{{ url('service/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                        </div>
+                        <div class="text">
+                            <h3><a href="{{ url('service/'.$row->slug) }}">{{ $row->name }}</a></h3>
+                            <p>
+                                {!! nl2br(e($row->short_description)) !!}
+                            </p>
+                            <div class="read-more">
+                                <a href="{{ url('service/'.$row->slug) }}">{{ READ_MORE }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+
 
 @if($page_home->testimonial_status == 'Show')
 <div class="testimonial" style="background-image: url({{ asset('uploads/'.$page_home->testimonial_bg) }});">
@@ -252,45 +379,7 @@
 @endif
 
 
-@if($page_home->project_status == 'Show')
-<div class="project">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="heading wow fadeInUp">
-                    <h2>{{ $page_home->project_title }}</h2>
-                    <h3>{{ $page_home->project_subtitle }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="project-carousel owl-carousel">
-                    @foreach($projects as $row)
-                    <div class="project-item wow fadeInUp">
-                        <div class="photo">
-                            <a href="{{ url('project/'.$row->project_slug) }}"><img src="{{ asset('uploads/'.$row->project_featured_photo) }}" alt=""></a>
-                        </div>
-                        <div class="text">
-                            <h3><a href="{{ url('project/'.$row->project_slug) }}">{{ $row->project_name }}</a></h3>
-                            <p>
-                                {!! nl2br(e($row->project_content_short)) !!}
-                            </p>
-                            <div class="read-more">
-                                <a href="{{ url('project/'.$row->project_slug) }}">{{ READ_MORE }}</a>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endif
-
-
-@if($page_home->team_member_status == 'Show')
+{{-- @if($page_home->team_member_status == 'Show')
 <div class="team bg-lightblue">
     <div class="container">
         <div class="row">
@@ -322,11 +411,11 @@
         </div>
     </div>
 </div>
-@endif
+@endif --}}
 
 
 
-@if($page_home->appointment_status == 'Show')
+{{-- @if($page_home->appointment_status == 'Show')
 <div class="cta" style="background-image: url({{ asset('uploads/'.$page_home->appointment_bg) }});">
     <div class="overlay"></div>
     <div class="container">
@@ -343,11 +432,9 @@
         </div>
     </div>
 </div>
-@endif
+@endif --}}
 
-
-
-@if($page_home->latest_blog_status == 'Show')
+{{-- @if($page_home->latest_blog_status == 'Show')
 <div class="blog-area">
     <div class="container wow fadeIn">
 
@@ -392,10 +479,9 @@
         </div>
     </div>
 </div>
-@endif
+@endif --}}
 
-
-@if($page_home->newsletter_status == 'Show')
+{{-- @if($page_home->newsletter_status == 'Show')
 <div class="newsletter-area" style="background-image: url({{ asset('uploads/'.$page_home->newsletter_bg) }});">
     <div class="overlay"></div>
     <div class="container">
@@ -418,6 +504,6 @@
         </div>
     </div>
 </div>
-@endif
+@endif --}}
 
 @endsection

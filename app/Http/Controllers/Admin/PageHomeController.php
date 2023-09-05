@@ -147,6 +147,24 @@ class PageHomeController extends Controller
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
         
+        if($request->hasFile('project_bg'))
+        {
+            $request->validate([
+                'project_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+
+            // Unlink old photo
+            if($request->input('current_photo'))
+                unlink(public_path('uploads/'.$request->input('current_photo')));
+
+            // Uploading new photo
+            $ext = $request->file('project_bg')->extension();
+            $final_name = 'project_bg'.'.'.$ext;
+            $request->file('project_bg')->move(public_path('uploads/'), $final_name);
+
+            $data['project_bg'] = $final_name;
+        }
+
         $data['project_title'] = $request->input('project_title');
         $data['project_subtitle'] = $request->input('project_subtitle');
         $data['project_status'] = $request->input('project_status');
@@ -211,6 +229,20 @@ class PageHomeController extends Controller
         $data['latest_blog_title'] = $request->input('latest_blog_title');
         $data['latest_blog_subtitle'] = $request->input('latest_blog_subtitle');
         $data['latest_blog_status'] = $request->input('latest_blog_status');
+
+        PageHomeItem::where('id',1)->update($data);
+        return redirect()->back()->with('success', 'Latest Blog Section is updated successfully!');
+    }
+
+    public function update12(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
+        
+        $data['case_study_title'] = $request->input('case_study_title');
+        $data['case_study_subtitle'] = $request->input('case_study_subtitle');
+        $data['case_study_status'] = $request->input('case_study_status');
 
         PageHomeItem::where('id',1)->update($data);
         return redirect()->back()->with('success', 'Latest Blog Section is updated successfully!');

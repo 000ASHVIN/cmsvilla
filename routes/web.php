@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\CategoryController as CategoryControllerForAdmin;
 use App\Http\Controllers\Admin\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\ProjectController as ProjectControllerForAdmin;
 use App\Http\Controllers\Admin\ServiceController as ServiceControllerForAdmin;
+use App\Http\Controllers\Admin\CaseStudyController as CaseStudyControllerForAdmin;
 use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
@@ -336,6 +337,7 @@ Route::middleware(['admin:admin'])->group(function() {
         Route::post('/9', [PageHomeController::class,'update9']);
         Route::post('/10', [PageHomeController::class,'update10']);
         Route::post('/11', [PageHomeController::class,'update11']);
+        Route::post('/12', [PageHomeController::class,'update12']);
     });
 
     Route::group(['prefix'=>'admin/page'], function() {
@@ -459,6 +461,13 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/service/delete/{id}', [ServiceControllerForAdmin::class,'destroy']);
     Route::get('admin/service/edit/{id}', [ServiceControllerForAdmin::class,'edit']);
     Route::post('admin/service/update/{id}', [ServiceControllerForAdmin::class,'update']);
+
+    Route::get('admin/case-study/view', [CaseStudyControllerForAdmin::class,'index'])->name('admin.case-study.index');
+    Route::get('admin/case-study/create', [CaseStudyControllerForAdmin::class,'create'])->name('admin.case-study.create');
+    Route::post('admin/case-study/store', [CaseStudyControllerForAdmin::class,'store'])->name('admin.case-study.store');
+    Route::get('admin/case-study/delete/{id}', [CaseStudyControllerForAdmin::class,'destroy']);
+    Route::get('admin/case-study/edit/{id}', [CaseStudyControllerForAdmin::class,'edit']);
+    Route::post('admin/case-study/update/{id}', [CaseStudyControllerForAdmin::class,'update']);
 
 
     /* --------------------------------------- */
