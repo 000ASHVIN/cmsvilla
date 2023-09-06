@@ -467,6 +467,15 @@
             </a>
         </li>
         @endif
+        <!-- company -->
+        @php if( $logged_user_role_id==1 ): @endphp
+        <li class="nav-item {{ Request::is('admin/company/*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.company.index') }}">
+                <i class="fas fa-certificate"></i>
+                <span>Company</span>
+            </a>
+        </li>
+        @endif
 
         <!-- Services -->
         @php if( in_array('Service', $arr_one) || $logged_user_role_id==1 ): @endphp

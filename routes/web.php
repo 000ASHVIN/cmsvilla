@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\ProjectController as ProjectControllerForAdmin;
 use App\Http\Controllers\Admin\ServiceController as ServiceControllerForAdmin;
 use App\Http\Controllers\Admin\CaseStudyController as CaseStudyControllerForAdmin;
+use App\Http\Controllers\Admin\CompanyController as CompanyControllerForAdmin;
 use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\Admin\SocialMediaItemController;
 use App\Http\Controllers\Admin\SubscriberController;
@@ -468,6 +469,15 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/case-study/delete/{id}', [CaseStudyControllerForAdmin::class,'destroy']);
     Route::get('admin/case-study/edit/{id}', [CaseStudyControllerForAdmin::class,'edit']);
     Route::post('admin/case-study/update/{id}', [CaseStudyControllerForAdmin::class,'update']);
+     /* --------------------------------------- */
+    /* Company - Admin */
+    /* --------------------------------------- */
+    Route::get('admin/company/view', [CompanyControllerForAdmin::class,'index'])->name('admin.company.index');
+    Route::get('admin/company/create', [CompanyControllerForAdmin::class,'create'])->name('admin.company.create');
+    Route::post('admin/company/store', [CompanyControllerForAdmin::class,'store'])->name('admin.company.store');
+    Route::get('admin/company/delete/{id}', [CompanyControllerForAdmin::class,'destroy']);
+    Route::get('admin/company/edit/{id}', [CompanyControllerForAdmin::class,'edit']);
+    Route::post('admin/company/update/{id}', [CompanyControllerForAdmin::class,'update']);
 
 
     /* --------------------------------------- */

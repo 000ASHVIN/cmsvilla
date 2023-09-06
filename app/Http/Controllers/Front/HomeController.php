@@ -13,11 +13,12 @@ class HomeController extends Controller
     	$page_home = DB::table('page_home_items')->where('id',1)->first();
     	$why_choose_items = DB::table('why_choose_items')->get();
     	$services = DB::table('services')->get();
+    	$companies = DB::table('companies')->get();
     	$testimonials = DB::table('testimonials')->get();
     	$projects = DB::table('projects')->get();
     	$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
 		$case_studies = DB::table('case_studies')->get();
-        return view('pages.index', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies'));
+        return view('pages.index', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies'));
     }
 }

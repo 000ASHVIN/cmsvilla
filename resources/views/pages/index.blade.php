@@ -120,46 +120,15 @@
             </div>
         </div>
         <div class="row">
-            {{-- @foreach($why_choose_items as $row)
-            <div class="col-md-4">
-                <div class="feature-item wow fadeInUp">
-                    <div class="icon">
-                        <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
-                    </div>
-                    <h4>{{ $row->name }}</h4>
-                    <p>
-                        {!! nl2br(e($row->description)) !!}
-                    </p>
-                </div>
-            </div>
-            @endforeach --}}
             <div class="col-md-12">
                 <div class="companies-carousel owl-carousel">
-                    <div class="companies-item wow fadeInUp">
-                        <div class="photo">
-                            <a href=""><img src="{{ asset('uploads/banner_about.jpeg') }}" alt=""></a>
+                    @foreach($companies as $row)
+                        <div class="companies-item wow fadeInUp">
+                            <div class="photo">
+                                <a href="{{ $row->slug }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="companies-item wow fadeInUp">
-                        <div class="photo">
-                            <a href=""><img src="{{ asset('uploads/2.png') }}" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="companies-item wow fadeInUp">
-                        <div class="photo">
-                            <a href=""><img src="{{ asset('uploads/3.png') }}" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="companies-item wow fadeInUp">
-                        <div class="photo">
-                            <a href=""><img src="{{ asset('uploads/1.png') }}" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="companies-item wow fadeInUp">
-                        <div class="photo">
-                            <a href=""><img src="{{ asset('uploads/2.png') }}" alt=""></a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
