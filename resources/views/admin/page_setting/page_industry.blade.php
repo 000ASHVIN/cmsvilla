@@ -7,9 +7,10 @@
             <div class="row">
                 <div class="col-3">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Special Section</a>
+                        <a class="nav-link" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Need Section</a>
                         <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Workflow</a>
 
+                        {{-- <a class="nav-link active" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="true">Meta Information</a> --}}
                         {{-- <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meta Information</a>
                         <a class="nav-link" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Trusted Companies Section</a>
                         <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Why Choose Us Section</a>
@@ -63,65 +64,60 @@
                         </div>
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                             <!-- Tab 1 -->
-                            <form action="{{ url('admin/page/home/1') }}" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="current_photo" value="{{ $page_home->special_bg }}">
-                                <input type="hidden" name="current_photo1" value="{{ $page_home->special_video_bg }}">
+                            <form action="{{ url('admin/page/industry/1') }}" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="current_photo1" value="{{ $page_home->need_video_bg ?? '' }}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
-                                    <input type="text" name="special_title" class="form-control" value="{{ $page_home->special_title }}">
+                                    <input type="text" name="need_title" class="form-control" value="{{ $page_home->need_title ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Subtitle</label>
-                                    <input type="text" name="special_subtitle" class="form-control" value="{{ $page_home->special_subtitle }}">
+                                    <input type="text" name="need_subtitle" class="form-control" value="{{ $page_home->need_subtitle ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Content</label>
-                                    <textarea name="special_content" class="form-control h_200" cols="30" rows="10">{{ $page_home->special_content }}</textarea>
+                                    <textarea name="need_content" class="form-control h_200" cols="30" rows="10">{{ $page_home->need_content ?? ''}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Button Text</label>
-                                    <input type="text" name="special_btn_text" class="form-control" value="{{ $page_home->special_btn_text }}">
+                                    <input type="text" name="need_btn_text" class="form-control" value="{{ $page_home->need_btn_text ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Button URL</label>
-                                    <input type="text" name="special_btn_url" class="form-control" value="{{ $page_home->special_btn_url }}">
+                                    <input type="text" name="need_btn_url" class="form-control" value="{{ $page_home->need_btn_url ?? '' }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">YouTube Video Preview</label>
                                     <div class="iframe-container-300">
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $page_home->special_yt_video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $page_home->need_yt_video ?? ''}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">YouTube Video</label>
-                                    <input type="text" name="special_yt_video" class="form-control" value="{{ $page_home->special_yt_video }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Existing Background</label>
-                                    <div><img src="{{ asset('uploads/'.$page_home->special_bg) }}" alt="" class="w_200"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Change Background</label>
-                                    <div><input type="file" name="special_bg"></div>
+                                    <input type="text" name="need_yt_video" class="form-control" value="{{ $page_home->need_yt_video ?? ''}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Existing Video Background</label>
-                                    <div><img src="{{ asset('uploads/'.$page_home->special_video_bg) }}" alt="" class="w_200"></div>
+                                    <div>
+                                        @if ($page_home && isset($page_home->need_video_bg))
+                                         <img src="{{ asset('uploads/'.$page_home->need_video_bg) }}" alt="" class="w_200">
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Change Video Background</label>
-                                    <div><input type="file" name="special_video_bg"></div>
+                                    <div><input type="file" name="need_video_bg"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="special_status" id="rr1" value="Show" @if($page_home->special_status == 'Show') checked @endif>
+                                            <input class="form-check-input" type="radio" name="need_status" id="rr1" value="Show" @if(isset($page_home->need_status) && $page_home->need_status == 'Show') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr1">Show</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="special_status" id="rr2" value="Hide" @if($page_home->special_status == 'Hide') checked @endif>
+                                            <input class="form-check-input" type="radio" name="need_status" id="rr2" value="Hide" @if(isset($page_home->need_status) && $page_home->need_status== 'Hide') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
                                         </div>
                                     </div>

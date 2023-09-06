@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PageHomeItem;
+use App\Models\PageIndustryItem;
 use Illuminate\Support\Facades\DB;
 
 class PageIndustryController extends Controller
@@ -21,14 +22,59 @@ class PageIndustryController extends Controller
     	$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
 		$case_studies = DB::table('case_studies')->get();
-        $page_home = PageHomeItem::where('id',1)->first();
-        return view('pages.industry', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies'));
+        $page_industry =DB::table('page_industry_items')->where('id',1)->first();
+        return view('pages.industry', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies'));
     }
 
     public function edit()
     {
-        $page_home = PageHomeItem::where('id',1)->first();
+        $page_home = PageIndustryItem::where('id',1)->first();
         return view('admin.page_setting.page_industry', compact('page_home'));
+    }
+
+    public function update1(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
+
+        if($request->hasFile('need_video_bg'))
+        {
+            $request->validate([
+                'need_video_bg' => 'image|mimes:jpeg,png,jpg,gif'
+            ]);
+
+            // Unlink old photo
+            $filePath = public_path('uploads/'.$request->input('current_photo1'));
+
+            if (file_exists($filePath) && $request->input('current_photo1')!=null) {
+                unlink(public_path('uploads/'.$request->input('current_photo1')));
+            }
+
+            // Uploading new photo
+            $ext = $request->file('need_video_bg')->extension();
+            $final_name = 'need_video_bg'.'.'.$ext;
+            $request->file('need_video_bg')->move(public_path('uploads/'), $final_name);
+
+            $data['need_video_bg'] = $final_name;
+        }
+
+        $data['need_title'] = $request->input('need_title');
+        $data['need_subtitle'] = $request->input('need_subtitle');
+        $data['need_content'] = $request->input('need_content');
+        $data['need_btn_text'] = $request->input('need_btn_text');
+        $data['need_btn_url'] = $request->input('need_btn_url');
+        $data['need_yt_video'] = $request->input('need_yt_video');
+        $data['need_status'] = $request->input('need_status');
+
+        $page = PageIndustryItem::find(1);
+        if($page != null){
+            PageIndustryItem::where('id',1)->update($data);
+        }else{
+            PageIndustryItem::create($data);
+
+        }
+        return redirect()->back()->with('success', 'Need Section is updated successfully!');
     }
 
     // public function update1(Request $request)
@@ -65,57 +111,6 @@ class PageIndustryController extends Controller
         return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
     }
 
-    // public function update3(Request $request)
-    // {
-    //     if(env('PROJECT_MODE') == 0) {
-    //         return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
-    //     }
-        
-    //     if($request->hasFile('special_bg'))
-    //     {
-    //         $request->validate([
-    //             'special_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-    //         ]);
-
-    //         // Unlink old photo
-    //         unlink(public_path('uploads/'.$request->input('current_photo')));
-
-    //         // Uploading new photo
-    //         $ext = $request->file('special_bg')->extension();
-    //         $final_name = 'special_bg'.'.'.$ext;
-    //         $request->file('special_bg')->move(public_path('uploads/'), $final_name);
-
-    //         $data['special_bg'] = $final_name;
-    //     }
-
-    //     if($request->hasFile('special_video_bg'))
-    //     {
-    //         $request->validate([
-    //             'special_video_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-    //         ]);
-
-    //         // Unlink old photo
-    //         unlink(public_path('uploads/'.$request->input('current_photo1')));
-
-    //         // Uploading new photo
-    //         $ext = $request->file('special_video_bg')->extension();
-    //         $final_name = 'special_video_bg'.'.'.$ext;
-    //         $request->file('special_video_bg')->move(public_path('uploads/'), $final_name);
-
-    //         $data['special_video_bg'] = $final_name;
-    //     }
-
-    //     $data['special_title'] = $request->input('special_title');
-    //     $data['special_subtitle'] = $request->input('special_subtitle');
-    //     $data['special_content'] = $request->input('special_content');
-    //     $data['special_btn_text'] = $request->input('special_btn_text');
-    //     $data['special_btn_url'] = $request->input('special_btn_url');
-    //     $data['special_yt_video'] = $request->input('special_yt_video');
-    //     $data['special_status'] = $request->input('special_status');
-
-    //     PageHomeItem::where('id',1)->update($data);
-    //     return redirect()->back()->with('success', 'Special Section is updated successfully!');
-    // }
 
     // public function update4(Request $request)
     // {
