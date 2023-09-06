@@ -50,6 +50,7 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\WhyChooseController;
 use App\Http\Controllers\Admin\JobController as JobControllerForAdmin;
 use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
+use App\Http\Controllers\Admin\PageIndustryController;
 use App\Http\Controllers\Admin\ProductController as ProductControllerForAdmin;
 use App\Http\Controllers\Admin\OrderController as OrderControllerForAdmin;
 use App\Http\Controllers\Admin\RoleController;
@@ -339,6 +340,22 @@ Route::middleware(['admin:admin'])->group(function() {
         Route::post('/10', [PageHomeController::class,'update10']);
         Route::post('/11', [PageHomeController::class,'update11']);
         Route::post('/12', [PageHomeController::class,'update12']);
+    });
+
+    Route::group(['prefix'=>'admin/page/industry'], function() {
+        Route::get('/edit', [PageIndustryController::class,'edit'])->name('admin.page_industry.edit');
+        Route::post('/1', [PageIndustryController::class,'update1']);
+        Route::post('/2', [PageIndustryController::class,'update2']);
+        Route::post('/3', [PageIndustryController::class,'update3']);
+        Route::post('/4', [PageIndustryController::class,'update4']);
+        Route::post('/5', [PageIndustryController::class,'update5']);
+        Route::post('/6', [PageIndustryController::class,'update6']);
+        Route::post('/7', [PageIndustryController::class,'update7']);
+        Route::post('/8', [PageIndustryController::class,'update8']);
+        Route::post('/9', [PageIndustryController::class,'update9']);
+        Route::post('/10', [PageIndustryController::class,'update10']);
+        Route::post('/11', [PageIndustryController::class,'update11']);
+        Route::post('/12', [PageIndustryController::class,'update12']);
     });
 
     Route::group(['prefix'=>'admin/page'], function() {
@@ -653,6 +670,8 @@ Route::middleware(['admin:admin'])->group(function() {
     /* --------------------------------------- */
     Route::get('admin/translation/front/edit', [TranslationController::class,'front_edit'])->name('admin.translation.front');
     Route::post('admin/translation/front/update', [TranslationController::class,'front_update']);
+
+    Route::get('/industry', [PageIndustryController::class,'index']);
 
 });
 
