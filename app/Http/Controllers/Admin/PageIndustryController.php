@@ -43,20 +43,27 @@ class PageIndustryController extends Controller
     //     PageHomeItem::where('id',1)->update($data);
     //     return redirect()->back()->with('success', 'Home Page Meta Information is updated successfully!');
     // }
-
-    // public function update2(Request $request)
-    // {
-    //     if(env('PROJECT_MODE') == 0) {
-    //         return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
-    //     }
+    public function update3(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
         
-    //     $data['why_choose_title'] = $request->input('why_choose_title');
-    //     $data['why_choose_subtitle'] = $request->input('why_choose_subtitle');
-    //     $data['why_choose_status'] = $request->input('why_choose_status');
+        $data['workflow_title'] = $request->input('workflow_title');
+        $data['workflow_subtitle'] = $request->input('workflow_subtitle');
+        $data['workflow_content'] = $request->input('workflow_content');
 
-    //     PageHomeItem::where('id',1)->update($data);
-    //     return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
-    // }
+        // PageIndustryItem::where('id',1)->update($data);
+
+        $page = PageIndustryItem::find(1);
+        if($page != null){
+            PageIndustryItem::where('id',1)->update($data);
+        }else{
+            PageIndustryItem::create($data);
+
+        }
+        return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
+    }
 
     // public function update3(Request $request)
     // {

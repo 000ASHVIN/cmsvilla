@@ -19,5 +19,8 @@ class PageIndustryItem extends Model
         'special_bg',
         'special_video_bg',
         'special_status',
+        'workflow_title',
+        'workflow_subtitle',
+        'workflow_content',
     ];
 }

@@ -163,6 +163,39 @@
     </div>
 </div>
 @endif --}}
+    @if($page_home->why_choose_status == 'Show')
+    <div class="feature">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading wow fadeInUp">
+                            <h6 class="colour">Our Services</h6>
+                            <div>
+                                {{-- <h2>{{ $page_home->why_choose_title }}</h2> --}}
+                                 <h2>We providing Our Best Services</h2>
+                        <h3>Business marketing is a marketing practice of individuals or organizations practice of individuals  individuals or organizations practice</h3>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($why_choose_items as $row)
+                <div class="col-md-4">
+                    <div class="feature-item wow fadeInUp">
+                        <div class="icon">
+                            <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
+                        </div>
+                        <h4>Business Marketing</h4>
+                        <p>
+                            Business marketing is a marketing practice of individuals or organizations.
+                        </p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
 
 
 {{-- @if($page_home->special_status == 'Show')
