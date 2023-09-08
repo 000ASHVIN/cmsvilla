@@ -383,6 +383,9 @@ $footer_col_2 = DB::table('footer_columns')->orderBy('column_item_order', 'asc')
             background: transparent!important;
             border-color: #fff!important;
         }
+        .main-nav img {
+            max-height: 38px;
+        }
     </style>
 
     @yield('css')
