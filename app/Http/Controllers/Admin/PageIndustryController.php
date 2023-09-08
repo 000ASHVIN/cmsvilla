@@ -29,6 +29,10 @@ class PageIndustryController extends Controller
     public function edit()
     {
         $page_home = PageIndustryItem::where('id',1)->first();
+        if(!$page_home) {
+            $page_home = PageIndustryItem::create([]);
+            
+        }
         return view('admin.page_setting.page_industry', compact('page_home'));
     }
 
@@ -98,7 +102,7 @@ class PageIndustryController extends Controller
         $data['workflow_title'] = $request->input('workflow_title');
         $data['workflow_subtitle'] = $request->input('workflow_subtitle');
         $data['workflow_content'] = $request->input('workflow_content');
-
+        $data['workflow_status'] = $request->input('workflow_status');
         // PageIndustryItem::where('id',1)->update($data);
 
         $page = PageIndustryItem::find(1);

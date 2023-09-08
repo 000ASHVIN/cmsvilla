@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('page_industry_items', function (Blueprint $table) {
-            $table->string('workflow_title')->nullable()->after('special_status');
+            $table->string('workflow_title')->nullable();
             $table->string('workflow_subtitle')->nullable()->after('workflow_title');
             $table->longText('workflow_content')->nullable()->after('workflow_subtitle');
             $table->longText('workflow_status')->nullable()->after('workflow_content');

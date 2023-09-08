@@ -29,31 +29,31 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
                             <!-- Tab 1 -->
-                            <form action="{{ url('admin/page/home/3') }}" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="current_photo" value="{{ $page_home->special_bg }}">
-                                <input type="hidden" name="current_photo1" value="{{ $page_home->special_video_bg }}">
+                            <form action="{{ url('admin/page/industry/3') }}" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="current_photo" value="{{ $page_home->workflow_bg }}">
+                                <input type="hidden" name="current_photo1" value="{{ $page_home->workflow_video_bg }}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
-                                    <input type="text" name="workflow_title" class="form-control" value="{{ $page_home->special_title }}">
+                                    <input type="text" name="workflow_title" class="form-control" value="{{ $page_home->workflow_title }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Subtitle</label>
-                                    <input type="text" name="workflow_subtitle" class="form-control" value="{{ $page_home->special_subtitle }}">
+                                    <input type="text" name="workflow_subtitle" class="form-control" value="{{ $page_home->workflow_subtitle }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Content</label>
-                                    <textarea name="workflow_content" class="form-control h_200" cols="30" rows="10">{{ $page_home->special_content }}</textarea>
+                                    <textarea name="workflow_content" class="form-control h_200" cols="30" rows="10">{{ $page_home->workflow_content }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="special_status" id="rr1" value="Show" @if($page_home->special_status == 'Show') checked @endif>
+                                            <input class="form-check-input" type="radio" name="workflow_status" id="rr1" value="Show" @if($page_home->workflow_status == 'Show') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr1">Show</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="special_status" id="rr2" value="Hide" @if($page_home->special_status == 'Hide') checked @endif>
+                                            <input class="form-check-input" type="radio" name="workflow_status" id="rr2" value="Hide" @if($page_home->workflow_status == 'Hide') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
                                         </div>
                                     </div>
