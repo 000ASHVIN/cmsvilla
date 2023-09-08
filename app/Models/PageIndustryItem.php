@@ -31,6 +31,7 @@ class PageIndustryItem extends Model
         'need_btn_url',
         'need_yt_video',
         'need_video_bg',
+        'need_bg_color',
         'need_status',
         'how_help_bg',
         'how_help_title',

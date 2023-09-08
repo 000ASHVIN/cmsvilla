@@ -123,8 +123,8 @@
                                     <div><input type="file" name="special_video_bg"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Background Color</label>
-                                    <div><input type="color" name="special_bg_color"></div>
+                                    <label for="special_bg_color">Background Color</label>
+                                    <div><input type="color" id="special_bg_color" name="special_bg_color" value="{{ $page_home->special_bg_color }}"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Status</label>

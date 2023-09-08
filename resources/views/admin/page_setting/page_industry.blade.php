@@ -113,6 +113,10 @@
                                     <div><input type="file" name="need_video_bg"></div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="need_bg_color">Background Color</label>
+                                    <div><input type="color" id="need_bg_color" name="need_bg_color" value="{{ $page_home->need_bg_color }}"></div>
+                                </div>
+                                <div class="form-group">
                                     <label for="">Status</label>
                                     <div>
                                         <div class="form-check form-check-inline">

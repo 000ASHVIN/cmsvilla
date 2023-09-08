@@ -70,6 +70,7 @@ class PageIndustryController extends Controller
         $data['need_btn_text'] = $request->input('need_btn_text');
         $data['need_btn_url'] = $request->input('need_btn_url');
         $data['need_yt_video'] = $request->input('need_yt_video');
+        $data['need_bg_color'] = $request->input('need_bg_color');
         $data['need_status'] = $request->input('need_status');
 
         $page = PageIndustryItem::find(1);
