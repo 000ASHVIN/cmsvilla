@@ -43,6 +43,7 @@ class PageHomeItem extends Model
         'testimonial_subtitle',
         'testimonial_status',
         'testimonial_bg',
+        'testimonial_bg_color',
         'project_title',
         'project_subtitle',
         'project_status',

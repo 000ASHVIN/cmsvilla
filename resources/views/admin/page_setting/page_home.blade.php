@@ -192,6 +192,10 @@
                                 <div class="form-group">
                                     <label for="">Change Background</label>
                                     <div><input type="file" name="testimonial_bg"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="testimonial_bg_color">Background Color</label>
+                                    <div><input type="color" id="testimonial_bg_color" name="testimonial_bg_color" value="{{ $page_home->testimonial_bg_color }}"></div>
                                 </div>                                
                                 <div class="form-group">
                                     <label for="">Status</label>

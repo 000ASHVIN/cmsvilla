@@ -136,6 +136,7 @@ class PageHomeController extends Controller
 
         $data['testimonial_title'] = $request->input('testimonial_title');
         $data['testimonial_subtitle'] = $request->input('testimonial_subtitle');
+        $data['testimonial_bg_color'] = $request->input('testimonial_bg_color');
         $data['testimonial_status'] = $request->input('testimonial_status');
 
         PageHomeItem::where('id',1)->update($data);

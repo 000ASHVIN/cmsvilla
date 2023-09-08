@@ -1,6 +1,6 @@
 @if($page_home->testimonial_status == 'Show')
-    <div class="testimonial" style="background-image: url({{ asset('uploads/'.$page_home->testimonial_bg) }});">
-        <div class="testimonial-bg"></div>
+    <div class="testimonial" style="background-color: {{ $page_home->testimonial_bg_color }};">
+        <div class=""></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
