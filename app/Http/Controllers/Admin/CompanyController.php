@@ -67,7 +67,9 @@ class CompanyController extends Controller
                 ],
                 'photo' => 'image|mimes:jpeg,png,jpg,gif'
             ]);
-            unlink(public_path('uploads/'.$company->photo));
+            if($request->input('current_photo') && file_exists($company->photo)){
+                unlink(public_path('uploads/'.$company->photo));
+            }
             $ext = $request->file('photo')->extension();
             $final_name = 'company-'.$id.'.'.$ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);

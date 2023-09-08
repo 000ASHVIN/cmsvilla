@@ -10,7 +10,7 @@
                         <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Need Section</a>
                         <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Workflow</a>
                         {{-- <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="true">Case Studies</a> --}}
-                        {{-- <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Trusted Companies Section</a> --}}
+                        <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Trusted Companies Section</a>
                         {{-- <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Testimonial Section</a> --}}
                         {{-- <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meta Information</a>
                        
@@ -198,9 +198,9 @@
                             <!-- // Tab 6 -->
                         </div>
 
-                        {{-- <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+                        <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                             <!-- Tab 5 -->
-                            <form action="{{ url('admin/page/industry/5') }}" method="post">
+                            <form action="{{ url('admin/page/industry/2') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
@@ -226,7 +226,7 @@
                                 <button type="submit" class="btn btn-success">Update</button>
                             </form>
                             <!-- // Tab 5 -->
-                        </div> --}}
+                        </div>
 
                         <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
                             <!-- Tab 6 -->

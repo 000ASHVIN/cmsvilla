@@ -1,4 +1,31 @@
 @extends('admin.admin_layouts')
+@section('style')
+<style>
+.custom-select {
+  padding: 10px;
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  width: 200px; 
+  background-color: #fff; 
+  color: #333;
+}
+.custom-select:focus {
+  border-color: #007bff; 
+  outline: none; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+.custom-select::after {
+  content: '\25BC'; 
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+</style>
+
+@endsection
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Edit Company</h1>
 
@@ -19,6 +46,7 @@
                 <div class="form-group">
                     <label for="">Existing Photo</label>
                     <div>
+                        <input type="hidden" value="{{ $company->photo }}" name="current_photo">
                         <img src="{{ asset('uploads/'.$company->photo) }}" alt="" class="w_200">
                     </div>
                 </div>
@@ -26,6 +54,16 @@
                     <label for="">Change Photo</label>
                     <div>
                         <input type="file" name="photo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Select Page</label>
+                    <div>
+                        <select name="located_page" id="located_page" class="custom-select">
+                            <option value="" selected>Select Page</option>
+                            <option value="home" {{ ($company->located_page === 'home') ? 'selected' : '' }}>Home</option>
+                            <option value="industry" {{ ($company->located_page === 'industry') ? 'selected' : '' }}>Industry</option>
+                        </select>
                     </div>
                 </div>
             </div>

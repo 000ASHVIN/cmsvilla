@@ -136,19 +136,19 @@ class PageIndustryController extends Controller
         return redirect()->back()->with('success', 'Case Study Section is updated successfully!');
     }
 
-    // public function update5(Request $request)
-    // {
-    //     if(env('PROJECT_MODE') == 0) {
-    //         return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
-    //     }
+    public function update2(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
         
-    //     $data['trusted_company_title'] = $request->input('trusted_company_title');
-    //     $data['trusted_company_subtitle'] = $request->input('trusted_company_subtitle');
-    //     $data['trusted_company_status'] = $request->input('trusted_company_status');
+        $data['trusted_company_title'] = $request->input('trusted_company_title');
+        $data['trusted_company_subtitle'] = $request->input('trusted_company_subtitle');
+        $data['trusted_company_status'] = $request->input('trusted_company_status');
 
-    //     PageIndustryItem::where('id',1)->update($data);
-    //     return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
-    // }
+        PageIndustryItem::where('id',1)->update($data);
+        return redirect()->back()->with('success', 'Trusted Company Section is updated successfully!');
+    }
 
     // public function update6(Request $request)
     // {

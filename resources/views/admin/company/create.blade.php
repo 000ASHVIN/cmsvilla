@@ -22,6 +22,16 @@
                         <input type="file" name="photo">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="">Select Page</label>
+                    <div>
+                        <select name="located_page" id="located_page" class="custom-select">
+                            <option value="" selected>Select Page</option>
+                            <option value="home">Home</option>
+                            <option value="industry">Industry</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <button type="submit" class="btn btn-success">Submit</button>

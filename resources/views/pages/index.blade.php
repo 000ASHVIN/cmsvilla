@@ -123,11 +123,21 @@
             <div class="col-md-12">
                 <div class="companies-carousel owl-carousel">
                     @foreach($companies as $row)
-                        <div class="companies-item wow fadeInUp">
-                            <div class="photo">
-                                <a href="{{ $row->slug }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                        @if ($row->located_page != null)
+                            @if ($row->located_page == 'home')
+                                <div class="companies-item wow fadeInUp">
+                                    <div class="photo">
+                                        <a href="{{ $row->slug }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                                    </div>
+                                </div>
+                            @endif
+                        @else
+                            <div class="companies-item wow fadeInUp">
+                                <div class="photo">
+                                    <a href="{{ $row->slug }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
