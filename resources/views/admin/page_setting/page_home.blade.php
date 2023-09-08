@@ -123,6 +123,10 @@
                                     <div><input type="file" name="special_video_bg"></div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Background Color</label>
+                                    <div><input type="color" name="special_bg_color"></div>
+                                </div>
+                                <div class="form-group">
                                     <label for="">Status</label>
                                     <div>
                                         <div class="form-check form-check-inline">

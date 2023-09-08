@@ -34,6 +34,7 @@ class PageHomeItem extends Model
         'special_yt_video',
         'special_bg',
         'special_video_bg',
+        'special_bg_color',
         'special_status',
         'service_title',
         'service_subtitle',

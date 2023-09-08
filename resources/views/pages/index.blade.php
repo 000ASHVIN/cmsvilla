@@ -168,7 +168,7 @@
 
 
 @if($page_home->special_status == 'Show')
-<div class="special" style="background-image: url({{ asset('uploads/'.$page_home->special_bg) }});">
+<div class="special" style="background-color: {{ $page_home->special_bg_color }};">
     <div class="bg"></div>
     <div class="container">
         <div class="row">

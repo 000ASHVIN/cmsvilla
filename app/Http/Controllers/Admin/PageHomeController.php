@@ -89,6 +89,7 @@ class PageHomeController extends Controller
         $data['special_btn_text'] = $request->input('special_btn_text');
         $data['special_btn_url'] = $request->input('special_btn_url');
         $data['special_yt_video'] = $request->input('special_yt_video');
+        $data['special_bg_color'] = $request->input('special_bg_color');
         $data['special_status'] = $request->input('special_status');
 
         PageHomeItem::where('id',1)->update($data);
