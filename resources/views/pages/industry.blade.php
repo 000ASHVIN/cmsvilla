@@ -79,6 +79,22 @@
         background-color: # !important;
     }
 </style>
+<style>
+    .image-heading-container {
+    display: flex;
+    align-items: center; /* Center vertically */
+    }
+    .image-heading-container img {
+        margin-right: 10px; /* Add margin for spacing between image and heading */
+    }
+    .font-size{
+        font-size: 200%;
+        font-weight:500;
+    }
+    .font-color{
+        color: rgb(143, 139, 139);
+    }
+</style>
 @endsection
 
 @section('content')
@@ -122,9 +138,12 @@
 
         
         @include('pages.includes.need')
+        @include('pages.includes.how_help')
         @include('pages.includes.workflow')
         @include('pages.includes.case_study')
         @include('pages.includes.companies')
         @include('pages.includes.testimonial')
+        
+        
 
 @endsection
