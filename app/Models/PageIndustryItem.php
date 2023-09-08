@@ -10,6 +10,16 @@ class PageIndustryItem extends Model
     use HasFactory;
 
     protected $fillable = [
+        'testimonial_title',
+        'testimonial_subtitle',
+        'testimonial_status',
+        'testimonial_bg',
+        'trusted_company_title',
+        'trusted_company_subtitle',
+        'trusted_company_status',
+        'case_study_title',
+        'case_study_subtitle',
+        'case_study_status',
         'workflow_title',
         'workflow_subtitle',
         'workflow_content',

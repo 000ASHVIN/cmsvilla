@@ -7,14 +7,14 @@
             <div class="row">
                 <div class="col-3">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Need Section</a>
+                        <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Need Section</a>
                         <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Workflow</a>
-
-                        {{-- <a class="nav-link active" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="true">Meta Information</a> --}}
+                        <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="true">Case Studies</a>
+                        <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Trusted Companies Section</a>
+                        <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Testimonial Section</a>
                         {{-- <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meta Information</a>
-                        <a class="nav-link" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Trusted Companies Section</a>
+                       
                         <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Why Choose Us Section</a>
-                        
                         <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a>
                         <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Testimonial Section</a>
                         <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
@@ -28,10 +28,8 @@
                 <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-                            <!-- Tab 1 -->
+                            <!-- Tab 3 -->
                             <form action="{{ url('admin/page/industry/3') }}" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="current_photo" value="{{ $page_home->workflow_bg }}">
-                                <input type="hidden" name="current_photo1" value="{{ $page_home->workflow_video_bg }}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
@@ -60,7 +58,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-success">Update</button>
                             </form>
-                            <!-- // Tab 1 -->
+                            <!-- // Tab 3 -->
                         </div>
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                             <!-- Tab 1 -->
@@ -126,6 +124,107 @@
                             </form>
                             <!-- // Tab 1 -->
                         </div>
+
+                        <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+                            <!-- Tab 4 -->
+                            <form action="{{ url('admin/page/industry/4') }}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="">Title</label>
+                                    <input type="text" name="case_study_title" class="form-control" value="{{ $page_home->case_study_title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Subtitle</label>
+                                    <input type="text" name="case_study_subtitle" class="form-control" value="{{ $page_home->case_study_subtitle }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="case_study_status" id="rr1" value="Show" @if($page_home->case_study_status == 'Show') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr1">Show</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="case_study_status" id="rr2" value="Hide" @if($page_home->case_study_status == 'Hide') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </form>
+                            <!-- // Tab 4 -->
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+                            <!-- Tab 5 -->
+                            <form action="{{ url('admin/page/industry/5') }}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="">Title</label>
+                                    <input type="text" name="trusted_company_title" class="form-control" value="{{ $page_home->trusted_company_title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Subtitle</label>
+                                    <input type="text" name="trusted_company_subtitle" class="form-control" value="{{ $page_home->trusted_company_subtitle }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="trusted_company_status" id="rr1" value="Show" @if($page_home->trusted_company_status == 'Show') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr1">Show</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="trusted_company_status" id="rr2" value="Hide" @if($page_home->trusted_company_status == 'Hide') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </form>
+                            <!-- // Tab 5 -->
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+                            <!-- Tab 6 -->
+                            <form action="{{ url('admin/page/industry/6') }}" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="current_photo" value="{{ $page_home->testimonial_bg }}">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="">Title</label>
+                                    <input type="text" name="testimonial_title" class="form-control" value="{{ $page_home->testimonial_title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Subtitle</label>
+                                    <input type="text" name="testimonial_subtitle" class="form-control" value="{{ $page_home->testimonial_subtitle }}">
+                                </div>                               
+                                <div class="form-group">
+                                    <label for="">Existing Background</label>
+                                    <div><img src="{{ asset('uploads/'.$page_home->testimonial_bg) }}" alt="" class="w_200"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Change Background</label>
+                                    <div><input type="file" name="testimonial_bg"></div>
+                                </div>                                
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="testimonial_status" id="rr1" value="Show" @if($page_home->testimonial_status == 'Show') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr1">Show</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="testimonial_status" id="rr2" value="Hide" @if($page_home->testimonial_status == 'Hide') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </form>
+                            <!-- // Tab 6 -->
+                        </div>
+
+                        
                         {{-- <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
 
                             <!-- Tab 1 -->

@@ -104,7 +104,6 @@ class PageIndustryController extends Controller
         $data['workflow_content'] = $request->input('workflow_content');
         $data['workflow_status'] = $request->input('workflow_status');
         // PageIndustryItem::where('id',1)->update($data);
-
         $page = PageIndustryItem::find(1);
         if($page != null){
             PageIndustryItem::where('id',1)->update($data);
@@ -115,6 +114,74 @@ class PageIndustryController extends Controller
         return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
     }
 
+     public function update4(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
+        
+        $data['case_study_title'] = $request->input('case_study_title');
+        $data['case_study_subtitle'] = $request->input('case_study_subtitle');
+        $data['case_study_status'] = $request->input('case_study_status');
+
+        $page = PageIndustryItem::find(1);
+        if($page != null){
+            PageIndustryItem::where('id',1)->update($data);
+        }else{
+            PageIndustryItem::create($data);
+
+        }
+        return redirect()->back()->with('success', 'Case Study Section is updated successfully!');
+    }
+
+    public function update5(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
+        
+        $data['trusted_company_title'] = $request->input('trusted_company_title');
+        $data['trusted_company_subtitle'] = $request->input('trusted_company_subtitle');
+        $data['trusted_company_status'] = $request->input('trusted_company_status');
+
+        PageIndustryItem::where('id',1)->update($data);
+        return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
+    }
+
+    public function update6(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
+        
+        if($request->hasFile('testimonial_bg'))
+        {
+            $request->validate([
+                'testimonial_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+
+            // Unlink old photo
+            $filePath = public_path('uploads/'.$request->input('current_photo'));
+
+            if (file_exists($filePath) && $request->input('current_photo')!=null) {
+                unlink(public_path('uploads/'.$request->input('current_photo')));
+            }
+
+            // Uploading new photo
+            $ext = $request->file('testimonial_bg')->extension();
+            $final_name = 'testimonial_bg'.'.'.$ext;
+            $request->file('testimonial_bg')->move(public_path('uploads/'), $final_name);
+
+            $data['testimonial_bg'] = $final_name;
+        }
+
+        $data['testimonial_title'] = $request->input('testimonial_title');
+        $data['testimonial_subtitle'] = $request->input('testimonial_subtitle');
+        $data['testimonial_status'] = $request->input('testimonial_status');
+
+        PageIndustryItem::where('id',1)->update($data);
+        return redirect()->back()->with('success', 'Testimonial Section is updated successfully!');
+    }
 
     // public function update4(Request $request)
     // {
@@ -131,36 +198,7 @@ class PageIndustryController extends Controller
     // }
 
 
-    // public function update5(Request $request)
-    // {
-    //     if(env('PROJECT_MODE') == 0) {
-    //         return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
-    //     }
-        
-    //     if($request->hasFile('testimonial_bg'))
-    //     {
-    //         $request->validate([
-    //             'testimonial_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-    //         ]);
-
-    //         // Unlink old photo
-    //         unlink(public_path('uploads/'.$request->input('current_photo')));
-
-    //         // Uploading new photo
-    //         $ext = $request->file('testimonial_bg')->extension();
-    //         $final_name = 'testimonial_bg'.'.'.$ext;
-    //         $request->file('testimonial_bg')->move(public_path('uploads/'), $final_name);
-
-    //         $data['testimonial_bg'] = $final_name;
-    //     }
-
-    //     $data['testimonial_title'] = $request->input('testimonial_title');
-    //     $data['testimonial_subtitle'] = $request->input('testimonial_subtitle');
-    //     $data['testimonial_status'] = $request->input('testimonial_status');
-
-    //     PageHomeItem::where('id',1)->update($data);
-    //     return redirect()->back()->with('success', 'Testimonial Section is updated successfully!');
-    // }
+    
 
     // public function update6(Request $request)
     // {
