@@ -468,6 +468,18 @@
             </a>
         </li>
         @endif
+
+         <!-- Industry -->
+         @php if( $logged_user_role_id==1 ): @endphp
+            <li class="nav-item {{ Request::is('admin/industry-item/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.industry_item.index') }}">
+                    <i class="fas fa-certificate"></i>
+                    <span>Industry Item</span>
+                </a>
+            </li>
+        @endif
+
+
         <!-- company -->
         @php if( $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/company/*') ? 'active' : '' }}">

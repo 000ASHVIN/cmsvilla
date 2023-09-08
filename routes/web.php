@@ -51,7 +51,9 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\WhyChooseController;
 use App\Http\Controllers\Admin\JobController as JobControllerForAdmin;
 use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
+use App\Http\Controllers\Admin\IndustryDisplayController;
 use App\Http\Controllers\Admin\PageIndustryController;
+use App\Http\Controllers\Admin\PageCaseStudyController;
 use App\Http\Controllers\Admin\ProductController as ProductControllerForAdmin;
 use App\Http\Controllers\Admin\OrderController as OrderControllerForAdmin;
 use App\Http\Controllers\Admin\RoleController;
@@ -87,11 +89,12 @@ use App\Http\Controllers\Front\TeamMemberController as TeamMemberControllerForFr
 use App\Http\Controllers\Front\TermController;
 use App\Http\Controllers\Front\VideoGalleryController;
 
-
 /* --------------------------------------- */
 /* Front End */
 /* --------------------------------------- */
 Route::get('/', [HomeController::class,'index']);
+Route::get('/industry', [PageIndustryController::class,'index']);
+Route::get('/case-study', [PageCaseStudyController::class,'index']);
 Route::get('about', [AboutController::class,'index'])->name('front.about');
 Route::get('services', [ServiceControllerForFront::class,'index'])->name('front.services');
 Route::get('service/{slug}', [ServiceControllerForFront::class,'detail']);
@@ -470,6 +473,16 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/why-choose/edit/{id}', [WhyChooseController::class,'edit']);
     Route::post('admin/why-choose/update/{id}', [WhyChooseController::class,'update']);
 
+    /* --------------------------------------- */
+    /* Why Choose Us - Admin */
+    /* --------------------------------------- */
+    Route::get('admin/industry-item/view', [IndustryDisplayController::class,'index'])->name('admin.industry_item.index');
+    Route::get('admin/industry-item/create', [IndustryDisplayController::class,'create'])->name('admin.industry_item.create');
+    Route::post('admin/industry-item/store', [IndustryDisplayController::class,'store'])->name('admin.industry_item.store');
+    Route::get('admin/industry-item/delete/{id}', [IndustryDisplayController::class,'destroy']);
+    Route::get('admin/industry-item/edit/{id}', [IndustryDisplayController::class,'edit']);
+    Route::post('admin/industry-item/update/{id}', [IndustryDisplayController::class,'update']);
+
 
     /* --------------------------------------- */
     /* Service - Admin */
@@ -680,8 +693,6 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::post('admin/translation/front/update', [TranslationController::class,'front_update']);
 
 });
-Route::get('/industry', [PageIndustryController::class,'index']);
-
 
 
 

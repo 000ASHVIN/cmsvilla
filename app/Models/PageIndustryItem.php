@@ -36,5 +36,9 @@ class PageIndustryItem extends Model
         'how_help_title',
         'how_help_subtitle',
         'how_help_status',
+        'industry_title',
+        'industry_subtitle',
+        'industry_content',
+        'industry_status',
     ];
 }
