@@ -464,7 +464,7 @@
         <li class="nav-item {{ Request::is('admin/why-choose/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.why_choose.index') }}">
                 <i class="fas fa-arrows-alt"></i>
-                <span>Why Choose Us</span>
+                <span>WorkFlow</span>
             </a>
         </li>
         @endif
@@ -492,6 +492,13 @@
             <a class="nav-link" href="{{ route('admin.case-study.index') }}">
                 <i class="fas fa-certificate"></i>
                 <span>Case Studies</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ Request::is('admin/how-help/*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.how-help.index') }}">
+                <i class="fas fa-certificate"></i>
+                <span>How Reconcify Helps</span>
             </a>
         </li>
 

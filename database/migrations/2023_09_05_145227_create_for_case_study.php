@@ -20,7 +20,7 @@ return new class extends Migration
 
         DB::statement('
             CREATE TABLE `case_studies` (
-                `id` bigint(20) UNSIGNED NOT NULL,
+                `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
                 `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
                 `slug` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
                 `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,

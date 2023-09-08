@@ -32,5 +32,9 @@ class PageIndustryItem extends Model
         'need_yt_video',
         'need_video_bg',
         'need_status',
+        'how_help_bg',
+        'how_help_title',
+        'how_help_subtitle',
+        'how_help_status',
     ];
 }

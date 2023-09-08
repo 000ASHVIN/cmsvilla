@@ -3,24 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\CaseStudy;
+use App\Models\HowHelp;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use DB;
 
-class CaseStudyController extends Controller
+class HowHelpController extends Controller
 {
     public function index()
     {
-        $service = CaseStudy::all();
-        return view('admin.case_study.index', compact('service'));
+        $service = HowHelp::all();
+        return view('admin.how_help.index', compact('service'));
     }
 
     public function create()
     {
-        return view('admin.case_study.create');
+        return view('admin.how_help.create');
     }
 
     public function store(Request $request)
@@ -29,12 +29,12 @@ class CaseStudyController extends Controller
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
         
-        $service = new CaseStudy();
+        $service = new HowHelp();
         $data = $request->only($service->getFillable());
 
         $request->validate([
-            'name' => 'required|unique:case_studies',
-            'slug' => 'unique:case_studies',
+            'name' => 'required|unique:how_help',
+            'slug' => 'unique:how_help',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
@@ -42,7 +42,7 @@ class CaseStudyController extends Controller
             $data['slug'] = Str::slug($request->name);
         }
 
-        $statement = DB::select("SHOW TABLE STATUS LIKE 'case_studies'");
+        $statement = DB::select("SHOW TABLE STATUS LIKE 'how_help'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('photo')->extension();
         $final_name = 'service-'.$ai_id.'.'.$ext;
@@ -50,13 +50,13 @@ class CaseStudyController extends Controller
         $data['photo'] = $final_name;
 
         $service->fill($data)->save();
-        return redirect()->route('admin.case-study.index')->with('success', 'Service is added successfully!');
+        return redirect()->route('admin.how-help.index')->with('success', 'Service is added successfully!');
     }
 
     public function edit($id)
     {
-        $service = CaseStudy::findOrFail($id);
-        return view('admin.case_study.edit', compact('service'));
+        $service = HowHelp::findOrFail($id);
+        return view('admin.how_help.edit', compact('service'));
     }
 
     public function update(Request $request, $id)
@@ -65,17 +65,17 @@ class CaseStudyController extends Controller
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
         
-        $service = CaseStudy::findOrFail($id);
+        $service = HowHelp::findOrFail($id);
         $data = $request->only($service->getFillable());
 
         if($request->hasFile('photo')) {
             $request->validate([
                 'name'   =>  [
                     'required',
-                    Rule::unique('case_studies')->ignore($id),
+                    Rule::unique('how_help')->ignore($id),
                 ],
                 'slug'   =>  [
-                    Rule::unique('case_studies')->ignore($id),
+                    Rule::unique('how_help')->ignore($id),
                 ],
                 'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
@@ -88,17 +88,17 @@ class CaseStudyController extends Controller
             $request->validate([
                 'name'   =>  [
                     'required',
-                    Rule::unique('case_studies')->ignore($id),
+                    Rule::unique('how_help')->ignore($id),
                 ],
                 'slug'   =>  [
-                    Rule::unique('case_studies')->ignore($id),
+                    Rule::unique('how_help')->ignore($id),
                 ]
             ]);
             $data['photo'] = $service->photo;
         }
 
         $service->fill($data)->save();
-        return redirect()->route('admin.case-study.index')->with('success', 'Service is updated successfully!');
+        return redirect()->route('admin.how-help.index')->with('success', 'Service is updated successfully!');
     }
 
     public function destroy($id)
@@ -107,7 +107,7 @@ class CaseStudyController extends Controller
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
         
-        $service = CaseStudy::findOrFail($id);
+        $service = HowHelp::findOrFail($id);
         unlink(public_path('uploads/'.$service->photo));
         $service->delete();
         return Redirect()->back()->with('success', 'Service is deleted successfully!');

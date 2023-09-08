@@ -9,15 +9,19 @@
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Need Section</a>
                         <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Workflow</a>
-                        <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="true">Case Studies</a>
-                        <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Trusted Companies Section</a>
-                        <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Testimonial Section</a>
+                        {{-- <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="true">Case Studies</a> --}}
+                        {{-- <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Trusted Companies Section</a> --}}
+                        {{-- <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Testimonial Section</a> --}}
                         {{-- <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meta Information</a>
                        
                         <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Why Choose Us Section</a>
                         <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a>
                         <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Testimonial Section</a>
                         <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
+                        
+                        <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a> --}}
+                        <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">How Reconcify Helps</a>
+                        {{-- <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
                         <a class="nav-link" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Case Studies Section</a>
                         <a class="nav-link" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Team Member Section</a>
                         <a class="nav-link" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Appointment Section</a>
@@ -155,7 +159,7 @@
                             <!-- // Tab 4 -->
                         </div>
 
-                        <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+                        {{-- <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
                             <!-- Tab 5 -->
                             <form action="{{ url('admin/page/industry/5') }}" method="post">
                                 @csrf
@@ -183,7 +187,7 @@
                                 <button type="submit" class="btn btn-success">Update</button>
                             </form>
                             <!-- // Tab 5 -->
-                        </div>
+                        </div> --}}
 
                         <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
                             <!-- Tab 6 -->
@@ -301,37 +305,37 @@
                                 <button type="submit" class="btn btn-success">Update</button>
                             </form>
                             <!-- // Tab 4 -->
-                        </div>
+                        </div> --}}
                         <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
                             <!-- Tab 5 -->
-                            <form action="{{ url('admin/page/home/5') }}" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="current_photo" value="{{ $page_home->testimonial_bg }}">
+                            <form action="{{ url('admin/page/industry/5') }}" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="current_photo" value="{{ $page_home->how_help_bg }}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
-                                    <input type="text" name="testimonial_title" class="form-control" value="{{ $page_home->testimonial_title }}">
+                                    <input type="text" name="how_help_title" class="form-control" value="{{ $page_home->how_help_title }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Subtitle</label>
-                                    <input type="text" name="testimonial_subtitle" class="form-control" value="{{ $page_home->testimonial_subtitle }}">
+                                    <input type="text" name="how_help_subtitle" class="form-control" value="{{ $page_home->how_help_subtitle }}">
                                 </div>                               
                                 <div class="form-group">
-                                    <label for="">Existing Background</label>
-                                    <div><img src="{{ asset('uploads/'.$page_home->testimonial_bg) }}" alt="" class="w_200"></div>
+                                    <label for="">Existing Left Image</label>
+                                    <div><img src="{{ asset('uploads/'.$page_home->how_help_bg) }}" alt="" class="w_200"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Change Background</label>
-                                    <div><input type="file" name="testimonial_bg"></div>
+                                    <label for="">Change Left Image</label>
+                                    <div><input type="file" name="how_help_bg"></div>
                                 </div>                                
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="testimonial_status" id="rr1" value="Show" @if($page_home->testimonial_status == 'Show') checked @endif>
+                                            <input class="form-check-input" type="radio" name="how_help_status" id="rr1" value="Show" @if($page_home->how_help_status == 'Show') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr1">Show</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="testimonial_status" id="rr2" value="Hide" @if($page_home->testimonial_status == 'Hide') checked @endif>
+                                            <input class="form-check-input" type="radio" name="how_help_status" id="rr2" value="Hide" @if($page_home->how_help_status == 'Hide') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
                                         </div>
                                     </div>
@@ -340,7 +344,7 @@
                             </form>
                             <!-- // Tab 5 -->
                         </div>
-                        <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+                        {{-- <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
                             <!-- Tab 6 -->
                             <form action="{{ url('admin/page/home/6') }}" method="post" enctype="multipart/form-data">
                                 @csrf

@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\ProjectController as ProjectControllerForAdmin;
 use App\Http\Controllers\Admin\ServiceController as ServiceControllerForAdmin;
 use App\Http\Controllers\Admin\CaseStudyController as CaseStudyControllerForAdmin;
+use App\Http\Controllers\Admin\HowHelpController as HowHelpControllerForAdmin;
 use App\Http\Controllers\Admin\CompanyController as CompanyControllerForAdmin;
 use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\Admin\SocialMediaItemController;
@@ -486,6 +487,13 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/case-study/delete/{id}', [CaseStudyControllerForAdmin::class,'destroy']);
     Route::get('admin/case-study/edit/{id}', [CaseStudyControllerForAdmin::class,'edit']);
     Route::post('admin/case-study/update/{id}', [CaseStudyControllerForAdmin::class,'update']);
+
+    Route::get('admin/how-help/view', [HowHelpControllerForAdmin::class,'index'])->name('admin.how-help.index');
+    Route::get('admin/how-help/create', [HowHelpControllerForAdmin::class,'create'])->name('admin.how-help.create');
+    Route::post('admin/how-help/store', [HowHelpControllerForAdmin::class,'store'])->name('admin.how-help.store');
+    Route::get('admin/how-help/delete/{id}', [HowHelpControllerForAdmin::class,'destroy']);
+    Route::get('admin/how-help/edit/{id}', [HowHelpControllerForAdmin::class,'edit']);
+    Route::post('admin/how-help/update/{id}', [HowHelpControllerForAdmin::class,'update']);
      /* --------------------------------------- */
     /* Company - Admin */
     /* --------------------------------------- */
@@ -671,10 +679,8 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/translation/front/edit', [TranslationController::class,'front_edit'])->name('admin.translation.front');
     Route::post('admin/translation/front/update', [TranslationController::class,'front_update']);
 
-    Route::get('/industry', [PageIndustryController::class,'index']);
-
 });
-
+Route::get('/industry', [PageIndustryController::class,'index']);
 
 
 

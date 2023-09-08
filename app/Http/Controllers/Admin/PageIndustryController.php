@@ -22,8 +22,9 @@ class PageIndustryController extends Controller
     	$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
 		$case_studies = DB::table('case_studies')->get();
+        $how_helps = DB::table('how_help')->get();
         $page_industry =DB::table('page_industry_items')->where('id',1)->first();
-        return view('pages.industry', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies'));
+        return view('pages.industry', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies', 'how_helps'));
     }
 
     public function edit()
@@ -134,19 +135,19 @@ class PageIndustryController extends Controller
         return redirect()->back()->with('success', 'Case Study Section is updated successfully!');
     }
 
-    public function update5(Request $request)
-    {
-        if(env('PROJECT_MODE') == 0) {
-            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
-        }
+    // public function update5(Request $request)
+    // {
+    //     if(env('PROJECT_MODE') == 0) {
+    //         return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+    //     }
         
-        $data['trusted_company_title'] = $request->input('trusted_company_title');
-        $data['trusted_company_subtitle'] = $request->input('trusted_company_subtitle');
-        $data['trusted_company_status'] = $request->input('trusted_company_status');
+    //     $data['trusted_company_title'] = $request->input('trusted_company_title');
+    //     $data['trusted_company_subtitle'] = $request->input('trusted_company_subtitle');
+    //     $data['trusted_company_status'] = $request->input('trusted_company_status');
 
-        PageIndustryItem::where('id',1)->update($data);
-        return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
-    }
+    //     PageIndustryItem::where('id',1)->update($data);
+    //     return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
+    // }
 
     public function update6(Request $request)
     {
@@ -199,6 +200,37 @@ class PageIndustryController extends Controller
 
 
     
+    public function update5(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
+        
+        if($request->hasFile('how_help_bg'))
+        {
+            $request->validate([
+                'how_help_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+
+            // Unlink old photo
+            if($request->input('current_photo'))
+                unlink(public_path('uploads/'.$request->input('current_photo')));
+
+            // Uploading new photo
+            $ext = $request->file('how_help_bg')->extension();
+            $final_name = 'how_help_bg'.'.'.$ext;
+            $request->file('how_help_bg')->move(public_path('uploads/'), $final_name);
+
+            $data['how_help_bg'] = $final_name;
+        }
+
+        $data['how_help_title'] = $request->input('how_help_title');
+        $data['how_help_subtitle'] = $request->input('how_help_subtitle');
+        $data['how_help_status'] = $request->input('how_help_status');
+
+        PageIndustryItem::where('id',1)->update($data);
+        return redirect()->back()->with('success', 'How Help Section is updated successfully!');
+    }
 
     // public function update6(Request $request)
     // {
