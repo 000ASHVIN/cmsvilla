@@ -10,6 +10,7 @@ class PageIndustryItem extends Model
     use HasFactory;
 
     protected $fillable = [
+        'industry_id',
         'testimonial_title',
         'testimonial_subtitle',
         'testimonial_status',

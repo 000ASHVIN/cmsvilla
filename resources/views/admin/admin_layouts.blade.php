@@ -333,7 +333,20 @@
         </li>
         @endif
 
-
+        <li class="nav-item {{ Request::is('admin/industry/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIndustry" aria-expanded="true" aria-controls="collapseIndustry">
+                <i class="fas fa-cubes"></i>
+                <span>Industry Section</span>
+            </a>
+            <div id="collapseIndustry" class="collapse {{ Request::is('admin/industry/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.industry.index') }}">Industries</a>
+                    <a class="collapse-item" href="{{ route('admin.blog.index') }}">Blogs</a>
+                    <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
+                    <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a>
+                </div>
+            </div>
+        </li>
 
         <!-- Blog Section -->
         @php if( in_array('Blog Section', $arr_one) || $logged_user_role_id==1 ): @endphp

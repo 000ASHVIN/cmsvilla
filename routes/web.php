@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\ResetPasswordController as ResetPasswordControlle
 use App\Http\Controllers\Admin\PasswordChangeController as PasswordChangeControllerForAdmin;
 use App\Http\Controllers\Admin\ProfileChangeController as ProfileChangeControllerForAdmin;
 use App\Http\Controllers\Admin\CategoryController as CategoryControllerForAdmin;
+use App\Http\Controllers\Admin\IndustryController as IndustryControllerForAdmin;
 use App\Http\Controllers\Admin\BlogController as BlogControllerForAdmin;
 use App\Http\Controllers\Admin\ProjectController as ProjectControllerForAdmin;
 use App\Http\Controllers\Admin\ServiceController as ServiceControllerForAdmin;
@@ -216,6 +217,15 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/comment/make-approved/{id}', [CommentController::class,'make_approved']);
     Route::get('admin/comment/delete/{id}', [CommentController::class,'destroy']);
 
+    /* --------------------------------------- */
+    /* Industry - Admin */
+    /* --------------------------------------- */
+    Route::get('admin/industry/view', [IndustryControllerForAdmin::class,'index'])->name('admin.industry.index');
+    Route::get('admin/industry/create', [IndustryControllerForAdmin::class,'create'])->name('admin.industry.create');
+    Route::post('admin/industry/store', [IndustryControllerForAdmin::class,'store'])->name('admin.industry.store');
+    Route::get('admin/industry/delete/{id}', [IndustryControllerForAdmin::class,'destroy']);
+    Route::get('admin/industry/edit/{id}', [IndustryControllerForAdmin::class,'edit']);
+    Route::post('admin/industry/update/{id}', [IndustryControllerForAdmin::class,'update']);
 
     /* --------------------------------------- */
     /* Slider - Admin */
