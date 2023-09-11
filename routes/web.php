@@ -359,11 +359,11 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::group(['prefix'=>'admin/page/industry'], function() {
         Route::get('/edit', [PageIndustryController::class,'edit'])->name('admin.page_industry.edit');
         Route::post('/1/{id}', [PageIndustryController::class,'update1']);
-        Route::post('/2', [PageIndustryController::class,'update2']);
+        Route::post('/2/{id}', [PageIndustryController::class,'update2']);
         Route::post('/3', [PageIndustryController::class,'update3']);
         Route::post('/4', [PageIndustryController::class,'update4']);
         Route::post('/5', [PageIndustryController::class,'update5']);
-        Route::post('/6', [PageIndustryController::class,'update6']);
+        Route::post('/6/{id}', [PageIndustryController::class,'update6']);
         Route::post('/7', [PageIndustryController::class,'update7']);
         Route::post('/8', [PageIndustryController::class,'update8']);
         Route::post('/9', [PageIndustryController::class,'update9']);

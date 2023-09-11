@@ -137,7 +137,7 @@ class PageIndustryController extends Controller
         return redirect()->back()->with('success', 'Case Study Section is updated successfully!');
     }
 
-    public function update2(Request $request)
+    public function update2(Request $request,$id)
     {
         if(env('PROJECT_MODE') == 0) {
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
@@ -146,8 +146,14 @@ class PageIndustryController extends Controller
         $data['trusted_company_title'] = $request->input('trusted_company_title');
         $data['trusted_company_subtitle'] = $request->input('trusted_company_subtitle');
         $data['trusted_company_status'] = $request->input('trusted_company_status');
+        $page = PageIndustryItem::find($id);
+        if($page != null){
+            $page = $page->update($data);
+        }else{
+            // PageIndustryItem::create($data);
 
-        PageIndustryItem::where('id',1)->update($data);
+        }
+        // PageIndustryItem::where('id',1)->update($data);
         return redirect()->back()->with('success', 'Trusted Company Section is updated successfully!');
     }
 
@@ -186,7 +192,7 @@ class PageIndustryController extends Controller
     //     return redirect()->back()->with('success', 'Testimonial Section is updated successfully!');
     // }
 
-    public function update6(Request $request){
+    public function update6(Request $request,$id){
         if(env('PROJECT_MODE') == 0) {
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
@@ -196,11 +202,11 @@ class PageIndustryController extends Controller
         $data['industry_content'] = $request->input('industry_content');
         $data['industry_status'] = $request->input('industry_status');
 
-        $page = PageIndustryItem::find(1);
+        $page = PageIndustryItem::find($id);
         if($page != null){
-            PageIndustryItem::where('id',1)->update($data);
+            $page = $page->update($data);
         }else{
-            PageIndustryItem::create($data);
+            // PageIndustryItem::create($data);
 
         }
         return redirect()->back()->with('success', 'Industry Section is updated successfully!');

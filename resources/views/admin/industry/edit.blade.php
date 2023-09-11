@@ -206,7 +206,7 @@
 
                         <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
                             <!-- Tab 6 -->
-                            <form action="{{ url('admin/page/industry/6') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('admin/page/industry/6/'.$page_home->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
@@ -240,7 +240,7 @@
 
                         <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                             <!-- Tab 5 -->
-                            <form action="{{ url('admin/page/industry/2') }}" method="post">
+                            <form action="{{ url('admin/page/industry/2/'.$page_home->id) }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
