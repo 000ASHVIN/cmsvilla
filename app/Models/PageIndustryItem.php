@@ -15,6 +15,7 @@ class PageIndustryItem extends Model
         'testimonial_subtitle',
         'testimonial_status',
         'testimonial_bg',
+        'testimonial_bg_color',
         'trusted_company_title',
         'trusted_company_subtitle',
         'trusted_company_status',

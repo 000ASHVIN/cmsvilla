@@ -94,8 +94,8 @@ use App\Http\Controllers\Front\VideoGalleryController;
 /* Front End */
 /* --------------------------------------- */
 Route::get('/', [HomeController::class,'index']);
-Route::get('/industry', [PageIndustryController::class,'index']);
-Route::get('/case-study', [PageCaseStudyController::class,'index']);
+Route::get('/industry', [PageIndustryController::class,'index'])->name('front.industry');;
+Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');;
 Route::get('about', [AboutController::class,'index'])->name('front.about');
 Route::get('services', [ServiceControllerForFront::class,'index'])->name('front.services');
 Route::get('service/{slug}', [ServiceControllerForFront::class,'detail']);

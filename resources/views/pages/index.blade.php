@@ -297,20 +297,39 @@
             <div class="col-md-12">
                 <div class="service-carousel owl-carousel">
                     @foreach($case_studies as $row)
-                    <div class="service-item wow fadeInUp">
-                        <div class="photo">
-                            <a href="{{ url('service/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
-                        </div>
-                        <div class="text">
-                            <h3><a href="{{ url('service/'.$row->slug) }}">{{ $row->name }}</a></h3>
-                            <p>
-                                {!! nl2br(e($row->short_description)) !!}
-                            </p>
-                            <div class="read-more">
-                                <a href="{{ url('service/'.$row->slug) }}">{{ READ_MORE }}</a>
+                    @if ($row->located_page != null)
+                        @if ($row->located_page == 'home')
+                            <div class="service-item wow fadeInUp">
+                                <div class="photo">
+                                    <a href="{{ url('service/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                                </div>
+                                <div class="text">
+                                    <h3><a href="{{ url('service/'.$row->slug) }}">{{ $row->name }}</a></h3>
+                                    <p>
+                                        {!! nl2br(e($row->short_description)) !!}
+                                    </p>
+                                    <div class="read-more">
+                                        <a href="{{ url('service/'.$row->slug) }}">{{ READ_MORE }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @else
+                        <div class="service-item wow fadeInUp">
+                            <div class="photo">
+                                <a href="{{ url('service/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                            </div>
+                            <div class="text">
+                                <h3><a href="{{ url('service/'.$row->slug) }}">{{ $row->name }}</a></h3>
+                                <p>
+                                    {!! nl2br(e($row->short_description)) !!}
+                                </p>
+                                <div class="read-more">
+                                    <a href="{{ url('service/'.$row->slug) }}">{{ READ_MORE }}</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
@@ -337,18 +356,35 @@
             <div class="col-md-12">
                 <div class="testimonial-carousel owl-carousel">
                     @foreach($testimonials as $row)
-                    <div class="testimonial-item wow fadeInUp">
-                        <div class="photo">
-                            <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
-                        </div>
-                        <div class="text">
-                            <p>
-                                {!! nl2br(e($row->comment)) !!}
-                            </p>
-                            <h3>{{ $row->name }}</h3>
-                            <h4>{{ $row->designation }}</h4>
-                        </div>
-                    </div>
+                        @if ($row->located_page != null)
+                            @if ($row->located_page == 'home')
+                                <div class="testimonial-item wow fadeInUp">
+                                    <div class="photo">
+                                        <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
+                                    </div>
+                                    <div class="text">
+                                        <p>
+                                            {!! nl2br(e($row->comment)) !!}
+                                        </p>
+                                        <h3>{{ $row->name }}</h3>
+                                        <h4>{{ $row->designation }}</h4>
+                                    </div>
+                                </div>
+                            @endif
+                        @else
+                            <div class="testimonial-item wow fadeInUp">
+                                <div class="photo">
+                                    <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        {!! nl2br(e($row->comment)) !!}
+                                    </p>
+                                    <h3>{{ $row->name }}</h3>
+                                    <h4>{{ $row->designation }}</h4>
+                                </div>
+                            </div>   
+                        @endif
                     @endforeach
                 </div>
             </div>

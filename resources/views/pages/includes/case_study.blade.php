@@ -51,20 +51,39 @@
             <div class="col-md-12">
                 <div class="project-carousel owl-carousel">
                     @foreach($case_studies as $row)
-                    <div class="project-item wow fadeInUp">
-                        <div class="photo">
-                            <a href="{{ url('project/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
-                        </div>
-                        <div class="text">
-                            <h3><a href="{{ url('project/'.$row->slug) }}">{{ $row->name }}</a></h3>
-                            <p>
-                                {!! nl2br(e($row->short_description)) !!}
-                            </p>
-                            <div class="read-more">
-                                <a href="{{ url('project/'.$row->slug) }}">{{ READ_MORE }}</a>
+                    @if ($row->located_page != null)
+                        @if ($row->located_page == 'industry')
+                            <div class="project-item wow fadeInUp">
+                                <div class="photo">
+                                    <a href="{{ url('project/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                                </div>
+                                <div class="text">
+                                    <h3><a href="{{ url('project/'.$row->slug) }}">{{ $row->name }}</a></h3>
+                                    <p>
+                                        {!! nl2br(e($row->short_description)) !!}
+                                    </p>
+                                    <div class="read-more">
+                                        <a href="{{ url('project/'.$row->slug) }}">{{ READ_MORE }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @else
+                        <div class="project-item wow fadeInUp">
+                            <div class="photo">
+                                <a href="{{ url('project/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                            </div>
+                            <div class="text">
+                                <h3><a href="{{ url('project/'.$row->slug) }}">{{ $row->name }}</a></h3>
+                                <p>
+                                    {!! nl2br(e($row->short_description)) !!}
+                                </p>
+                                <div class="read-more">
+                                    <a href="{{ url('project/'.$row->slug) }}">{{ READ_MORE }}</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                     @endforeach
                 </div>
             </div>

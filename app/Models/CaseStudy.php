@@ -14,6 +14,7 @@ class CaseStudy extends Model
         'short_description',
         'photo',
         'seo_title',
+        'located_page',
         'seo_meta_description'
     ];
 

@@ -36,6 +36,16 @@
                         <input type="file" name="photo">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="">Select Page</label>
+                    <div>
+                        <select name="located_page" id="located_page" class="custom-select">
+                            <option value="" selected>Select Page</option>
+                            <option value="home"  {{ ($testimonial->located_page === 'home') ? 'selected' : '' }} >Home</option>
+                            <option value="industry" {{ ($testimonial->located_page === 'industry') ? 'selected' : '' }}>Industry</option>
+                        </select>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
         </div>

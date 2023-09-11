@@ -11,7 +11,7 @@
                         <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Workflow</a>
                         {{-- <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="true">Case Studies</a> --}}
                         <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Trusted Companies Section</a>
-                        {{-- <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Testimonial Section</a> --}}
+                        <a class="nav-link" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Testimonial Section</a>
                         {{-- <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meta Information</a>
                        
                         <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Why Choose Us Section</a>
@@ -228,9 +228,9 @@
                             <!-- // Tab 5 -->
                         </div>
 
-                        <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
-                            <!-- Tab 6 -->
-                            <form action="{{ url('admin/page/industry/6') }}" method="post" enctype="multipart/form-data">
+                        <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab">
+                            <!-- Tab 7 -->
+                            <form action="{{ url('admin/page/industry/7') }}" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="current_photo" value="{{ $page_home->testimonial_bg }}">
                                 @csrf
                                 <div class="form-group">
@@ -248,6 +248,10 @@
                                 <div class="form-group">
                                     <label for="">Change Background</label>
                                     <div><input type="file" name="testimonial_bg"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="testimonial_bg_color">Background Color</label>
+                                    <div><input type="color" id="testimonial_bg_color" name="testimonial_bg_color" value="{{ $page_home->testimonial_bg_color }}"></div>
                                 </div>                                
                                 <div class="form-group">
                                     <label for="">Status</label>
@@ -264,7 +268,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-success">Update</button>
                             </form>
-                            <!-- // Tab 6 -->
+                            <!-- // Tab 7 -->
                         </div>
 
                         
@@ -594,10 +598,10 @@
                             </form>
                             <!-- // Tab 11 -->
                         </div>
-
-                        <div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-12-tab">
+                    --}}   
+                        {{-- <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
                             <!-- Tab 9 -->
-                            <form action="{{ url('admin/page/home/12') }}" method="post">
+                            <form action="{{ url('admin/page/home/4') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>

@@ -10,6 +10,7 @@ class Testimonial extends Model
         'name',
         'designation',
         'photo',
+        'located_page',
         'comment'
     ];
 
