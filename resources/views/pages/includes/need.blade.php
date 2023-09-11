@@ -1,5 +1,6 @@
 @if($page_industry->need_status == 'Show')
-    <div class="special" style="background-color: {{ $page_industry->need_bg_color }};">
+    {{-- <div class="special" style="background-color: {{ $page_industry->need_bg_color }};"> --}}
+    <div class="special">
         <div></div>
         <div class="container">
             <div class="row">
