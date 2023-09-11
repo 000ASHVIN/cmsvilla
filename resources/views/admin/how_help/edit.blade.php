@@ -29,6 +29,15 @@
                     <textarea name="short_description" class="form-control h_100" cols="30" rows="10">{{ $service->short_description }}</textarea>
                 </div>
                 <div class="form-group">
+                    <label for="industry_id">Select Industry</label>
+                    <select class="form-control select2" name="industry_id" id="industry_id">
+                        <option value="" selected disabled>Select Industry</option>
+                        @foreach ($industry as $option)
+                            <option value="{{ $option->id }}" {{ $service->industry_id ==  $option->id ? 'selected' : '' }}>{{ $option->name }}</option>
+                        @endforeach
+                    </select>    
+                </div>
+                <div class="form-group">
                     <label for="">Existing Photo</label>
                     <div>
                         <img src="{{ asset('uploads/'.$service->photo) }}" alt="" class="w_200">

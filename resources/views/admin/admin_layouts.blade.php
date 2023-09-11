@@ -338,9 +338,11 @@
                 <i class="fas fa-cubes"></i>
                 <span>Industry Section</span>
             </a>
-            <div id="collapseIndustry" class="collapse {{ Request::is('admin/industry/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapseIndustry" class="collapse {{ Request::is('admin/industry/*')||Request::is('admin/how-help/*')||Request::is('admin/why-choose/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="{{ route('admin.industry.index') }}">Industries</a>
+                    <a class="collapse-item" href="{{ route('admin.why_choose.index') }}">WorkFlow</a>
+                    <a class="collapse-item" href="{{ route('admin.how-help.index') }}">How Reconcify Helps</a>
                     <a class="collapse-item" href="{{ route('admin.blog.index') }}">Blogs</a>
                     <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
                     <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a>
@@ -472,7 +474,7 @@
         </li>
         @endif
 
-        <!-- Why Choose Us -->
+        {{-- <!-- Why Choose Us -->
         @php if( in_array('Why Choose Us', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/why-choose/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.why_choose.index') }}">
@@ -480,7 +482,7 @@
                 <span>WorkFlow</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
          <!-- Industry -->
          @php if( $logged_user_role_id==1 ): @endphp
@@ -520,12 +522,12 @@
             </a>
         </li>
 
-        <li class="nav-item {{ Request::is('admin/how-help/*') ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Request::is('admin/how-help/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.how-help.index') }}">
                 <i class="fas fa-certificate"></i>
                 <span>How Reconcify Helps</span>
             </a>
-        </li>
+        </li> --}}
 
         <!-- Testimonials -->
         @php if( in_array('Testimonial', $arr_one) || $logged_user_role_id==1 ): @endphp

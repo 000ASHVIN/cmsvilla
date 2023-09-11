@@ -11,6 +11,7 @@ class HowHelp extends Model
         'name',
         'slug',
         'description',
+        'industry_id',
         'short_description',
         'photo',
         'seo_title',

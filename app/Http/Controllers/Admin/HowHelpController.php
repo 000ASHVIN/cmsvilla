@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\HowHelp;
+use App\Models\Industry;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,7 +21,8 @@ class HowHelpController extends Controller
 
     public function create()
     {
-        return view('admin.how_help.create');
+        $industry = Industry::all();
+        return view('admin.how_help.create',compact('industry'));
     }
 
     public function store(Request $request)
@@ -56,7 +58,8 @@ class HowHelpController extends Controller
     public function edit($id)
     {
         $service = HowHelp::findOrFail($id);
-        return view('admin.how_help.edit', compact('service'));
+        $industry = Industry::all();
+        return view('admin.how_help.edit', compact('service','industry'));
     }
 
     public function update(Request $request, $id)

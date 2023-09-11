@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Industry;
 use App\Models\WhyChooseItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class WhyChooseController extends Controller
 {
@@ -19,7 +20,8 @@ class WhyChooseController extends Controller
 
     public function create()
     {
-        return view('admin.why_choose.create');
+        $industry = Industry::all();
+        return view('admin.why_choose.create',compact('industry'));
     }
 
     public function store(Request $request)
@@ -50,7 +52,8 @@ class WhyChooseController extends Controller
     public function edit($id)
     {
         $why_choose = WhyChooseItem::findOrFail($id);
-        return view('admin.why_choose.edit', compact('why_choose'));
+        $industry = Industry::all();
+        return view('admin.why_choose.edit', compact('why_choose','industry'));
     }
 
     public function update(Request $request, $id)
