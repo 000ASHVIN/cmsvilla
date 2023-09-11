@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class PageIndustryController extends Controller
 {
-    public function index()
+    public function index($slug = null)
     {   
         $sliders = DB::table('sliders')->get();
     	$page_home = DB::table('page_home_items')->where('id',1)->first();
@@ -24,7 +24,13 @@ class PageIndustryController extends Controller
     	$blogs = DB::table('blogs')->get();
 		$case_studies = DB::table('case_studies')->get();
         $how_helps = DB::table('how_help')->get();
-        $page_industry =DB::table('page_industry_items')->where('id',1)->first();
+        $page_industry = DB::table('page_industry_items')->where('id',1)->first();
+        if($slug != null){
+            $industry_id = DB::table('industry')->where('slug',$slug)->first();
+            if($industry_id){
+                $page_industry = DB::table('page_industry_items')->where('industry_id',$industry_id->id)->first(); 
+            }
+        }
         return view('pages.industry', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies', 'how_helps'));
     }
 
@@ -96,7 +102,7 @@ class PageIndustryController extends Controller
     //     PageHomeItem::where('id',1)->update($data);
     //     return redirect()->back()->with('success', 'Home Page Meta Information is updated successfully!');
     // }
-    public function update3(Request $request)
+    public function update3(Request $request,$id)
     {
         if(env('PROJECT_MODE') == 0) {
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
@@ -107,13 +113,15 @@ class PageIndustryController extends Controller
         $data['workflow_content'] = $request->input('workflow_content');
         $data['workflow_status'] = $request->input('workflow_status');
         // PageIndustryItem::where('id',1)->update($data);
-        $page = PageIndustryItem::find(1);
+        // $page = PageIndustryItem::find(1);
+        $page = PageIndustryItem::find($id);
         if($page != null){
-            PageIndustryItem::where('id',1)->update($data);
-        }else{
-            PageIndustryItem::create($data);
-
+            $page = $page->update($data);
         }
+        // else{
+        //     PageIndustryItem::create($data);
+
+        // }
         return redirect()->back()->with('success', 'Why Choose Us Section is updated successfully!');
     }
 
@@ -228,7 +236,7 @@ class PageIndustryController extends Controller
 
 
     
-    public function update5(Request $request)
+    public function update5(Request $request,$id)
     {
         if(env('PROJECT_MODE') == 0) {
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
@@ -256,7 +264,11 @@ class PageIndustryController extends Controller
         $data['how_help_subtitle'] = $request->input('how_help_subtitle');
         $data['how_help_status'] = $request->input('how_help_status');
 
-        PageIndustryItem::where('id',1)->update($data);
+        // PageIndustryItem::where('id',1)->update($data);
+        $page = PageIndustryItem::find($id);
+        if($page != null){
+            $page = $page->update($data);
+        }
         return redirect()->back()->with('success', 'How Help Section is updated successfully!');
     }
 

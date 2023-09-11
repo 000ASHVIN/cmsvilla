@@ -74,7 +74,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
                             <!-- Tab 3 -->
-                            <form action="{{ url('admin/page/industry/3') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('admin/page/industry/3/'.$page_home->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Title</label>
@@ -387,7 +387,7 @@
                         </div> --}}
                         <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
                             <!-- Tab 5 -->
-                            <form action="{{ url('admin/page/industry/5') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('admin/page/industry/5/'.$page_home->id) }}" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="current_photo" value="{{ $page_home->how_help_bg }}">
                                 @csrf
                                 <div class="form-group">

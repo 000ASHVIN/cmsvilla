@@ -94,7 +94,7 @@ use App\Http\Controllers\Front\VideoGalleryController;
 /* Front End */
 /* --------------------------------------- */
 Route::get('/', [HomeController::class,'index']);
-Route::get('/industry', [PageIndustryController::class,'index'])->name('front.industry');;
+Route::get('/industry/{slug?}', [PageIndustryController::class,'index'])->name('front.industry');
 Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');;
 Route::get('about', [AboutController::class,'index'])->name('front.about');
 Route::get('services', [ServiceControllerForFront::class,'index'])->name('front.services');
@@ -360,9 +360,9 @@ Route::middleware(['admin:admin'])->group(function() {
         Route::get('/edit', [PageIndustryController::class,'edit'])->name('admin.page_industry.edit');
         Route::post('/1/{id}', [PageIndustryController::class,'update1']);
         Route::post('/2/{id}', [PageIndustryController::class,'update2']);
-        Route::post('/3', [PageIndustryController::class,'update3']);
+        Route::post('/3/{id}', [PageIndustryController::class,'update3']);
         Route::post('/4', [PageIndustryController::class,'update4']);
-        Route::post('/5', [PageIndustryController::class,'update5']);
+        Route::post('/5/{id}', [PageIndustryController::class,'update5']);
         Route::post('/6/{id}', [PageIndustryController::class,'update6']);
         Route::post('/7', [PageIndustryController::class,'update7']);
         Route::post('/8', [PageIndustryController::class,'update8']);

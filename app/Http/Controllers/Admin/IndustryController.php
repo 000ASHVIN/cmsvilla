@@ -50,7 +50,13 @@ class IndustryController extends Controller
         $industry = Industry::findOrFail($id);
         $page_home = $industry->pageIndustryItem;
         if(!$page_home) {
-            $page_home = $industry->pageIndustryItem()->create([]);
+            $page_home = $industry->pageIndustryItem()->create([
+                'trusted_company_title' => 'Client Scroll',
+                'need_title' => 'Need for Reconcify',
+                'workflow_title' => 'Workflow',
+                'how_help_title' => 'How Reconcify Helps',
+                'industry_title' => 'Industry Display',
+            ]);
             
         }
         return view('admin.industry.edit', compact('industry', 'page_home'));
