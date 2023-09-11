@@ -107,7 +107,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                             <!-- Tab 1 -->
-                            <form action="{{ url('admin/page/industry/1') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('admin/page/industry/1/'.$page_home->id) }}" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="current_photo1" value="{{ $page_home->need_video_bg ?? '' }}">
                                 @csrf
                                 <div class="form-group">
