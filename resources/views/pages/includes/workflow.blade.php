@@ -16,17 +16,34 @@
             </div>
             <div class="row">
                 @foreach($why_choose_items as $row)
-                <div class="col-md-4">
-                    <div class="feature-item wow fadeInUp">
-                        <div class="icon">
-                            <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
+                
+                 @if (isset($page_industry->industry_id) && $page_industry->industry_id != null)
+                    @if ($page_industry->industry_id == $row->industry_id)
+                        <div class="col-md-4">
+                            <div class="feature-item wow fadeInUp">
+                                <div class="icon">
+                                    <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
+                                </div>
+                                <h4>{{ $row->name }}</h4>
+                                <p>
+                                    {!! nl2br(e($row->description)) !!}
+                                </p>
+                            </div>
                         </div>
-                        <h4>{{ $row->name }}</h4>
-                        <p>
-                            {!! nl2br(e($row->description)) !!}
-                        </p>
+                    @endif
+                @else
+                    <div class="col-md-4">
+                        <div class="feature-item wow fadeInUp">
+                            <div class="icon">
+                                <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
+                            </div>
+                            <h4>{{ $row->name }}</h4>
+                            <p>
+                                {!! nl2br(e($row->description)) !!}
+                            </p>
+                        </div>
                     </div>
-                </div>
+                 @endif
                 @endforeach
             </div>
         </div>
