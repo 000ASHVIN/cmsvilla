@@ -364,7 +364,9 @@
                                 </div>                               
                                 <div class="form-group">
                                     <label for="">Existing Left Image</label>
-                                    <div><img src="{{ asset('uploads/'.$page_home->how_help_bg) }}" alt="" class="w_200"></div>
+                                    <div>
+                                        <img src="{{ asset('uploads/'.$page_home->how_help_bg) }}" alt="" class="w_200">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Change Left Image</label>

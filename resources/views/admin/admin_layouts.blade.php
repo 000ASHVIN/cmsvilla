@@ -343,9 +343,9 @@
                     <a class="collapse-item" href="{{ route('admin.industry.index') }}">Industries</a>
                     <a class="collapse-item" href="{{ route('admin.why_choose.index') }}">WorkFlow</a>
                     <a class="collapse-item" href="{{ route('admin.how-help.index') }}">How Reconcify Helps</a>
-                    <a class="collapse-item" href="{{ route('admin.blog.index') }}">Blogs</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.blog.index') }}">Blogs</a>
                     <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
-                    <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a>
+                    <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a> --}}
                 </div>
             </div>
         </li>

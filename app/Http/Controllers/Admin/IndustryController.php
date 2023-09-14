@@ -56,6 +56,13 @@ class IndustryController extends Controller
                 'workflow_title' => 'Workflow',
                 'how_help_title' => 'How Reconcify Helps',
                 'industry_title' => 'Industry Display',
+                'need_status' =>'Show',
+                'workflow_status' =>'Show',
+                'case_study_status' =>'Show',
+                'trusted_company_status' =>'Show',
+                'testimonial_status' =>'Show',
+                'how_help_status' => 'Show',
+                'industry_status'=> 'Show',
             ]);
             
         }

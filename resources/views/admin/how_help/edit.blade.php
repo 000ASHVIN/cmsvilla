@@ -30,16 +30,17 @@
                 </div>
                 <div class="form-group">
                     <label for="industry_id">Select Industry</label>
-                    <select class="form-control select2" name="industry_id" id="industry_id">
-                        <option value="" selected disabled>Select Industry</option>
+                    <select class="form-control select2" name="industry_id[]" id="industry_id" multiple data-placeholder="Select Industry">
+                        {{-- <option value="" disabled>Select Industry</option> --}}
                         @foreach ($industry as $option)
-                            <option value="{{ $option->id }}" {{ $service->industry_id ==  $option->id ? 'selected' : '' }}>{{ $option->name }}</option>
+                            <option value="{{ $option->id }}"  {{ in_array($option->id,$industry_id) ? 'selected' : '' }}>{{ $option->name }}</option>
                         @endforeach
                     </select>    
                 </div>
                 <div class="form-group">
                     <label for="">Existing Photo</label>
                     <div>
+                        <input type="hidden" value="{{ $service->photo }}" name="current_photo">
                         <img src="{{ asset('uploads/'.$service->photo) }}" alt="" class="w_200">
                     </div>
                 </div>

@@ -51,6 +51,12 @@ class HowHelpController extends Controller
         $request->file('photo')->move(public_path('uploads/'), $final_name);
         $data['photo'] = $final_name;
 
+        if($request->has('industry_id')){
+            $data['industry_id']= json_encode($data['industry_id']);
+        }else{
+            $data['industry_id'] = null;
+        }
+
         $service->fill($data)->save();
         return redirect()->route('admin.how-help.index')->with('success', 'Service is added successfully!');
     }
@@ -58,8 +64,14 @@ class HowHelpController extends Controller
     public function edit($id)
     {
         $service = HowHelp::findOrFail($id);
+        $industry_id = "";
+        if($service->industry_id != null){
+            $industry_id = json_decode($service->industry_id, true); 
+        }else{
+            $industry_id = [];
+        }
         $industry = Industry::all();
-        return view('admin.how_help.edit', compact('service','industry'));
+        return view('admin.how_help.edit',compact('service','industry','industry_id'));
     }
 
     public function update(Request $request, $id)
@@ -82,7 +94,10 @@ class HowHelpController extends Controller
                 ],
                 'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
-            unlink(public_path('uploads/'.$service->photo));
+
+            if($request->input('current_photo') && file_exists($service->photo)){
+                unlink(public_path('uploads/'.$service->photo));
+            }
             $ext = $request->file('photo')->extension();
             $final_name = 'service-'.$id.'.'.$ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);
@@ -100,6 +115,11 @@ class HowHelpController extends Controller
             $data['photo'] = $service->photo;
         }
 
+        if($request->has('industry_id')){
+            $data['industry_id']= json_encode($data['industry_id']);
+        }else{
+            $data['industry_id'] = null;
+        }
         $service->fill($data)->save();
         return redirect()->route('admin.how-help.index')->with('success', 'Service is updated successfully!');
     }

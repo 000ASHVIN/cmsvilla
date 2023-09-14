@@ -249,8 +249,9 @@ class PageIndustryController extends Controller
             ]);
 
             // Unlink old photo
-            if($request->input('current_photo'))
+            if($request->input('current_photo') && file_exists($request->input('current_photo'))){
                 unlink(public_path('uploads/'.$request->input('current_photo')));
+            }
 
             // Uploading new photo
             $ext = $request->file('how_help_bg')->extension();
