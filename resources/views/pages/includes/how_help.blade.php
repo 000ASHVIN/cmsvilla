@@ -21,8 +21,12 @@
             <div class="col-md-6">
                 <div class="footer-item footer-contact">
                     @foreach($how_helps as $row)
-                    @if (isset($page_industry->industry_id) && $page_industry->industry_id != null)
-                        @if ($page_industry->industry_id == $row->industry_id)
+                    @if (isset($page_industry->industry_id))
+                        <?php 
+                             $data = json_decode($row->industry_id);
+                        ?>
+                        @if($data != null)
+                        @if(in_array($page_industry->industry_id,$data))
                             <div class="image-heading-container mb-3">
                                 <img src="{{ asset('uploads/'.$row->photo) }}" width="10%" style="margin-right: 30px;">
                                 <div>
@@ -33,7 +37,8 @@
                                 </div>
                             </div>
                         @endif
-                    @else
+                        @endif
+                    {{-- @else
                         <div class="image-heading-container mb-3">
                             <img src="{{ asset('uploads/'.$row->photo) }}" width="10%" style="margin-right: 30px;">
                             <div>
@@ -42,7 +47,7 @@
                                     {!! $row->description !!}
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
                     @endif
                     @endforeach
                     

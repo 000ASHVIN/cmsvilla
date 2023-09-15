@@ -33,6 +33,7 @@ class CompanyController extends Controller
             'slug' => 'required|unique:companies',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif'
         ]);
+        $selectedPages = $request->input('located_page');
 
         $statement = DB::select("SHOW TABLE STATUS LIKE 'companies'");
         $ai_id = $statement[0]->Auto_increment;
@@ -40,7 +41,7 @@ class CompanyController extends Controller
         $final_name = 'company-'.$ai_id.'.'.$ext;
         $request->file('photo')->move(public_path('uploads/'), $final_name);
         $data['photo'] = $final_name;
-
+        $data['located_page'] = json_encode($selectedPages);
         $company->fill($data)->save();
         return redirect()->route('admin.company.index')->with('success', 'Company is added successfully!');
     }
@@ -59,7 +60,8 @@ class CompanyController extends Controller
         
         $company = Company::findOrFail($id);
         $data = $request->only($company->getFillable());
-
+        $data_encode = json_encode($request->located_page);
+        $data['located_page']=$data_encode;
         if($request->hasFile('photo')) {
             $request->validate([
                 'slug'   =>  [

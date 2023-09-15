@@ -16,9 +16,26 @@
             </div>
             <div class="row">
                 @foreach($why_choose_items as $row)
-                
-                 @if (isset($page_industry->industry_id) && $page_industry->industry_id != null)
-                    @if ($page_industry->industry_id == $row->industry_id)
+                    @if (isset($page_industry->industry_id))
+                        <?php 
+                            $data = json_decode($row->industry_id);
+                        ?>
+                        @if ($data != null)
+                            @if(in_array($page_industry->industry_id,$data))
+                                <div class="col-md-4">
+                                    <div class="feature-item wow fadeInUp">
+                                        <div class="icon">
+                                            <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
+                                        </div>
+                                        <h4>{{ $row->name }}</h4>
+                                        <p>
+                                            {!! nl2br(e($row->description)) !!}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+                     {{-- @else
                         <div class="col-md-4">
                             <div class="feature-item wow fadeInUp">
                                 <div class="icon">
@@ -29,21 +46,8 @@
                                     {!! nl2br(e($row->description)) !!}
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
                     @endif
-                @else
-                    <div class="col-md-4">
-                        <div class="feature-item wow fadeInUp">
-                            <div class="icon">
-                                <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
-                            </div>
-                            <h4>{{ $row->name }}</h4>
-                            <p>
-                                {!! nl2br(e($row->description)) !!}
-                            </p>
-                        </div>
-                    </div>
-                 @endif
                 @endforeach
             </div>
         </div>

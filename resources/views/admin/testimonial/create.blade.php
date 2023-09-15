@@ -32,12 +32,11 @@
                 </div>
                 <div class="form-group">
                     <label for="">Select Page</label>
-                    <div>
-                        <select name="located_page" id="located_page" class="custom-select">
-                            <option value="" selected>Select Page</option>
-                            <option value="home">Home</option>
-                            <option value="industry">Industry</option>
-                        </select>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="home" id="home" name="located_page[]">Home
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="industry" id="industry" name="located_page[]">Industry
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button>

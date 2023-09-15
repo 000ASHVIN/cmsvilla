@@ -58,12 +58,14 @@
                 </div>
                 <div class="form-group">
                     <label for="">Select Page</label>
-                    <div>
-                        <select name="located_page" id="located_page" class="custom-select">
-                            <option value="" selected>Select Page</option>
-                            <option value="home" {{ ($company->located_page === 'home') ? 'selected' : '' }}>Home</option>
-                            <option value="industry" {{ ($company->located_page === 'industry') ? 'selected' : '' }}>Industry</option>
-                        </select>
+                    <?php 
+                         $data = json_decode($company->located_page);
+                    ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="home" id="home" name="located_page[]" {{ ($data != null && (in_array('home',$data)) ? 'checked' : '') }}>Home
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="industry" id="industry" name="located_page[]" {{ ($data != null && (in_array('industry',$data)) ? 'checked' : '') }}>Industry
                     </div>
                 </div>
             </div>

@@ -123,20 +123,24 @@
             <div class="col-md-12">
                 <div class="companies-carousel owl-carousel">
                     @foreach($companies as $row)
-                        @if ($row->located_page != null)
-                            @if ($row->located_page == 'home')
+                        <?php 
+                             $data = json_decode($row->located_page);
+                        ?>
+                        @if ($data != null)
+                            {{-- @if ($row->located_page == 'home') --}}
+                            @if(in_array('home',$data))
                                 <div class="companies-item wow fadeInUp">
                                     <div class="photo">
                                         <a href="{{ $row->slug }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
                                     </div>
                                 </div>
                             @endif
-                        @else
+                        {{-- @else
                             <div class="companies-item wow fadeInUp">
                                 <div class="photo">
                                     <a href="{{ $row->slug }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         @endif
                     @endforeach
                 </div>
@@ -356,8 +360,12 @@
             <div class="col-md-12">
                 <div class="testimonial-carousel owl-carousel">
                     @foreach($testimonials as $row)
-                        @if ($row->located_page != null)
-                            @if ($row->located_page == 'home')
+                        <?php 
+                            $data = json_decode($row->located_page);
+                        ?>
+                        @if ($data != null)
+                            {{-- @if ($row->located_page == 'home') --}}
+                            @if(in_array('home',$data))
                                 <div class="testimonial-item wow fadeInUp">
                                     <div class="photo">
                                         <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
@@ -371,7 +379,7 @@
                                     </div>
                                 </div>
                             @endif
-                        @else
+                        {{-- @else
                             <div class="testimonial-item wow fadeInUp">
                                 <div class="photo">
                                     <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
@@ -383,7 +391,7 @@
                                     <h3>{{ $row->name }}</h3>
                                     <h4>{{ $row->designation }}</h4>
                                 </div>
-                            </div>   
+                            </div>    --}}
                         @endif
                     @endforeach
                 </div>

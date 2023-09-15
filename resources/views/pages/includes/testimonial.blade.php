@@ -14,8 +14,12 @@
                 <div class="col-md-12">
                     <div class="testimonial-carousel owl-carousel">
                         @foreach($testimonials as $row)
-                            @if ($row->located_page != null)
-                                @if ($row->located_page == 'industry')
+                        <?php 
+                            $data = json_decode($row->located_page);
+                            ?>
+                            @if ($data != null)
+                            {{-- @if ($row->located_page == 'industry') --}}
+                                @if(in_array('industry',$data))
                                     <div class="testimonial-item wow fadeInUp">
                                         <div class="photo">
                                             <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
@@ -29,7 +33,7 @@
                                         </div>
                                     </div>
                                 @endif
-                            @else   
+                            {{-- @else   
                                 <div class="testimonial-item wow fadeInUp">
                                     <div class="photo">
                                         <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
@@ -41,7 +45,7 @@
                                         <h3>{{ $row->name }}</h3>
                                         <h4>{{ $row->designation }}</h4>
                                     </div>
-                                </div>
+                                </div> --}}
                             @endif
                         @endforeach
                     </div>

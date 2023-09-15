@@ -13,8 +13,11 @@
                 <div class="col-md-12">
                     <div class="companies-carousel owl-carousel">
                         @foreach($companies as $row)
-                            @if ($row->located_page != null)
-                                @if ($row->located_page == 'industry')
+                        <?php 
+                        $data = json_decode($row->located_page);
+                        ?>
+                           @if ($data != null)
+                           @if(in_array('industry',$data))
                                     <div class="companies-item wow fadeInUp">
                                         <div class="photo">
                                             <a href="{{ $row->slug }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>

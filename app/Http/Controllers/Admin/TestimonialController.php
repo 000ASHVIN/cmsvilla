@@ -37,14 +37,14 @@ class TestimonialController extends Controller
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'comment' => 'required'
         ]);
-
+        $selectedPages = $request->input('located_page');
         $statement = DB::select("SHOW TABLE STATUS LIKE 'testimonials'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('photo')->extension();
         $final_name = 'testimonial-'.$ai_id.'.'.$ext;
         $request->file('photo')->move(public_path('uploads/'), $final_name);
         $data['photo'] = $final_name;
-
+        $data['located_page'] = json_encode($selectedPages);
         $testimonial->fill($data)->save();
         return redirect()->route('admin.testimonial.index')->with('success', 'Testimonial is added successfully!');
     }
@@ -63,7 +63,8 @@ class TestimonialController extends Controller
         
         $testimonial = Testimonial::findOrFail($id);
         $data = $request->only($testimonial->getFillable());
-
+        $data_encode = json_encode($request->located_page);
+        $data['located_page']=$data_encode;
         if($request->hasFile('photo')) {
             $request->validate([
                 'name'   =>  [
