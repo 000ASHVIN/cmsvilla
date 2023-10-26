@@ -8,53 +8,17 @@
      
       <!-- Hero image -->
       <div id="main-hero" class="hero-body">
+        @foreach($sliders as $row)
         <div class="container">
           <!-- <div class="contact-banner"> -->
           <div class="columns is-vcentered">
             <div class="column is-5 caption-column">
               <h1 class="clean-title light-text">
-                Reconcify is superfast solution to complex and voluminious
-                reconciliations
+                {{ $row->slider_heading }}
               </h1>
               <div class="subtitle is-5 mt-5 banner-subtext">
-                Create a positive impact on your bottomline by plugging revenue
-                leakages and saving costs
+                {!! nl2br(e($row->slider_text)) !!}
               </div>
-              <div
-                class="subtitle is-5 mt-5 banner-subtext"
-                style="display: flex"
-              >
-                <span class="mr-3" style="display: block">-</span> Leverage the
-                power of Robotic Process Automation and Artificial Intelligence
-              </div>
-              <div
-                class="subtitle is-5 mt-5 banner-subtext"
-                style="display: flex"
-              >
-                <span class="mr-3" style="display: block">-</span> Empower your
-                accounting teams by augmenting their productivity
-              </div>
-              <!-- <div class="mt-20">
-                <button
-                  class="button button-cta btn-align no-lh modal-trigger"
-                  data-modal="vertical-form-modal-contact"
-                  onclick="openModal('Automate Your Reconciliation Tasks Now!')"
-                  style="
-                    background-color: transparent;
-                    border: 1px solid #fff;
-                    color: #fff;
-                    width: fit-content;
-                    font-weight: bold;
-                  "
-                >
-                  Get in Touch
-                </button>
-              </div> -->
-              <!-- <div class="cta-wrapper">
-                <div class="buttons">
-                  <a href="#product" class="button button-cta btn-align btn-outlined is-bold light-btn"> Get in Touch </a>
-                </div>
-              </div> -->
             </div>
             <div class="column is-8 banner-form-container hero_form" style="flex: none">
               <!--img class="clean-hero-mockup has-light-shadow" src="assets/img/graphics/apps/app-1-core.png"
@@ -146,6 +110,7 @@
             <!-- </div> -->
           </div>
         </div>
+        @endforeach
       </div>
       <div class="wave-shape-bottom">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
@@ -159,53 +124,47 @@
     </div>
 
     <!-- About -->
-    <div class="section is-medium">
-      <!-- <div style="margin: 1rem 0" class="centered-title">
-        <h2 class="section-title-landing">
-          
-        </h2>
-      </div> -->
-      @if($page_home->special_status == 'Show')
-      <div class="centered-title mb-30" >
-        <h2>{{ $page_home->special_title }}</h2>
-        <h2>{{ $page_home->special_subtitle }}</h2>
-
-        <div class="title-divider"></div>
-        <!-- <div class="subheading">
-          Reconcify bot demonstrating how it can enhance accuracy and
-          efficiency across various aspects of business operations
-        </div> -->
-      </div>
+    @if($page_home->special_status == 'Show')
+     <div class="section is-medium">
+      
       <div class="container">
+        <div class="centered-title mb-30" >
+            <h2>{{ $page_home->special_title }}</h2>
+            <div class="title-divider"></div>
+          </div>
         <div class="columns is-vcentered">
           <div class="column is-6 is-relative is-centered-portrait">
-            <!-- Square video -->
-            <div class="Reconcify-player-container is-square reversed-play">
-              <video
-                id="hero-player"
-                class="Reconcify-player"
-                playsinline
-                controls
-                data-poster="{{ asset('img/demo/video/poster-1b.jpg') }}"
-                data-demo-poster="{{ asset('img/demo/video/poster-1b.jpg') }}"
-              >
-                <source src="{{ asset('img/video/hands.mp4') }}" type="video/mp4" />
-                <source src="{{ asset('img/video/hands.webm') }}" type="video/webm" />
-              </video>
+          
+            <div class="column is-6 is-relative is-centered-portrait">
+                <div class="Reconcify-player-container is-square reversed-play">
+                    <div class="custom-video-poster">
+                        <!-- Custom poster image here -->
+                        <img src="{{ asset('uploads/blog-6') }}" alt="Custom Poster Image">
+                    </div>
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/{{ $page_home->special_yt_video }}"
+                        frameborder="0"
+                        allowfullscreen
+                    ></iframe>
+                </div>
             </div>
+            
+            
           </div>
 
           <div class="column is-6">
             <p class="side-paragraph is-size-6 mb-10" style="display: flex">
                 {!! nl2br(e($page_home->special_content)) !!}
+                
             </p>
-            <div class="read-more">
-                <a href="{{ $page_home->special_btn_url }}" class="btn btn-primary btn-arf">{{ $page_home->special_btn_text }}</a>
-            </div>
           </div>
         </div>
       </div>
     </div>
+  
+   
     @endif
 
     @if($page_home->service_status == 'Show')
@@ -261,7 +220,14 @@
     </div>
     </div>
     @endif
- 
+    @if($page_home->service_status == 'Show')
+    <div class="centered-title mb-30" >
+        <h3 class="companies_head">{{ $page_home->trusted_company_title }}</h3>
+                    <h2>{{ $page_home->trusted_company_subtitle }}</h2>
+
+      
+      </div>
+      @endif
     <!-- Testimonials section -->
     @if($page_home->testimonial_status == 'Show')
     <div class="section is-medium">
