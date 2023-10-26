@@ -134,8 +134,7 @@
           </div>
         <div class="columns is-vcentered">
           <div class="column is-6 is-relative is-centered-portrait">
-          
-            <div class="column is-6 is-relative is-centered-portrait">
+             <div class="column is-6 is-relative is-centered-portrait">
                 <div class="Reconcify-player-container is-square reversed-play">
                     <div class="custom-video-poster">
                         <!-- Custom poster image here -->
@@ -150,22 +149,17 @@
                     ></iframe>
                 </div>
             </div>
-            
-            
-          </div>
-
-          <div class="column is-6">
-            <p class="side-paragraph is-size-6 mb-10" style="display: flex">
-                {!! nl2br(e($page_home->special_content)) !!}
-                
-            </p>
-          </div>
+        </div>
+            <div class="column is-6">
+                <p class="side-paragraph is-size-6 mb-10" style="display: flex">
+                    {!! nl2br(e($page_home->special_content)) !!}
+                    
+                </p>
+            </div>
         </div>
       </div>
     </div>
-  
-   
-    @endif
+  @endif
 
     @if($page_home->service_status == 'Show')
     <div id="learning" class="section is-medium">
@@ -178,32 +172,31 @@
 
         <div class="content-wrapper">
           <div class="columns is-vcentered">
-            <!-- Card -->
-            <div class="column is-4" style="min-height: 500px">
-                @foreach($services as $row)
-              <div class="card ressource-card">
-                <div class="card-image">
-                  <div class="card-image-overlay primary"></div>
-                  <figure class="image is-4by3 zoomOut">
-                    <a href="{{ url('service/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                        <a href="{{ url('service/'.$row->slug) }}">{{ $row->name }}</a>
-                      <p class="subtitle is-6 mt-2">
-                        {!! nl2br(e($row->short_description)) !!}
-                      </p>
-                      <div class="read-more">
-                        <a href="{{ url('service/'.$row->slug) }}">{{ READ_MORE }}</a>
+            @foreach($services as $row)
+                <div class="column is-4" style="min-height: 500px">
+                    <div class="card ressource-card">
+                        <div class="card-image">
+                        <div class="card-image-overlay primary"></div>
+                        <figure class="image is-4by3 zoomOut">
+                            <a href="{{ url('service/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
+                        </figure>
+                        </div>
+                        <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <a href="{{ url('service/'.$row->slug) }}">{{ $row->name }}</a>
+                            <p class="subtitle is-6 mt-2">
+                                {!! nl2br(e($row->short_description)) !!}
+                            </p>
+                            <div class="read-more">
+                                <a href="{{ url('service/'.$row->slug) }}">{{ READ_MORE }}</a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              @endforeach
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
