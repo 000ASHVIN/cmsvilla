@@ -174,6 +174,37 @@ class PageHomeController extends Controller
         PageHomeItem::where('id',1)->update($data);
         return redirect()->back()->with('success', 'Project Section is updated successfully!');
     }
+    public function update13(Request $request)
+    {
+        if(env('PROJECT_MODE') == 0) {
+            return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
+        }
+        
+        if($request->hasFile('financials_bg'))
+        {
+            $request->validate([
+                'financials_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+
+            // Unlink old photo
+            if($request->input('current_photo'))
+                unlink(public_path('uploads/'.$request->input('current_photo')));
+
+            // Uploading new photo
+            $ext = $request->file('financials_bg')->extension();
+            $final_name = 'financials_bg'.'.'.$ext;
+            $request->file('financials_bg')->move(public_path('uploads/'), $final_name);
+
+            $data['financials_bg'] = $final_name;
+        }
+
+        $data['financials_title'] = $request->input('financials_title');
+        $data['financials_subtitle'] = $request->input('financials_subtitle');
+        $data['financials_status'] = $request->input('financials_status');
+
+        PageHomeItem::where('id',1)->update($data);
+        return redirect()->back()->with('success', 'Financials Section is updated successfully!');
+    }
 
     public function update7(Request $request)
     {
