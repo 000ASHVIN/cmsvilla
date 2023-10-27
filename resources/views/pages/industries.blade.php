@@ -2,10 +2,12 @@
 
 @section('banner')
 <div class="contact-banner">
-    <div class="container py-20">
-        <h1 class="clean-title is-1">
-            Different Industry's Journey with Reconcify
-        </h1>
+    <div class="container">
+       <center>
+        <h1 class="clean-title is-1 mt-5 mb-5" style="color: white">
+          {{ $industry->name }}
+      </h1>
+       </center>
     </div>
 </div>
 @endsection
@@ -24,8 +26,7 @@
 
         <div class="centered-title mb-30">
             <h2>
-                Our team is made of recognized business process experts from all
-                over the world
+                {{ $industryhead->name }}
             </h2>
             <div class="title-divider"></div>
         </div>
@@ -124,63 +125,23 @@
             <div class="content-wrapper">
                 <div class="columns services-cards is-vcentered" style="align-items: flex-start">
                     <!-- Card -->
-                    <div class="column">
+                    @foreach ($industry_item as $industry)
+                      <div class="column">
                         <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal">
                             <div class="card-icon">
                                 <i class="im im-icon-Two-Windows"></i>
                             </div>
                             <div class="card-title">
-                                <h4>Restaurant Chains</h4>
+                                <h4>{{ $industry->name }}</h4>
                             </div>
                             <div class="card-feature-description">
                                 <span class="">
-                                    Reconcify simplifies the process of managing orders,
-                                    payments, and inventory for restaurant chains, reducing
-                                    errors, saving time, and improving financial accurancy
-                                    across multiple locations. Minimize wastage and improve
-                                    profit margins.
+                                   {{ $industry->description	}}
                                 </span>
                             </div>
                         </div>
                     </div>
-                    <!-- Card -->
-                    <div class="column">
-                        <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal">
-                            <div class="card-icon">
-                                <i class="im im-icon-Gears"></i>
-                            </div>
-                            <div class="card-title">
-                                <h4>Ecommerce and D2C</h4>
-                            </div>
-                            <div class="card-feature-description">
-                                <span class="">
-                                    We have successfully deployed Reconcify for different use
-                                    cases across sectors, more particularly those sectors
-                                    which are characterized by massive transaction volumes,
-                                    especially in the online sales and digital payments space.
-                                    Reconcify automate all E-commerce reconciliation which
-                                    ensure accurate financial records and efficient operations
-                                    and enhancing customer experiences.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card -->
-                    <div class="column">
-                        <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal">
-                            <div class="card-icon">
-                                <i class="im im-icon-Life-Safer"></i>
-                            </div>
-                            <div class="card-title">
-                                <h4>Financial Products intermediaries</h4>
-                            </div>
-                            <div class="card-feature-description">
-                                <span class="">Reconcify serves as a valuable tool to improve accuracy,
-                                    efficiency, and transparency in the financial product
-                                    intermediaries. Ultimately leading to improved customer
-                                    satisfaction.</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

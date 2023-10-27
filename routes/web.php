@@ -53,6 +53,7 @@ use App\Http\Controllers\Admin\WhyChooseController;
 use App\Http\Controllers\Admin\JobController as JobControllerForAdmin;
 use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
 use App\Http\Controllers\Admin\Financialscontroller;
+use App\Http\Controllers\Admin\IndustryBannerController;
 use App\Http\Controllers\Admin\IndustryDisplayController;
 use App\Http\Controllers\Admin\PageIndustryController;
 use App\Http\Controllers\Admin\PageCaseStudyController;
@@ -233,6 +234,15 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/industry/edit/{id}', [IndustryControllerForAdmin::class,'edit']);
     Route::post('admin/industry/update/{id}', [IndustryControllerForAdmin::class,'update']);
 
+      /* --------------------------------------- */
+    /* Industry Banner - Admin */
+    /* --------------------------------------- */
+    Route::get('admin/industry/banner/view', [IndustryBannerController::class,'index'])->name('admin.industry.banner.index');
+    Route::get('admin/industry/banner/create', [IndustryBannerController::class,'create'])->name('admin.industry.banner.create');
+    Route::post('admin/industry/banner/store', [IndustryBannerController::class,'store'])->name('admin.industry.banner.store');
+    Route::get('admin/industry/banner/delete/{id}', [IndustryBannerController::class,'destroy']);
+    Route::get('admin/industry/banner/edit/{id}', [IndustryBannerController::class,'edit']);
+    Route::post('admin/industry/banner/update/{id}', [IndustryBannerController::class,'update']);
     /* --------------------------------------- */
     /* Slider - Admin */
     /* --------------------------------------- */
@@ -243,6 +253,7 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/slider/edit/{id}', [SliderController::class,'edit']);
     Route::post('admin/slider/update/{id}', [SliderController::class,'update']);
 
+  
 
     /* --------------------------------------- */
     /* Logo - Admin */

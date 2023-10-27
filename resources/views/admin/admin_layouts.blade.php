@@ -271,6 +271,7 @@
             </a>
             <div id="collapseIndustry" class="collapse {{ Request::is('admin/industry/*')||Request::is('admin/how-help/*')||Request::is('admin/why-choose/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.industry.banner.index') }}">Industries Banner</a>
                     <a class="collapse-item" href="{{ route('admin.industry.index') }}">Industries</a>
                     <a class="collapse-item" href="{{ route('admin.industry_item.index') }}">Industry Item</a>
                     <a class="collapse-item" href="{{ route('admin.why_choose.index') }}">WorkFlow</a>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
+use App\Models\Industry;
+use App\Models\IndustryBanner;
+use App\Models\IndustryDetails;
 use Illuminate\Http\Request;
 use DB;
 
@@ -12,8 +15,10 @@ class IndustryController extends Controller
         // $g_setting = DB::table('general_settings')->where('id', 1)->first();
         // $project = DB::table('page_project_items')->where('id', 1)->first();
         $industries = DB::table('industry')->paginate(9);
-
-        return view('pages.industries', compact('industries'));
+        $industry = IndustryBanner::first();
+        $industryhead = Industry::first();
+        $industry_item = IndustryDetails::all();
+        return view('pages.industries', compact('industries','industry','industryhead','industry_item'));
     }
 
     public function detail($slug)
