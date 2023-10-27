@@ -126,6 +126,12 @@
                 @endif
             @endif
 
+            @if($conName[1] == 'financials')
+            @if(!in_array('financials', $arr_one))
+                <script>window.location = "{{ url('admin/dashboard') }}";</script>
+            @endif
+            @endif
+
             @if($conName[1] == 'job')
                 @if(!in_array('Career Section', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
@@ -412,6 +418,15 @@
             <a class="nav-link" href="{{ route('admin.project.index') }}">
                 <i class="fas fa-umbrella"></i>
                 <span>Features</span>
+            </a>
+        </li>
+        @endif
+
+        @php if( in_array('financials', $arr_one) || $logged_user_role_id==1 ): @endphp
+        <li class="nav-item {{ Request::is('admin/financials/*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.financials.index') }}">
+                <i class="fas fa-umbrella"></i>
+                <span>Financials</span>
             </a>
         </li>
         @endif

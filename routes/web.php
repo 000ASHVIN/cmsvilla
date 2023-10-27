@@ -52,6 +52,7 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\WhyChooseController;
 use App\Http\Controllers\Admin\JobController as JobControllerForAdmin;
 use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
+use App\Http\Controllers\Admin\Financialscontroller;
 use App\Http\Controllers\Admin\IndustryDisplayController;
 use App\Http\Controllers\Admin\PageIndustryController;
 use App\Http\Controllers\Admin\PageCaseStudyController;
@@ -358,6 +359,7 @@ Route::middleware(['admin:admin'])->group(function() {
         Route::post('/4', [PageHomeController::class,'update4']);
         Route::post('/5', [PageHomeController::class,'update5']);
         Route::post('/6', [PageHomeController::class,'update6']);
+        Route::post('/13', [PageHomeController::class,'update13']);
         Route::post('/7', [PageHomeController::class,'update7']);
         Route::post('/8', [PageHomeController::class,'update8']);
         Route::post('/9', [PageHomeController::class,'update9']);
@@ -460,6 +462,18 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/project/gallery-delete/{id}', [ProjectControllerForAdmin::class,'gallerydelete']);
     Route::post('admin/project/gallery-store', [ProjectControllerForAdmin::class,'gallerystore'])->name('admin.project.gallery-store');
 
+     /* --------------------------------------- */
+    /* Financials - Admin */
+    /* --------------------------------------- */
+    Route::get('admin/financials/view', [Financialscontroller::class,'index'])->name('admin.financials.index');
+    Route::get('admin/financials/create', [Financialscontroller::class,'create'])->name('admin.financials.create');
+    Route::post('admin/financials/store', [Financialscontroller::class,'store'])->name('admin.financials.store');
+    Route::get('admin/financials/delete/{id}', [Financialscontroller::class,'destroy']);
+    Route::get('admin/financials/edit/{id}', [Financialscontroller::class,'edit']);
+    Route::post('admin/financials/update/{id}', [Financialscontroller::class,'update']);
+    Route::get('admin/financials/gallery/{id}', [Financialscontroller::class,'gallerysection']);
+    Route::get('admin/financials/gallery-delete/{id}', [Financialscontroller::class,'gallerydelete']);
+    Route::post('admin/financials/gallery-store', [Financialscontroller::class,'gallerystore'])->name('admin.financials.gallery-store');
 
     /* --------------------------------------- */
     /* Photo Gallery - Admin */

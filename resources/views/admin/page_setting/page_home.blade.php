@@ -14,6 +14,7 @@
                         <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a>
                         <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Testimonial Section</a>
                         <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
+                        <a class="nav-link" id="v-pills-13-tab" data-toggle="pill" href="#v-pills-13" role="tab" aria-controls="v-pills-13" aria-selected="false">Financials Section</a>
                         <a class="nav-link" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Case Studies Section</a>
                         <a class="nav-link" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Team Member Section</a>
                         <a class="nav-link" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Appointment Section</a>
@@ -246,6 +247,46 @@
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="project_status" id="rr2" value="Hide" @if($page_home->project_status == 'Hide') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success">Update</button>
+                            </form>
+                            <!-- // Tab 6 -->
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-13" role="tabpanel" aria-labelledby="v-pills-6-tab">
+                            <!-- Tab 6 -->
+                            <form action="{{ url('admin/page/home/13') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="current_photo" value="{{ $page_home->project_bg }}">
+                                <div class="form-group">
+                                    <label for="">Title</label>
+                                    <input type="text" name="financials_title" class="form-control" value="{{ $page_home->financials_title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Subtitle</label>
+                                    <input type="text" name="financials_subtitle" class="form-control" value="{{ $page_home->financials_subtitle }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Existing Background</label>
+                                    <div><img src="{{ asset('uploads/'.$page_home->financials_bg) }}" alt="" class="w_200"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Change Background</label>
+                                    <div><input type="file" name="financials_bg"></div>
+                                </div> 
+
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="financials_status" id="rr1" value="Show" @if($page_home->financials_status == 'Show') checked @endif>
+                                            <label class="form-check-label font-weight-normal" for="rr1">Show</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="financials_status" id="rr2" value="Hide" @if($page_home->financials_status == 'Hide') checked @endif>
                                             <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
                                         </div>
                                     </div>

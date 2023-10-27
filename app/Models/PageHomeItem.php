@@ -67,6 +67,10 @@ class PageHomeItem extends Model
         'case_study_title',
         'case_study_subtitle',
         'case_study_status',
+        'financials_title',
+        'financials_subtitle',
+        'financials_bg',
+        'financials_status',
     ];
 
 }
