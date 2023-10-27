@@ -1,4 +1,13 @@
 @extends('layouts.master')
+
+@section('css')
+<style>
+  .subtitle {
+    font-weight: 500 !important;
+  }
+</style>
+@endsection
+
 @section('content')
 <body class="is-theme-core">
     <div class="pageloader"></div>
@@ -161,66 +170,292 @@
     </div>
   @endif
 
-    @if($page_home->service_status == 'Show')
-    <div id="learning" class="section is-medium">
-      <div class="container">
-         <div class="centered-title mb-30">
-            <h2>{{ $page_home->service_title }}</h2>
-            <h3>{{ $page_home->service_subtitle }}</h3>
-          <div class="title-divider"></div>
-        </div>
+  <!-- Uses Section -->
+  <div class="section section-feature-grey is-medium">
+    <div class="container">
+      <div class="centered-title">
+        <h2>{{ $page_home->service_title }}</h2>
+        <div class="title-divider"></div>
+        <!-- <div class="subheading">
+          Reconcify bot demonstrating how it can enhance accuracy and
+          efficiency across various aspects of business operations
+        </div> -->
+      </div>
 
-        <div class="content-wrapper">
-          <div class="columns is-vcentered">
-            @foreach($services as $row)
-                <div class="column is-4" style="min-height: 500px">
-                    <div class="card ressource-card">
-                        <div class="card-image">
-                        <div class="card-image-overlay primary"></div>
-                        <figure class="image is-4by3 zoomOut">
-                            <a href="{{ url('service/'.$row->slug) }}"><img src="{{ asset('uploads/'.$row->photo) }}" alt=""></a>
-                        </figure>
-                        </div>
-                        <div class="card-content">
-                        <div class="media">
-                            <div class="media-content">
-                                <a href="{{ url('service/'.$row->slug) }}">{{ $row->name }}</a>
-                            <p class="subtitle is-6 mt-2">
-                                {!! nl2br(e($row->short_description)) !!}
-                            </p>
-                            <div class="read-more">
-                                <a href="{{ url('service/'.$row->slug) }}">{{ READ_MORE }}</a>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+      <div class="content-wrapper">
+        <div class="columns services-cards is-vcentered">
+          <!-- Card -->
+          @foreach($services as $row)
+            <div class="column">
+              <div
+                class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal"
+                style="cursor: default"
+              >
+                <div class="card-icon">
+                  <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
                 </div>
-            @endforeach
+                <div class="card-title mt-3">
+                  <a href="{{ url('service/'.$row->slug) }}"><h4>{{ $row->name }}</h4></a>
+                </div>
+                <div class="card-feature-description">
+                  <span class="">
+                    {!! nl2br(e($row->short_description)) !!}
+                  </span>
+                </div>
+              </div>
+            </div>
+          @endforeach
+          
+          <!-- Card -->
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Uses Section -->
+  <div class="section section-feature-grey is-medium">
+    <div class="container">
+      <div class="centered-title">
+        <h2>{{ $page_home->project_title }}</h2>
+        <div class="title-divider"></div>
+        <!-- <div class="subheading">
+          Reconcify bot demonstrating how it can enhance accuracy and
+          efficiency across various aspects of business operations
+        </div> -->
+      </div>
+
+      <div class="content-wrapper">
+        <div class="columns services-cards is-vcentered">
+          <!-- Card -->
+          @foreach($projects as $row)
+            <div class="column">
+              <div
+                class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal"
+                style="cursor: default"
+              >
+                <div class="card-icon">
+                  <img src="{{ asset('uploads/'.$row->project_featured_photo) }}" alt="">
+                </div>
+                <div class="card-title mt-3">
+                  <a href="{{ url('project/'.$row->project_slug) }}"><h4>{{ $row->project_name }}</h4></a>
+                </div>
+                <div class="card-feature-description">
+                  <span class="">
+                    {!! nl2br(e($row->project_content_short)) !!}
+                  </span>
+                </div>
+              </div>
+            </div>
+          @endforeach
+          
+          <!-- Card -->
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final CTA section -->
+  <div class="section section-feature-grey is-medium">
+    <div class="container">
+      <div class="centered-title">
+        <h2>
+          Reconcify: Bridging E-commerce, D2C, Financial Products
+          Intermediaries, Restaurant Chains.
+        </h2>
+        <div class="title-divider"></div>
+        <!-- <div class="subheading">
+          Reconcify is transforming industries like E-commerce and D2C,
+          Financial Products Intermediaries, Restaurant Chains, by offering
+          cutting-edge data reconciliation solutions, ensuring accuracy and
+          efficiency in their critical operations.
+        </div> -->
+      </div>
+
+      <div class="content-wrapper">
+        <div class="columns services-cards is-vcentered" style="align-items: flex-start;">
+          <!-- Card -->
+          <div class="column">
+            <div
+              class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal"
+            >
+              <div class="card-icon">
+                <i class="im im-icon-Two-Windows"></i>
+              </div>
+              <div class="card-title">
+                <h4>   Restaurant Chains</h4>
+              </div>
+              <div class="card-feature-description">
+                <span class=""
+                  >  Reconcify simplifies the process of managing orders,
+                  payments, and inventory for restaurant chains, reducing
+                  errors, saving time, and improving financial accurancy
+                  across multiple locations. Minimize wastage and improve
+                  profit margins.
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+          <div class="column">
+            <div
+              class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal"
+            >
+              <div class="card-icon">
+                <i class="im im-icon-Gears"></i>
+              </div>
+              <div class="card-title">
+                <h4>  Ecommerce and D2C</h4>
+              </div>
+              <div class="card-feature-description">
+                <span class=""
+                  >       We have successfully deployed Reconcify for different use
+                  cases across sectors, more particularly those sectors
+                  which are characterized by massive transaction volumes,
+                  especially in the online sales and digital payments space.
+                  Reconcify automate all E-commerce reconciliation which
+                  ensure accurate financial records and efficient operations
+                  and enhancing customer experiences.</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+          <div class="column">
+            <div
+              class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal"
+            >
+              <div class="card-icon">
+                <i class="im im-icon-Life-Safer"></i>
+              </div>
+              <div class="card-title">
+                <h4>        Financial Products intermediaries</h4>
+              </div>
+              <div class="card-feature-description">
+                <span class=""
+                  >Reconcify serves as a valuable tool to improve accuracy,
+                  efficiency, and transparency in the financial product
+                  intermediaries. Ultimately leading to improved customer
+                  satisfaction.</span
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    @endif
-    @if($page_home->service_status == 'Show')
-    <div id="learning" class="section is-medium">
-      <div class="container">
-         <div class="centered-title mb-30">
-            <h2>{{ $page_home->case_study_title }}</h2>
-            <h3>{{ $page_home->case_study_subtitle }}</h3>
+  </div>
+
+  <!-- Learning -->
+  <div id="learning" class="section is-medium">
+    <div class="container">
+      <!-- Title -->
+      <!-- <div class="section-title-wrapper has-text-centered">
+        <h2 class="section-title-landing">Reconciliation</h2>
+        <h4>We have a dedicated user training section</h4>
+      </div> -->
+
+      <div class="centered-title mb-30">
+        <h2>Reconciliation</h2>
+        <div class="title-divider"></div>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="columns is-vcentered">
+          <!-- Card -->
+          @foreach($case_studies as $row)
+            <div class="column is-4" style="min-height: 500px">
+              <div class="card ressource-card">
+                <div class="card-image">
+                  <div class="card-image-overlay"></div>
+                  <figure class="image is-4by3 zoomOut">
+                    <img
+                      src="{{ asset('uploads/'.$row->photo) }}"
+                      alt=""
+                      data-demo-src="assets/img/demo/kit/data-insight.jpeg"
+                    />
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <a
+                        href="{{ url('service/'.$row->slug) }}"
+                        class="color-primary is-handwritten"
+                        ><h4>{{ $row->name }}</h4></a
+                      >
+                      <p class="subtitle is-6 mt-2">
+                        {!! nl2br(e($row->short_description)) !!}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Trust -->
+  <div id="trust" class="section is-medium">
+    <div class="container">
+      <!-- Title -->
+      <div class="section-title-wrapper">
+        <div class="bg-number">
+          {{-- <i class="material-icons trust-bg-image">domain</i> --}}
+        </div>
+        <!-- <h2 class="section-title-landing has-text-centered dark-text">
+          We build Trust
+        </h2>
+        <h4 class="has-text-centered">
+          More than <b>900 Teams</b> use our product.
+        </h4> -->
+
+        <div class="centered-title mb-40">
+          <h2>{{ $page_home->trusted_company_title }}</h2>
           <div class="title-divider"></div>
         </div>
-    </div>
-    </div>
-    @endif
-    @if($page_home->service_status == 'Show')
-    <div class="centered-title mb-30" >
-        <h3 class="companies_head">{{ $page_home->trusted_company_title }}</h3>
-                    <h2>{{ $page_home->trusted_company_subtitle }}</h2>
-
-      
       </div>
-      @endif
+      <!-- Grid -->
+      <div class="content-wrapper">
+        <div class="grid-clients five-grid">
+
+          @foreach($companies->chunk(5) as $company)
+            <div class="columns is-vcentered">
+              <div class="column is-hidden-mobile"></div>
+              
+              @foreach($company as $row)
+                <!-- Client -->
+                <div class="column">
+                  <a
+                    ><img
+                      class="client"
+                      id=""
+                      src="{{ asset('uploads/'.$row->photo) }}"
+                      alt=""
+                  /></a>
+                </div>
+              @endforeach
+              <div class="column is-hidden-mobile"></div>
+            </div>
+          @endforeach
+        </div>
+        <!-- CTA -->
+        <!-- <div class="has-text-centered is-title-reveal pt-40 pb-40">
+          <a
+            href="#"
+            class="button button-cta btn-align primary-btn is-bold raised"
+            >Get in Touch Now</a
+          >
+        </div> -->
+      </div>
+    </div>
+  </div>
+
     <!-- Testimonials section -->
     @if($page_home->testimonial_status == 'Show')
     <div class="section is-medium">
@@ -228,7 +463,7 @@
 
         <div class="centered-title mb-30">
             <h2>{{ $page_home->testimonial_title }}</h2>
-            <h3>{{ $page_home->testimonial_subtitle }}</h3>
+            {{-- <h3>{{ $page_home->testimonial_subtitle }}</h3> --}}
           <div class="title-divider"></div>
         </div>
         <div class="content-wrapper">
@@ -239,29 +474,22 @@
                 <!-- Carousel wrapper -->
                 <div class="testimonials is-wavy">
                      @foreach($testimonials as $row)
-                        <?php 
-                            $data = json_decode($row->located_page);
-                        ?>
-                        @if ($data != null)
-                            @if(in_array('home',$data))
-                            <div class="testimonial-item">
-                                <div class="flex-card card-overflow raised">
-                                        <div class="testimonial-avatar">
-                                            <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
-                                        </div>
-                                        <div class="testimonial-name">
-                                            <h3>{{ $row->name }}</h3>
-                                        <span>{{ $row->designation }}</span>
-                                        </div>
-                                        <div class="testimonial-content">
-                                        <p>
-                                            {!! nl2br(e($row->comment)) !!}
-                                        </p>
+                        <div class="testimonial-item">
+                            <div class="flex-card card-overflow raised">
+                                    <div class="testimonial-avatar">
+                                        <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
                                     </div>
+                                    <div class="testimonial-name">
+                                        <h3>{{ $row->name }}</h3>
+                                    <span>{{ $row->designation }}</span>
+                                    </div>
+                                    <div class="testimonial-content">
+                                    <p>
+                                        {!! nl2br(e($row->comment)) !!}
+                                    </p>
                                 </div>
                             </div>
-                            @endif
-                        @endif
+                        </div>
                     @endforeach
                 </div>
               </div>
@@ -269,23 +497,6 @@
               <div class="column"></div>
             </div>
           </div>
-        {{-- <div class="content-wrapper">
-          <div class="columns">
-            <div class="column"></div>
-
-            <div class="column is-6">
-              <!-- Carousel wrapper -->
-              <div class="testimonials is-wavy">
-                <!-- Testimonial item -->
-                <div class="testimonial-item">
-                    
-                </div>
-              </div>
-            </div>
-
-            <div class="column"></div>
-          </div>
-        </div> --}}
       </div>
     </div>
     @endif

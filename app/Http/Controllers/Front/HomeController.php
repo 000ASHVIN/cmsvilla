@@ -11,13 +11,13 @@ class HomeController extends Controller
 		$sliders = DB::table('sliders')->get();
     	$page_home = DB::table('page_home_items')->where('id',1)->first();
     	$why_choose_items = DB::table('why_choose_items')->get();
-    	$services = DB::table('services')->get();
+    	$services = DB::table('services')->get()->take(3);
     	$companies = DB::table('companies')->get();
     	$testimonials = DB::table('testimonials')->get();
-    	$projects = DB::table('projects')->get();
+    	$projects = DB::table('projects')->get()->take(3);
     	$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
-		$case_studies = DB::table('case_studies')->get();
+		$case_studies = DB::table('case_studies')->get()->take(3);
         return view('pages.home.home', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies'));
 	}
     public function index()
