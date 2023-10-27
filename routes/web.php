@@ -77,6 +77,7 @@ use App\Http\Controllers\Front\CategoryController as CategoryControllerForFront;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController as FaqControllerForFront;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\IndustryController;
 use App\Http\Controllers\Front\JobController as JobControllerForFront;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PhotoGalleryController;
@@ -97,6 +98,7 @@ Route::get('/', [HomeController::class,'index']);
 Route::get('/master', [HomeController::class,'master']);
 // Route::get('/home', [HomeController::class,'home']);
 
+Route::get('/industries', [IndustryController::class, 'index'])->name('front.industries');
 Route::get('/industry/{slug?}', [PageIndustryController::class,'index'])->name('front.industry');
 Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');;
 Route::get('about', [AboutController::class,'index'])->name('front.about');
