@@ -242,6 +242,21 @@
         </li>
         @endif
 
+        <!-- Page Settings -->
+        @php if( in_array('Page Settings', $arr_one) || $logged_user_role_id==1 ): @endphp
+        <li class="nav-item {{ Request::is('admin/home/*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHomeSettings" aria-expanded="true" aria-controls="collapseHomeSettings">
+                <i class="fas fa-paste"></i>
+                <span>Home Settings</span>
+            </a>
+            <div id="collapseHomeSettings" class="collapse {{ Request::is('admin/home/*') ? 'show' : '' }}" aria-labelledby="headingHome" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.home.edit') }}">Home</a>
+                    <a class="collapse-item" href="{{ route('admin.home.banner') }}">Banner</a>
+                </div>
+            </div>
+        </li>
+        @endif
 
         <!-- Page Settings -->
         @php if( in_array('Page Settings', $arr_one) || $logged_user_role_id==1 ): @endphp

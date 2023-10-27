@@ -342,6 +342,11 @@ Route::middleware(['admin:admin'])->group(function() {
     /* --------------------------------------- */
     /* Page Settings - Admin */
     /* --------------------------------------- */
+    Route::group(['prefix'=>'admin/home'], function() {
+        Route::get('/edit', [PageHomeController::class,'edit'])->name('admin.home.edit');
+        Route::get('/banner', [SliderController::class,'index'])->name('admin.home.banner');
+    });
+
     Route::group(['prefix'=>'admin/page/home'], function() {
 
         Route::get('/edit', [PageHomeController::class,'edit'])->name('admin.page_home.edit');

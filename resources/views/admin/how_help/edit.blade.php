@@ -33,7 +33,7 @@
                     <select class="form-control select2" name="industry_id[]" id="industry_id" multiple data-placeholder="Select Industry">
                         {{-- <option value="" disabled>Select Industry</option> --}}
                         @foreach ($industry as $option)
-                            <option value="{{ $option->id }}"  {{ in_array($option->id,$industry_id) ? 'selected' : '' }}>{{ $option->name }}</option>
+                            <option value="{{ $option->id }}"  {{ $option->id == $industry_id ? 'selected' : '' }}>{{ $option->name }}</option>
                         @endforeach
                     </select>    
                 </div>
