@@ -20,6 +20,10 @@
                     <label for="">Slug</label>
                     <input type="text" name="slug" class="form-control" value="{{ old('slug') }}">
                 </div>
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea name="description" class="form-control h_100" cols="30" rows="10">{{ old('description') }}</textarea>
+                </div>
             </div>
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>

@@ -12,26 +12,21 @@ class IndustryController extends Controller
 {
     public function index()
     {
-        // $g_setting = DB::table('general_settings')->where('id', 1)->first();
-        // $project = DB::table('page_project_items')->where('id', 1)->first();
         $industries = DB::table('industry')->paginate(9);
-        $industry = IndustryBanner::first();
+        $banner = IndustryBanner::first();
         $industryhead = Industry::first();
         $industry_item = IndustryDetails::all();
-        return view('pages.industries', compact('industries','industry','industryhead','industry_item'));
+        return view('pages.industries', compact('industries','banner','industryhead','industry_item'));
     }
 
-    public function detail($slug)
+    public function details($slug)
     {
-        $g_setting = DB::table('general_settings')->where('id', 1)->first();
-        $project_detail = DB::table('projects')->where('project_slug', $slug)->first();
-        $project_items = DB::table('projects')->get();
-        if(!$project_detail) {
+        $industry = Industry::with('howHelp')->where('slug', $slug)->first();
+// dd($industry);
+        if(!$industry) {
             return abort(404);
         }
 
-        $project_photos = DB::table('project_photos')->where('project_id', $project_detail->id)->get();
-
-        return view('pages.project_detail', compact('g_setting','project_detail','project_items','project_photos'));
+        return view('pages.industry_detail', compact('industry'));
     }
 }

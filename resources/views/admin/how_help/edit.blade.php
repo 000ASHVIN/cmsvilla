@@ -30,10 +30,10 @@
                 </div>
                 <div class="form-group">
                     <label for="industry_id">Select Industry</label>
-                    <select class="form-control select2" name="industry_id[]" id="industry_id" multiple data-placeholder="Select Industry">
+                    <select class="form-control select2" name="industry_id" id="industry_id" data-placeholder="Select Industry">
                         {{-- <option value="" disabled>Select Industry</option> --}}
                         @foreach ($industry as $option)
-                            <option value="{{ $option->id }}"  {{ $option->id == $industry_id ? 'selected' : '' }}>{{ $option->name }}</option>
+                            <option value="{{ $option->id }}"  {{ $option->id == $service->industry_id ? 'selected' : '' }}>{{ $option->name }}</option>
                         @endforeach
                     </select>    
                 </div>

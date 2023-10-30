@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/aj.css') }}">
   <link rel="stylesheet" href="{{ asset('css/core.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/contact.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
   <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"

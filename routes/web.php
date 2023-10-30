@@ -101,7 +101,8 @@ Route::get('/master', [HomeController::class,'master']);
 // Route::get('/home', [HomeController::class,'home']);
 
 Route::get('/industries', [IndustryController::class, 'index'])->name('front.industries');
-Route::get('/industry/{slug?}', [PageIndustryController::class,'index'])->name('front.industry');
+Route::get('/industry/{slug}', [IndustryController::class,'details'])->name('front.industry.details');
+
 Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');;
 Route::get('about', [AboutController::class,'index'])->name('front.about');
 Route::get('services', [ServiceControllerForFront::class,'index'])->name('front.services');

@@ -52,7 +52,7 @@ class HowHelpController extends Controller
         $data['photo'] = $final_name;
 
         if($request->has('industry_id')){
-            $data['industry_id']= json_encode($data['industry_id']);
+            // $data['industry_id']= json_encode($data['industry_id']);
         }else{
             $data['industry_id'] = null;
         }
@@ -65,11 +65,11 @@ class HowHelpController extends Controller
     {
         $service = HowHelp::findOrFail($id);
         $industry_id = "";
-        if($service->industry_id != null){
-            $industry_id = json_decode($service->industry_id, true); 
-        }else{
-            $industry_id = [];
-        }
+        // if($service->industry_id != null){
+        //     $industry_id = json_decode($service->industry_id, true); 
+        // }else{
+        //     $industry_id = [];
+        // }
         $industry = Industry::all();
         return view('admin.how_help.edit',compact('service','industry','industry_id'));
     }
@@ -116,7 +116,7 @@ class HowHelpController extends Controller
         }
 
         if($request->has('industry_id')){
-            $data['industry_id']= json_encode($data['industry_id']);
+            // $data['industry_id']= json_encode($data['industry_id']);
         }else{
             $data['industry_id'] = null;
         }

@@ -2,12 +2,10 @@
 
 @section('banner')
 <div class="contact-banner">
-    <div class="container">
-       <center>
-        <h1 class="clean-title is-1 mt-5 mb-5" style="color: white">
-          {{ $industry->name }}
-      </h1>
-       </center>
+    <div class="container py-20">
+       <h1 class="clean-title is-1">
+         {{ $banner->name ?? '' }}
+        </h1>
     </div>
 </div>
 @endsection
@@ -26,7 +24,7 @@
 
         <div class="centered-title mb-30">
             <h2>
-                {{ $industryhead->name }}
+                Our team is made of recognized business process experts from all over the world
             </h2>
             <div class="title-divider"></div>
         </div>
@@ -125,14 +123,14 @@
             <div class="content-wrapper">
                 <div class="columns services-cards is-vcentered" style="align-items: flex-start">
                     <!-- Card -->
-                    @foreach ($industry_item as $industry)
+                    @foreach ($industries as $industry)
                       <div class="column">
                         <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal">
                             <div class="card-icon">
                                 <i class="im im-icon-Two-Windows"></i>
                             </div>
                             <div class="card-title">
-                                <h4>{{ $industry->name }}</h4>
+                                <a href="{{ route('front.industry.details', $industry->slug) }}"><h4>{{ $industry->name }}</h4></a>
                             </div>
                             <div class="card-feature-description">
                                 <span class="">

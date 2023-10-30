@@ -10,11 +10,16 @@ class Industry extends Model
     protected $fillable = [
         'name',
         'slug',
+        'description',
         'seo_title',
         'seo_meta_description'
     ];
 
     public function pageIndustryItem() {
         return $this->hasOne(PageIndustryItem::class, 'industry_id', 'id');
+    }
+
+    public function howHelp() {
+        return $this->hasMany(HowHelp::class, 'industry_id', 'id');
     }
 }
