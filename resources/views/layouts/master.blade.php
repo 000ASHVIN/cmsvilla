@@ -93,7 +93,7 @@
                 </a>
               </ul>
             </div>
-            <a class="navbar-item is-slide" href="case-study">
+            <a class="navbar-item is-slide" href="/case-study">
               Case Studies</a>
             <!-- Dropdown -->
             <div id="my-dropdown" class="jq-dropdown jq-dropdown-tip">

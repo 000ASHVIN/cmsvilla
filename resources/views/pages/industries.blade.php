@@ -145,4 +145,6 @@
         </div>
     </div>
 </div>
+@include('pages.includes.companies')
+@include('pages.includes.testimonial')
 @endsection

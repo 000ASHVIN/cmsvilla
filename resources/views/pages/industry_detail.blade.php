@@ -174,7 +174,8 @@
     </div>
   </form>
 </div>
-
+@include('pages.includes.companies')
+@include('pages.includes.testimonial')
 <button
   class="button button-cta btn-align btn-outlined primary-btn raised modal-trigger navbar-btn"
   data-modal="alert-modal-custom"
