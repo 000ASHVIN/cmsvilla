@@ -93,7 +93,7 @@
                 </a>
               </ul>
             </div>
-            <a class="navbar-item is-slide" href="./CaseStudies.html">
+            <a class="navbar-item is-slide" href="case-study">
               Case Studies</a>
             <!-- Dropdown -->
             <div id="my-dropdown" class="jq-dropdown jq-dropdown-tip">
@@ -119,7 +119,7 @@
             <a class="navbar-item is-slide ismobile-nav" href="Faqs.html">
               FAQs</a>
 
-            <a class="navbar-item is-slide" href="./Contact.html">
+            <a class="navbar-item is-slide" href="{{ route('front.contact') }}">
               Contact Us
             </a>
           </div>

@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\ProfileChangeController as ProfileChangeControlle
 use App\Http\Controllers\Admin\CategoryController as CategoryControllerForAdmin;
 use App\Http\Controllers\Admin\IndustryController as IndustryControllerForAdmin;
 use App\Http\Controllers\Admin\BlogController as BlogControllerForAdmin;
+use App\Http\Controllers\Admin\CaseStCaseStudyItemsController;
 use App\Http\Controllers\Admin\ProjectController as ProjectControllerForAdmin;
 use App\Http\Controllers\Admin\ServiceController as ServiceControllerForAdmin;
 use App\Http\Controllers\Admin\CaseStudyController as CaseStudyControllerForAdmin;
@@ -102,8 +103,10 @@ Route::get('/master', [HomeController::class,'master']);
 
 Route::get('/industries', [IndustryController::class, 'index'])->name('front.industries');
 Route::get('/industry/{slug}', [IndustryController::class,'details'])->name('front.industry.details');
-
-Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');;
+Route::get('/restuarant/chains', [IndustryController::class, 'restuarant'])->name('front.restuarant');
+// Route::get('/industry/{slug?}', [PageIndustryController::class,'index'])->name('front.industry');
+Route::get('/case-study-items/front', [PageCaseStudyController::class,'caseStudyFront'])->name('front.case.study.items');
+Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');
 Route::get('about', [AboutController::class,'index'])->name('front.about');
 Route::get('services', [ServiceControllerForFront::class,'index'])->name('front.services');
 Route::get('service/{slug}', [ServiceControllerForFront::class,'detail']);
@@ -553,6 +556,14 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/how-help/delete/{id}', [HowHelpControllerForAdmin::class,'destroy']);
     Route::get('admin/how-help/edit/{id}', [HowHelpControllerForAdmin::class,'edit']);
     Route::post('admin/how-help/update/{id}', [HowHelpControllerForAdmin::class,'update']);
+
+    Route::get('admin/case/study/items/view', [CaseStCaseStudyItemsController::class,'index'])->name('admin.case.study.items.index');
+    Route::get('admin/case/study/items/create', [CaseStCaseStudyItemsController::class,'create'])->name('admin.case.study.items.create');
+    Route::post('admin/case/study/items/store', [CaseStCaseStudyItemsController::class,'store'])->name('admin.case.study.items.store');
+    Route::get('admin/case/study/items/delete/{id}', [CaseStCaseStudyItemsController::class,'destroy']);
+    Route::get('admin/case/study/items/edit/{id}', [CaseStCaseStudyItemsController::class,'edit']);
+    Route::post('admin/case/study/items/update/{id}', [CaseStCaseStudyItemsController::class,'update']);
+    
      /* --------------------------------------- */
     /* Company - Admin */
     /* --------------------------------------- */

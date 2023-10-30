@@ -282,6 +282,13 @@
                 </div>
             </div>
         </li>
+        <li class="nav-item {{ Request::is('admin/case/study/items/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="{{ route('admin.case.study.items.index') }}">
+                <i class="fas fa-cubes"></i>
+                <span>Case Study Items
+                </span>
+                </a>
+        </li>
 
         <!-- Page Settings -->
         @php if( in_array('Page Settings', $arr_one) || $logged_user_role_id==1 ): @endphp

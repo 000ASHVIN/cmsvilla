@@ -134,7 +134,7 @@
                             </div>
                             <div class="card-feature-description">
                                 <span class="">
-                                   {{ $industry->description	}}
+                                   {{ $industry->seo_meta_description }}
                                 </span>
                             </div>
                         </div>
