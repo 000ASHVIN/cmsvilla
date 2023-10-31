@@ -1,0 +1,44 @@
+[
+  {
+    "name": "John Barker",
+    "position": "Accountant",
+    "pic": "assets/img/avatars/funny1.svg",
+    "email": "jbaker@Reconcify.io"
+  },
+  {
+    "name": "Terry Daniels",
+    "position": "Support",
+    "pic": "assets/img/avatars/funny3.svg",
+    "email": "tdaniels@Reconcify.io"
+  },
+  {
+    "name": "Michelle Farlane",
+    "position": "Sales",
+    "pic": "assets/img/avatars/funny2.svg",
+    "email": "mfarlane@Reconcify.io"
+  },
+  {
+    "name": "Stephany Huds",
+    "position": "Sales",
+    "pic": "assets/img/avatars/funny2.svg",
+    "email": "shuds@Reconcify.io"
+  },
+  {
+    "name": "Mike Johnson",
+    "position": "CTO",
+    "pic": "assets/img/avatars/funny1.svg",
+    "email": "mjohnson@Reconcify.io"
+  },
+  {
+    "name": "Alan Kovalsky",
+    "position": "CEO",
+    "pic": "assets/img/avatars/funny3.svg",
+    "email": "akovalsky@Reconcify.io"
+  },
+  {
+    "name": "Anna Korsk",
+    "position": "Support",
+    "pic": "assets/img/avatars/funny2.svg",
+    "email": "akorsk@Reconcify.io"
+  }
+]

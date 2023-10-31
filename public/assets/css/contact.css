@@ -1,0 +1,58 @@
+.contact-banner {
+  min-height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/assets/img/photos/captures/background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  gap: 15px;
+  /* background-color: red; */
+}
+.contact-banner .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 15px;
+}
+
+.contact-banner .title,
+.contact-banner h1 {
+  color: #fff !important;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.contact-banner h2 {
+  color: #fff;
+  margin-top: 20px;
+}
+
+/* .form-wrapper {
+  display: flex;
+} */
+
+form {
+  max-width: 960px;
+  /* border: 1px solid red; */
+  margin: 2.5vw auto;
+}
+
+@media screen and (max-width: 800px) {
+  .contact-banner {
+    /* min-height: 50vh; */
+    height: fit-content;
+    padding: 50px 10px;
+  }
+  .contact-banner h1 {
+    font-size: 2rem;
+  }
+  form {
+    width: 90% !important;
+    padding: ;
+  }
+}

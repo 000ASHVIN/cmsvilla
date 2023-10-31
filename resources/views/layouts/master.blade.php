@@ -2,29 +2,22 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required Meta Tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
   <title>Reconify :: HomePage</title>
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
 
   <!--Core CSS -->
-  <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/aj.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/core.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/contact.css') }}" />
-  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+  <link id="theme-sheet" rel="stylesheet" href="/assets/css/core.css" />
+  <link rel="stylesheet" href="/assets/css/contact.css" />
+  <link rel="stylesheet" href="/assets/css/custom.css" />
 
   @yield('css')
 </head>
@@ -39,16 +32,8 @@
         <!-- Brand -->
         <div class="navbar-brand">
           <a class="navbar-item navbar-logo" href="/">
-            <img
-              class="light-logo"
-              src="{{ asset('uploads/reconify.png') }}"
-              alt=""
-            />
-            <img
-              class="dark-logo switcher-logo"
-              src="{{ asset('uploads/reconify.png') }}"
-              alt=""
-            />
+            <img class="light-logo" src="/assets/img/logos/reconify.png" alt="" />
+            <img class="dark-logo switcher-logo" src="/assets/img/logos/reconify.png" alt="" />
           </a>
 
           <!-- Responsive toggle -->
@@ -99,7 +84,7 @@
             <div id="my-dropdown" class="jq-dropdown jq-dropdown-tip">
               <ul class="jq-dropdown-menu">
                 <li><a href="Blogs.html">Blogs</a></li>
-                <li><a href="Faqs.html">FAQs</a></li>
+                <li><a href="{{ route('front.faq') }}">FAQs</a></li>
               </ul>
             </div>
             <div class="dropdown">
@@ -116,7 +101,7 @@
             </div>
             <a class="navbar-item is-slide ismobile-nav" href="./Blogs.html">
               Blogs</a>
-            <a class="navbar-item is-slide ismobile-nav" href="Faqs.html">
+            <a class="navbar-item is-slide ismobile-nav" href="{{ route('front.faq') }}">
               FAQs</a>
 
             <a class="navbar-item is-slide" href="{{ route('front.contact') }}">
@@ -137,13 +122,80 @@
     </nav>
     <!-- Hero image -->
     @yield('banner')
-
+  
   </div>
 
   @yield('content')
 
 
+  <div id="vertical-form-modal-contact" class="modal modal-md">
+    <div class="modal-background"></div>
+    <form action="https://sheetdb.io/api/v1/lmmq0z1jmtmeq" method="post" id="sheetdb-form">
+      <div class="modal-content">
+        <div class="flex-card simple-shadow form_container">
+          <div class="card-body">
+            <h2 class="title has-text-left-aligned mb-40" id="form_head">
+              Automate Your Reconciliation Tasks Now!
+            </h2>
+            <div class="control-material is-accent">
+              <input class="material-input" name="data[Name]" type="text" required />
+              <span class="material-highlight"></span>
+              <span class="bar"></span>
+              <label>Name *</label>
+            </div>
+            <div class="control-material is-accent">
+              <input class="material-input" name="data[Company_Name]" type="text" required />
+              <span class="material-highlight"></span>
+              <span class="bar"></span>
+              <label>Company Name *</label>
+            </div>
+            <div class="control-material is-accent">
+              <input class="material-input" name="data[Email]" type="email" required />
+              <span class="material-highlight"></span>
+              <span class="bar"></span>
+              <label> Email Address *</label>
+            </div>
+            <div class="control-material is-accent">
+              <input class="material-input" name="data[Phone]" type="tel" required />
+              <span class="material-highlight"></span>
+              <span class="bar"></span>
+              <label>Phone *</label>
+            </div>
 
+            <div class="mt-20" style="
+                  display: flex;
+                  flex-flow: row wrap;
+                  gap: 20px;
+                  justify-content: flex-end;
+                ">
+              <button class="button button-cta btn-align accent-btn raised no-lh" type="submit">
+                Submit
+              </button>
+              <div class="button button-cta btn-align no-lh modal-close is-large is-hidden form_submit_btn"
+                aria-label="close">
+                Close
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button class="button button-cta btn-align btn-outlined primary-btn raised modal-trigger navbar-btn"
+    data-modal="alert-modal-custom" id="alert-modal-btn" style="display: none;">Open</button>
+  <div id="alert-modal-custom" class="modal modal-md">
+    <div class="modal-background"></div>
+    <div class="alert_modal modal-content" style="z-index: 999;">
+      <span>Thanks for submitting your details. We shall contact you soon.</span>
+      <div class="button button-cta btn-align no-lh modal-close is-large is-hidden form_submit_btn alert_submit_btn"
+        aria-label="close">
+        Close
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Footer -->
   <footer id="dark-footer" class="footer footer-dark">
     <div class="container">
       <div class="columns">
@@ -182,10 +234,24 @@
             </div>
           </div>
         </div>
+        <!-- <div class="column">
+                  <div class="footer-column">
+                      <div class="footer-header">
+                          <h3>Learning</h3>
+                      </div>
+                      <ul class="link-list">
+                          <li><a href="#">Resources</a></li>
+                          <li><a href="#">Blog</a></li>
+                          <li><a href="#">FAQ</a></li>
+                          <li><a href="#">API documentation</a></li>
+                          <li><a href="#">Admin guide</a></li>
+                      </ul>
+                  </div>
+              </div> -->
         <div class="column">
           <div class="footer-column">
             <div class="footer-logo">
-              <img class="switcher-logo-w" src="{{ asset('uploads/reconify.png') }}" alt="" />
+              <img class="switcher-logo-w" src="/assets/img/logos/reconify.png" alt="" />
             </div>
             <div class="footer-header">
               <nav class="level is-mobile">
@@ -211,18 +277,18 @@
                 </div>
               </nav>
             </div>
+            <!-- <div class="copyright">
+                          <span class="moto light-text">Designed and coded with <i class="fa fa-heart color-red"></i> by <a href="www.heliverse.com"  target="_blank" rel="noopener noreferrer">Heliverse Technologies.</a></span>
+                      </div> -->
           </div>
         </div>
+      </div>
+    </div>
   </footer>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-  </script>
+  <!-- /Chat widget -->
+  <!-- <script type="text/javascript" src="https://d3mkw6s8thqya7.cloudfront.net/integration-plugin.js"
+    id="aisensy-wa-widget" widget-id="LtmBFL"  >
+    </script> -->
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
   <script>
     let clientScrollImage1 = document.getElementById("client-scroll-1");
@@ -240,19 +306,17 @@
         clientScrollImage2.src = "assets/img/logos/custom/phasekit.svg";
       });
   </script>
-  {{-- <script src="assets/js/app.js"></script> --}}
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('js/core.js') }}"></script>
-  {{-- <script src="assets/js/core.js"></script> --}}
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/core.js"></script>
   <script>
     let formHead = "";
       const alertBtn = document.getElementById("alert-modal-btn");
-    
+
       function openModal(newName) {
         const formHeadElement = document.getElementById("form_head");
         formHeadElement.innerText = newName;
       }
-    
+
       // For Modal form
       var form = document.getElementById("sheetdb-form");
       var closeFormBtn = document.querySelector(".form_submit_btn");
@@ -276,10 +340,10 @@
             },1000)
           });
       });
-    
+
       // for hero section form
       var formPrimary = document.getElementById("sheetdb-form-primary");
-    
+
       formPrimary.addEventListener("submit", (e) => {
         e.preventDefault();
         fetch(formPrimary.action, {
@@ -297,7 +361,6 @@
           });
       });
   </script>
-
 </body>
 
 </html>
