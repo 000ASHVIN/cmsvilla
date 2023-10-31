@@ -109,7 +109,7 @@
                 <a href="Blogs.html">
                   <li>Blogs</li>
                 </a>
-                <a href="Faqs.html">
+                <a href="{{ route('front.faq') }}">
                   <li>FAQs</li>
                 </a>
               </ul>

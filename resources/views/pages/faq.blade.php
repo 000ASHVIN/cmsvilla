@@ -1,16 +1,69 @@
-@extends('layouts.app')
+@extends('layouts.master')
+@section('banner')
+<div class="contact-banner">
+    <div class="container">
+        <center>
+            <h1 class="clean-title is-1 mt-5 mb-5" style="color: white">
+                {{ $faq->name }}
+            </h1>
+        </center>
+    </div>
+</div>
+@endsection
+@section('content')
+    <div class="section is-medium">
+        <div class="container">
+            <div class="faq-wrapper">
+                <div class="columns">
+                    <div class="column is-5 is-offset-1">
+                        @php $i=0; @endphp
+                        @foreach ($faqs as $key => $row)
+                            @if ($key % 2 == 0)
+                                <div class="faq-block">
+                                    <div class="block-header">
+                                        <div class="header-icon" id="heading{{ $key }}">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                        <h3>{{ $row->faq_title }}</h3>
+                                    </div>
+                                    <div class="block-body" id="collapse{{ $key }}">
+                                        <p>{{ $row->faq_content }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="column is-5">
+                        @php $i=0; @endphp
+                        @foreach ($faqs as $key => $row)
+                            @if ($key % 2 != 0)
+                                <div class="faq-block">
+                                    <div class="block-header">
+                                        <div class="header-icon" id="heading{{ $key }}">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                        <h3>{{ $row->faq_title }}</h3>
+                                    </div>
+                                    <div class="block-body" id="collapse{{ $key }}">
+                                        <p>{{ $row->faq_content }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+{{-- @extends('layouts.app')
 
 @section('content')
     <div class="page-banner" style="background-image: url({{ asset('uploads/'.$g_setting->banner_faq) }})">
         <div class="bg-page"></div>
         <div class="text">
             <h1>{{ $faq->name }}</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ HOME }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $faq->name }}</li>
-                </ol>
-            </nav>
         </div>
     </div>
 
@@ -48,4 +101,4 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
