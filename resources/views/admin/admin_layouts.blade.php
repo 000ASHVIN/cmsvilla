@@ -282,13 +282,26 @@
                 </div>
             </div>
         </li>
-        <li class="nav-item {{ Request::is('admin/case/study/items/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'active' : '' }}">
-            <a class="nav-link collapsed" href="{{ route('admin.case.study.items.index') }}">
+        <li class="nav-item {{ Request::is('admin/case/study/items/*')||Request::is('admin/case-study/*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIndustry1" aria-expanded="true" aria-controls="collapseIndustry1">
                 <i class="fas fa-cubes"></i>
-                <span>Case Study Items
-                </span>
-                </a>
+                <span>Case Study Section</span>
+            </a>
+            <div id="collapseIndustry1" class="collapse {{ Request::is('admin/case/study/items/*')||Request::is('admin/case-study/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.case-study.index') }}">Case Studies</a>
+                    <a class="collapse-item" href="{{ route('admin.case.study.items.index') }}">Case Study Items</a>
+                </div>
+            </div>
         </li>
+        @php if( in_array('FAQ', $arr_one) || $logged_user_role_id==1 ): @endphp
+        <li class="nav-item {{ Request::is('admin/faq/*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.faq.index') }}">
+                <i class="fas fa-question-circle"></i>
+                <span>FAQ</span>
+            </a>
+        </li>
+        @endif
 
         <!-- Page Settings -->
         @php if( in_array('Page Settings', $arr_one) || $logged_user_role_id==1 ): @endphp
@@ -544,12 +557,12 @@
         </li>
         @endif
 
-        <li class="nav-item {{ Request::is('admin/case-study/*') ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Request::is('admin/case-study/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.case-study.index') }}">
                 <i class="fas fa-certificate"></i>
                 <span>Case Studies</span>
             </a>
-        </li>
+        </li> --}}
 
         {{-- <li class="nav-item {{ Request::is('admin/how-help/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.how-help.index') }}">
@@ -579,14 +592,14 @@
         @endif
 
         <!-- FAQ -->
-        @php if( in_array('FAQ', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('FAQ', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/faq/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.faq.index') }}">
                 <i class="fas fa-question-circle"></i>
                 <span>FAQ</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Email Template -->
         @php if( in_array('Email Template', $arr_one) || $logged_user_role_id==1 ): @endphp

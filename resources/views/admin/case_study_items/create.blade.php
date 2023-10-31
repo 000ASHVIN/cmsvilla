@@ -29,7 +29,7 @@
                     <textarea name="short_description" class="form-control h_100" cols="30" rows="10">{{ old('short_description') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="industry_id">Select Industry</label>
+                    <label for="industry_id">Select Case Study</label>
                     <select class="form-control select2" name="industry_id" id="industry_id" data-placeholder="Select Industry" >
                         {{-- <option value="" disabled>Select Industry</option> --}}
                         @foreach ($industry as $option)

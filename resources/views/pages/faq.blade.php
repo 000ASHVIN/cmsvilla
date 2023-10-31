@@ -27,7 +27,7 @@
                                         <h3>{{ $row->faq_title }}</h3>
                                     </div>
                                     <div class="block-body" id="collapse{{ $key }}">
-                                        <p>{{ $row->faq_content }}</p>
+                                        {!! $row->faq_content !!}
                                     </div>
                                 </div>
                             @endif
@@ -45,7 +45,7 @@
                                         <h3>{{ $row->faq_title }}</h3>
                                     </div>
                                     <div class="block-body" id="collapse{{ $key }}">
-                                        <p>{{ $row->faq_content }}</p>
+                                        {!! $row->faq_content !!}
                                     </div>
                                 </div>
                             @endif

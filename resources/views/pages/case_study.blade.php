@@ -23,8 +23,6 @@
                         <div class="card-image">
                             <img class="item-featured-image" src="{{ asset('uploads/'.$row->photo) }}" alt=""
                                 width="100" />
-
-
                             <div class="post-date">
                                 <div class="post-date-inner">
                                     <span>{{ date('M', strtotime($row->created_at)) }}</span>
@@ -39,9 +37,9 @@
                                         data-demo-src="assets/img/avatars/alan.jpg" />
                                 </div>
                                 <div class="title-meta">
-                                    <h2 class="post-title">
-                                        {{ $row->name }}
-                                    </h2>
+                                    <a class="read-more-link" href="{{ route('front.case.study.details', $row->slug ) }}"> 
+                                        <h2 class="post-title">{{ $row->name }}</h2>
+                                    </a>
                                     <h4 class="post-subtitle">
                                         <span>by <a class="author-name" href="#">Alan M.</a></span>
                                         <i class="fa fa-circle"></i>
@@ -50,12 +48,9 @@
                                 </div>
                             </div>
                             <p>
-                                {!! Str::limit(strip_tags($row->description), 130) !!}
+                            {!! Str::limit(strip_tags($row->description), 130) !!}
                             </p>
-
-                            <a class="read-more-link" href="{{ route('front.case.study.items') }}">
-                                Read More <span>&#10230;</span>
-                            </a>
+                                <a class="read-more-link" href="{{ route('front.case.study.details', $row->slug ) }}">Read More <span>&#10230;</span></a>
                         </div>
                     </a>
                 </div>
@@ -65,8 +60,6 @@
         <div class="d-flex justify-content-center">
             {{ $case_studies->links() }}
         </div>
-
-
     </div>
 </div>
 @include('pages.includes.companies')

@@ -105,7 +105,9 @@ Route::get('/industries', [IndustryController::class, 'index'])->name('front.ind
 Route::get('/industry/{slug}', [IndustryController::class,'details'])->name('front.industry.details');
 Route::get('/restuarant/chains', [IndustryController::class, 'restuarant'])->name('front.restuarant');
 // Route::get('/industry/{slug?}', [PageIndustryController::class,'index'])->name('front.industry');
-Route::get('/case-study-items/front', [PageCaseStudyController::class,'caseStudyFront'])->name('front.case.study.items');
+Route::get('/case-study/front', [PageCaseStudyController::class,'caseStudyFront'])->name('front.case.study.items');
+Route::get('/case-study/front/{slug}', [PageCaseStudyController::class,'details'])->name('front.case.study.details');
+
 Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');
 Route::get('about', [AboutController::class,'index'])->name('front.about');
 Route::get('services', [ServiceControllerForFront::class,'index'])->name('front.services');

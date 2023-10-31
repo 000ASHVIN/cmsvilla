@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CaseStudy;
 use App\Models\CaseStudyItems;
 use App\Models\Industry;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class CaseStCaseStudyItemsController extends Controller
 
     public function create()
     {
-        $industry = Industry::all();
+        $industry = CaseStudy::all();
         return view('admin.case_study_items.create',compact('industry'));
     }
 
@@ -69,7 +70,7 @@ class CaseStCaseStudyItemsController extends Controller
         // }else{
         //     $industry_id = [];
         // }
-        $industry = Industry::all();
+        $industry = CaseStudy::all();
         return view('admin.case_study_items.edit',compact('service','industry','industry_id'));
     }
 
