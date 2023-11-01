@@ -2,7 +2,7 @@
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Add Industry</h1>
 
-    <form action="{{ route('admin.industry.store') }}" method="post">
+    <form action="{{ route('admin.industry.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -23,6 +23,12 @@
                 <div class="form-group">
                     <label for="">Description</label>
                     <textarea name="description" class="form-control h_100" cols="30" rows="10">{{ old('description') }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Photo *</label>
+                    <div>
+                        <input type="file" name="photo">
+                    </div>
                 </div>
             </div>
             <div class="card-header py-3">

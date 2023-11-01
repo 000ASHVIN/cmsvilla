@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
     <div class="page-banner" style="background-image: url({{ asset('uploads/'.$g_setting->banner_blog) }})">
@@ -53,5 +53,68 @@
             </div>
         </div>
     </div>
+
+@endsection --}}
+@extends('layouts.master')
+@section('banner')
+<div class="contact-banner">
+    <div class="container">
+        <center>
+            <h1 class="clean-title is-1 mt-5 mb-5" style="color: white">
+                Reconcify is superfast solution to complex and voluminious reconciliations
+            </h1>
+        </center>
+    </div>
+</div>
+@endsection
+@section('content')
+<div class="section blog-section" style="padding-bottom: 0">
+    <div class="container">
+        <div class="columns is-multiline">
+            <!--First Column-->
+            @foreach($blog_items as $row)
+            <div class="column is-4">
+                <!--Post Card-->
+                <div class="card blog-grid-item is-masonry masonry-size-3">
+                    <a href="CaseStudyDetails.html">
+                        <div class="card-image">
+                            <img class="item-featured-image" src="{{ asset('uploads/'.$row->blog_photo) }}" alt=""
+                                width="100" />
+                            <div class="post-date">
+                                <div class="post-date-inner">
+                                    <span>{{ date('M', strtotime($row->created_at)) }}</span>
+                                    <span>{{ date('d', strtotime($row->created_at)) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="featured-post-title">
+                                <div class="title-avatar">
+                                    <img src="{{ asset('uploads/'.$row->blog_photo) }}" alt="" class="w-100" alt=""
+                                        data-demo-src="assets/img/avatars/alan.jpg" />
+                                </div>
+                                <div class="title-meta">
+                                    <a class="read-more-link" href="{{ route('blog.detail', $row->blog_slug ) }}"> 
+                                        <h2 class="post-title">{{ $row->blog_title }}</h2>
+                                    {{-- </a> --}}
+                                </div>
+                            </div>
+                            <p>
+                                <p>
+                                    {!! nl2br(e($row->blog_content_short)) !!}
+                                </p>
+                            </p>
+                                <a class="read-more-link" href="{{ route('blog.detail', $row->blog_slug ) }}">Read More <span>&#10230;</span></a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        {{-- <div class="d-flex justify-content-center">
+            {{ $case_studies->links() }}
+        </div> --}}
+    </div>
+</div>
 
 @endsection

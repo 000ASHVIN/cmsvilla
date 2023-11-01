@@ -41,6 +41,8 @@ class CaseStudyController extends Controller
         if(empty($data['slug'])) {
             $data['slug'] = Str::slug($request->name);
         }
+        $filteredSlug = str_replace(' ', '_', $data['slug']);
+        $data['slug'] = $filteredSlug;
 
         $statement = DB::select("SHOW TABLE STATUS LIKE 'case_studies'");
         $ai_id = $statement[0]->Auto_increment;
@@ -67,7 +69,8 @@ class CaseStudyController extends Controller
         
         $service = CaseStudy::findOrFail($id);
         $data = $request->only($service->getFillable());
-
+        $filteredSlug = str_replace(' ', '_', $data['slug']);
+        $data['slug'] = $filteredSlug;
         if($request->hasFile('photo')) {
             $request->validate([
                 'name'   =>  [

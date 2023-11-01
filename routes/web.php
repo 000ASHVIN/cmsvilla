@@ -106,14 +106,14 @@ Route::get('/industry/{slug}', [IndustryController::class,'details'])->name('fro
 Route::get('/restuarant/chains', [IndustryController::class, 'restuarant'])->name('front.restuarant');
 // Route::get('/industry/{slug?}', [PageIndustryController::class,'index'])->name('front.industry');
 Route::get('/case-study/front', [PageCaseStudyController::class,'caseStudyFront'])->name('front.case.study.items');
-Route::get('/case-study/front/{slug}', [PageCaseStudyController::class,'details'])->name('front.case.study.details');
+Route::get('/case-study/{slug}', [PageCaseStudyController::class,'details'])->name('front.case.study.details');
 
 Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');
 Route::get('about', [AboutController::class,'index'])->name('front.about');
 Route::get('services', [ServiceControllerForFront::class,'index'])->name('front.services');
 Route::get('service/{slug}', [ServiceControllerForFront::class,'detail']);
 Route::get('blog', [BlogControllerForFront::class,'index'])->name('front.blogs');
-Route::get('blog/{slug}', [BlogControllerForFront::class,'detail']);
+Route::get('blog/{slug}', [BlogControllerForFront::class,'detail'])->name('blog.detail');
 Route::post('blog/comment', [BlogControllerForFront::class,'comment'])->name('front.comment');
 Route::get('category/{slug}', [CategoryControllerForFront::class,'detail']);
 Route::post('search', [SearchController::class,'index']);

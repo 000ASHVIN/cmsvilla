@@ -12,7 +12,8 @@ class Industry extends Model
         'slug',
         'description',
         'seo_title',
-        'seo_meta_description'
+        'seo_meta_description',
+        'photo'
     ];
 
     public function pageIndustryItem() {

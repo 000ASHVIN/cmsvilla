@@ -91,7 +91,7 @@
               <a class="navbar-item is-slide isWeb-nav" href="./Blogs.html">
                 Resources</a>
               <ul class="dropdown_menu">
-                <a href="Blogs.html">
+                <a href="{{ route('front.blogs') }}">
                   <li>Blogs</li>
                 </a>
                 <a href="{{ route('front.faq') }}">

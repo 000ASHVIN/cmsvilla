@@ -32,7 +32,8 @@ class IndustryController extends Controller
         
         $request->validate([
             'name' => 'required|unique:Industry',
-            'slug' => 'unique:Industry'
+            'slug' => 'unique:Industry',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
         $category = new Industry();
         $data = $request->only($category->getFillable());
@@ -41,6 +42,15 @@ class IndustryController extends Controller
             unset($data['slug']);
             $data['slug'] = Str::slug($request->name);
         }
+        $filteredSlug = str_replace(' ', '_', $data['slug']);
+        $data['slug'] = $filteredSlug;
+
+        $statement = DB::select("SHOW TABLE STATUS LIKE 'industry'");
+        $ai_id = $statement[0]->Auto_increment;
+        $ext = $request->file('photo')->extension();
+        $final_name = 'service-'.$ai_id.'.'.$ext;
+        $request->file('photo')->move(public_path('uploads/'), $final_name);
+        $data['photo'] = $final_name;
         $category->fill($data)->save();
         return redirect()->route('admin.industry.index')->with('success', 'Industry is added successfully!');
     }
@@ -74,25 +84,50 @@ class IndustryController extends Controller
         if(env('PROJECT_MODE') == 0) {
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
-        
+        $service = Industry::findOrFail($id); 
+        $data = $request->only($service->getFillable());
+        if($request->hasFile('photo')) {
+            $request->validate([
+                'name'   =>  [
+                    'required',
+                    Rule::unique('industry')->ignore($id),
+                ],
+                'slug'   =>  [
+                    Rule::unique('industry')->ignore($id),
+                ],
+                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+            if(isset($service->photo) && $service->photo != null) {
+                if(file_exists($service->photo)) {
+                    unlink(public_path('uploads/'.$service->photo));
+                }
+            }
+            $ext = $request->file('photo')->extension();
+            $final_name = 'service-'.$id.'.'.$ext;
+            $request->file('photo')->move(public_path('uploads/'), $final_name);
+            $data['photo'] = $final_name;
+     }   else {
         $request->validate([
             'name'   =>  [
                 'required',
-                Rule::unique('Industry')->ignore($id),
+                Rule::unique('industry')->ignore($id),
             ],
             'slug'   =>  [
-                Rule::unique('Industry')->ignore($id),
+                Rule::unique('industry')->ignore($id),
             ]
         ]);
+        $data['photo'] = $service->photo;
+    }
 
-        $category = Industry::findOrFail($id);
-        $data = $request->only($category->getFillable());
         if(empty($data['slug']))
         {
             unset($data['slug']);
             $data['slug'] = Str::slug($request->name);
         }
-        $category->fill($data)->save();
+        $filteredSlug = str_replace(' ', '_', $data['slug']);
+        $data['slug'] = $filteredSlug;
+        
+        $service->fill($data)->save();
         return redirect()->route('admin.industry.index')->with('success', 'Industry is updated successfully!');
     }
 

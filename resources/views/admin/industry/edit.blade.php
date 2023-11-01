@@ -36,7 +36,7 @@
                         <div class="tab-pane fade show active" id="v-pills-edit" role="tabpanel" aria-labelledby="v-pills-edit-tab">
                             {{-- <h1 class="h3 mb-3 text-gray-800">Edit Industry</h1> --}}
 
-                            <form action="{{ url('admin/industry/update/'.$industry->id) }}" method="post">
+                            <form action="{{ url('admin/industry/update/'.$industry->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
@@ -57,6 +57,19 @@
                                         <div class="form-group">
                                             <label for="">Description</label>
                                             <textarea name="description" class="form-control h_100" cols="30" rows="10">{{ $industry->description }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Existing Photo</label>
+                                            <div>
+                                                <input type="hidden" value="{{ $industry->photo }}" name="current_photo">
+                                                <img src="{{ asset('uploads/'.$industry->photo) }}" alt="" class="w_200">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Change Photo</label>
+                                            <div>
+                                                <input type="file" name="photo">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-header py-3">

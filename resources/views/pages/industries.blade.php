@@ -124,11 +124,11 @@
                 <div class="columns services-cards is-vcentered" style="align-items: flex-start">
                     <!-- Card -->
                     @foreach ($industries as $industry)
-                      <div class="column">
+                      {{-- <div class="column">
                         <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal">
-                            <div class="card-icon">
-                                <i class="im im-icon-Two-Windows"></i>
-                            </div>
+                          <div class="card-image">
+                            <img class="item-featured-image" src="{{ asset('uploads/' . $industry->photo) }}" alt="" width="100" />
+                        </div>
                             <div class="card-title">
                                 <a href="{{ route('front.industry.details', $industry->slug) }}"><h4>{{ $industry->name }}</h4></a>
                             </div>
@@ -138,7 +138,30 @@
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+                    <div class="column is-4">
+                      <!--Post Card-->
+                      <div class="card blog-grid-item is-masonry masonry-size-3">
+                          <a href="CaseStudyDetails.html">
+                              <div class="card-image">
+                                  <img class="item-featured-image" src="{{ asset('uploads/' . $industry->photo) }}" alt=""
+                                      width="100" />
+                              </div>
+                              <div class="card-content">
+                                  <div class="featured-post-title">
+                                      <div class="title-meta">
+                                          <a class="read-more-link" href="{{ route('front.industry.details', $industry->slug) }}"> 
+                                              <h2 class="post-title">{{ $industry->name }}</h2>
+                                          </a>
+                                      </div>
+                                  </div>
+                                  <p>
+                                  {!! Str::limit(strip_tags($industry->description), 130) !!}
+                                  </p>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
                     @endforeach
                 </div>
             </div>
