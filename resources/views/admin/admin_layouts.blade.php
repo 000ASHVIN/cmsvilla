@@ -78,11 +78,11 @@
                 @endif
             @endif
 
-            @if($conName[1] == 'role')
+            {{-- @if($conName[1] == 'role')
                 @if(!in_array('Admin User Section', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
+            @endif --}}
 
             @if($conName[1] == 'translation')
                 @if(!in_array('Translation Section', $arr_one))
@@ -114,11 +114,11 @@
                 @endif
             @endif
 
-            @if($conName[1] == 'menu')
+            {{-- @if($conName[1] == 'menu')
                 @if(!in_array('Menu Manage', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
+            @endif --}}
 
             @if($conName[1] == 'project')
                 @if(!in_array('Project', $arr_one))
@@ -132,11 +132,11 @@
             @endif
             @endif
 
-            @if($conName[1] == 'job')
+            {{-- @if($conName[1] == 'job')
                 @if(!in_array('Career Section', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
+            @endif --}}
 
             @if($conName[1] == 'photo-gallery')
                 @if(!in_array('Photo Gallery', $arr_one))
@@ -144,29 +144,29 @@
                 @endif
             @endif
 
-            @if($conName[1] == 'video-gallery')
+            {{-- @if($conName[1] == 'video-gallery')
                 @if(!in_array('Video Gallery', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
-
+            @endif --}}
+{{-- 
             @if($conName[1] == 'product'||$conName[1] == 'shipping'||$conName[1] == 'coupon')
                 @if(!in_array('Product Section', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
+            @endif --}}
 
-            @if($conName[1] == 'order')
+            {{-- @if($conName[1] == 'order')
                 @if(!in_array('Order Section', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
+            @endif --}}
 
-            @if($conName[1] == 'customer')
+            {{-- @if($conName[1] == 'customer')
                 @if(!in_array('Customer Section', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
+            @endif --}}
 
             @if($conName[1] == 'why-choose')
                 @if(!in_array('Why Choose Us', $arr_one))
@@ -186,11 +186,11 @@
                 @endif
             @endif
 
-            @if($conName[1] == 'team-member')
+            {{-- @if($conName[1] == 'team-member')
                 @if(!in_array('Team Member', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
+            @endif --}}
 
             @if($conName[1] == 'faq')
                 @if(!in_array('FAQ', $arr_one))
@@ -198,11 +198,11 @@
                 @endif
             @endif
 
-            @if($conName[1] == 'email-template')
+            {{-- @if($conName[1] == 'email-template')
                 @if(!in_array('Email Template', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
-            @endif
+            @endif --}}
 
             @if($conName[1] == 'subscriber')
                 @if(!in_array('Subscriber Section', $arr_one))
@@ -318,13 +318,13 @@
                     <a class="collapse-item" href="{{ route('admin.page_service.edit') }}">Service</a>
                     <a class="collapse-item" href="{{ route('admin.page_shop.edit') }}">Shop</a>
                     <a class="collapse-item" href="{{ route('admin.page_blog.edit') }}">Blog</a>
-                    <a class="collapse-item" href="{{ route('admin.page_project.edit') }}">Project</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.page_project.edit') }}">Project</a> --}}
                     <a class="collapse-item" href="{{ route('admin.page_faq.edit') }}">FAQ</a>
-                    <a class="collapse-item" href="{{ route('admin.page_team.edit') }}">Team Member</a>
-                    <a class="collapse-item" href="{{ route('admin.page_photo_gallery.edit') }}">Photo Gallery</a>
-                    <a class="collapse-item" href="{{ route('admin.page_video_gallery.edit') }}">Video Gallery</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.page_team.edit') }}">Team Member</a> --}}
+                    {{-- <a class="collapse-item" href="{{ route('admin.page_photo_gallery.edit') }}">Photo Gallery</a> --}}
+                    {{-- <a class="collapse-item" href="{{ route('admin.page_video_gallery.edit') }}">Video Gallery</a> --}}
                     <a class="collapse-item" href="{{ route('admin.page_contact.edit') }}">Contact</a>
-                    <a class="collapse-item" href="{{ route('admin.page_career.edit') }}">Career</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.page_career.edit') }}">Career</a> --}}
                     <a class="collapse-item" href="{{ route('admin.page_term.edit') }}">Term</a>
                     <a class="collapse-item" href="{{ route('admin.page_privacy.edit') }}">Privacy</a>
                     <a class="collapse-item" href="{{ route('admin.page_other.edit') }}">Other</a>
@@ -336,7 +336,7 @@
 
 
         <!-- Admin Users Section -->
-        @php if( in_array('Admin User Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Admin User Section', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/role/*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminUser" aria-expanded="true" aria-controls="collapseAdminUser">
                 <i class="fas fa-user-secret"></i>
@@ -349,7 +349,7 @@
                 </div>
             </div>
         </li>
-        @endif
+        @endif --}}
 
 
 
@@ -414,34 +414,34 @@
 
 
         <!-- Dynamic Pages -->
-        @php if( in_array('Dynamic Pages', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Dynamic Pages', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/dynamic-page/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.dynamic_page.index') }}">
                 <i class="fas fa-cube"></i>
                 <span>Dynamic Pages</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Menu Manage -->
-        @php if( in_array('Menu Manage', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Menu Manage', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/menu/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.menu.index') }}">
                 <i class="fas fa-bars"></i>
                 <span>Menu Manage</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Project -->
-        @php if( in_array('Project', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Project', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/project/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.project.index') }}">
                 <i class="fas fa-umbrella"></i>
                 <span>Features</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         @php if( in_array('financials', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/financials/*') ? 'active' : '' }}">
@@ -453,7 +453,7 @@
         @endif
 
         <!-- Career Section -->
-        @php if( in_array('Career Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Career Section', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/job/*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCareer" aria-expanded="true" aria-controls="collapseCareer">
                 <i class="fas fa-user-secret"></i>
@@ -466,31 +466,31 @@
                 </div>
             </div>
         </li>
-        @endif
+        @endif --}}
 
 
         <!-- Photo Gallery -->
-        @php if( in_array('Photo Gallery', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Photo Gallery', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/photo-gallery/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.photo.index') }}">
                 <i class="fas fa-camera"></i>
                 <span>Photo Gallery</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Video Gallery -->
-        @php if( in_array('Video Gallery', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Video Gallery', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/video-gallery/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.video.index') }}">
                 <i class="fas fa-video"></i>
                 <span>Video Gallery</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Product Section -->
-        @php if( in_array('Product Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Product Section', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/product/*')||Request::is('admin/shipping/*')||Request::is('admin/coupon/*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
                 <i class="fas fa-shopping-cart"></i>
@@ -504,27 +504,27 @@
                 </div>
             </div>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Order -->
-        @php if( in_array('Order Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Order Section', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/order/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.order.index') }}">
                 <i class="fas fa-bookmark"></i>
                 <span>Order Section</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Customer -->
-        @php if( in_array('Customer Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Customer Section', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/customer/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.customer.index') }}">
                 <i class="fas fa-users"></i>
                 <span>Customer Section</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         {{-- <!-- Why Choose Us -->
         @php if( in_array('Why Choose Us', $arr_one) || $logged_user_role_id==1 ): @endphp
@@ -548,14 +548,14 @@
         @endif
 
         <!-- Services -->
-        @php if( in_array('Service', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Service', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/service/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.service.index') }}">
                 <i class="fas fa-certificate"></i>
                 <span>Uses</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         {{-- <li class="nav-item {{ Request::is('admin/case-study/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.case-study.index') }}">
@@ -581,7 +581,7 @@
         </li>
         @endif
 
-        <!-- Team Members -->
+        {{-- <!-- Team Members -->
         @php if( in_array('Team Member', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/team-member/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.team_member.index') }}">
@@ -589,7 +589,7 @@
                 <span>Team Member</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- FAQ -->
         {{-- @php if( in_array('FAQ', $arr_one) || $logged_user_role_id==1 ): @endphp
@@ -602,14 +602,14 @@
         @endif --}}
 
         <!-- Email Template -->
-        @php if( in_array('Email Template', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Email Template', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/email-template/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.email_template.index') }}">
                 <i class="fas fa-envelope"></i>
                 <span>Email Template</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Subscriber -->
         @php if( in_array('Subscriber Section', $arr_one) || $logged_user_role_id==1 ): @endphp
