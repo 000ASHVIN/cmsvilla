@@ -31,8 +31,8 @@ class IndustryController extends Controller
         }
         
         $request->validate([
-            'name' => 'required|unique:Industry',
-            'slug' => 'unique:Industry',
+            'name' => 'required|unique:industry',
+            'slug' => 'unique:industry',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
         $category = new Industry();
