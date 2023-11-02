@@ -12,6 +12,7 @@ class FaqController extends Controller
         $g_setting = DB::table('general_settings')->where('id', 1)->first();
         $faq = DB::table('page_faq_items')->where('id', 1)->first();
         $faqs = DB::table('faqs')->orderby('faq_order', 'asc')->get();
-        return view('pages.faq', compact('faq','g_setting','faqs'));
+        $industries_menu = DB::table('industry')->get();
+        return view('pages.faq', compact('faq','g_setting','faqs','industries_menu'));
     }
 }

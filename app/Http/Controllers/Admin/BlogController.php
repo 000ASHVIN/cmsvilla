@@ -102,9 +102,10 @@ class BlogController extends Controller
             $request->validate([
                 'blog_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
-
-            unlink(public_path('uploads/'.$blog->blog_photo));
-
+            
+            if($request->input('current_photo') && file_exists($blog->photo)){
+                unlink(public_path('uploads/'.$blog->photo));
+            }
             // Uploading the file
             $ext = $request->file('blog_photo')->extension();
             $final_name = 'blog-'.$id.'.'.$ext;

@@ -108,8 +108,8 @@
                 @endif
             @endif
 
-            @if($conName[1] == 'dynamic-page')
-                @if(!in_array('Dynamic Pages', $arr_one))
+            @if($conName[1] == 'contact')
+                @if(!in_array('contact', $arr_one))
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
             @endif
@@ -137,6 +137,11 @@
                     <script>window.location = "{{ url('admin/dashboard') }}";</script>
                 @endif
             @endif --}}
+             @if($conName[1] == 'Blog')
+                @if(!in_array('Blog Section', $arr_one))
+                    <script>window.location = "{{ url('admin/dashboard') }}";</script>
+                @endif
+            @endif
 
             @if($conName[1] == 'photo-gallery')
                 @if(!in_array('Photo Gallery', $arr_one))
@@ -264,18 +269,18 @@
         </li>
         @endif
 
-        <li class="nav-item {{ Request::is('admin/industry/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'active' : '' }}">
+        <li class="nav-item {{ Request::is('admin/industry/*') ||Request::is('admin/industry-item/*')||Request::is('admin/why-choose/*') ||Request::is('admin/how-help/*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIndustry" aria-expanded="true" aria-controls="collapseIndustry">
                 <i class="fas fa-cubes"></i>
                 <span>Industry Section</span>
             </a>
-            <div id="collapseIndustry" class="collapse {{ Request::is('admin/industry/*')||Request::is('admin/how-help/*')||Request::is('admin/why-choose/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapseIndustry" class="collapse {{ Request::is('admin/industry/*')||Request::is('admin/industry-item/*')||Request::is('admin/why-choose/*') ||Request::is('admin/how-help/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="{{ route('admin.industry.banner.index') }}">Industries Banner</a>
                     <a class="collapse-item" href="{{ route('admin.industry.index') }}">Industries</a>
-                    <a class="collapse-item" href="{{ route('admin.industry_item.index') }}">Industry Item</a>
-                    <a class="collapse-item" href="{{ route('admin.why_choose.index') }}">WorkFlow</a>
-                    <a class="collapse-item" href="{{ route('admin.how-help.index') }}">How Reconcify Helps</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.industry_item.index') }}">Industry Item</a> --}}
+                    {{-- <a class="collapse-item" href="{{ route('admin.why_choose.index') }}">WorkFlow</a> --}}
+                    <a class="collapse-item" href="{{ route('admin.how-help.index') }}">Industry Item</a>
                     {{-- <a class="collapse-item" href="{{ route('admin.blog.index') }}">Blogs</a>
                     <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
                     <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a> --}}
@@ -394,7 +399,7 @@
         @endif
 
         <!-- Blog Section -->
-        @php if( in_array('Blog Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Blog Section', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/category/*')||Request::is('admin/blog/*')||Request::is('admin/comment/*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog" aria-expanded="true" aria-controls="collapseBlog">
                 <i class="fas fa-cubes"></i>
@@ -409,19 +414,36 @@
                 </div>
             </div>
         </li>
+        @endif --}}
+
+
+        @php if( in_array('Blog Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        <li class="nav-item {{ Request::is('admin/blog/*') || Request::is('admin/category/*') || Request::is('admin/comment/*') ||  Request::is('admin/comment/*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCareer" aria-expanded="true" aria-controls="collapseCareer">
+                <i class="fas fa-user-secret"></i>
+                <span>Blog Section</span>
+            </a>
+            <div id="collapseCareer" class="collapse {{ Request::is('admin/blog/*') || Request::is('admin/category/*') || Request::is('admin/comment/*') ||  Request::is('admin/comment/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.category.index') }}">Categories</a>
+                    <a class="collapse-item" href="{{ route('admin.blog.index') }}">Blogs</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
+                    <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a> --}}
+                </div>
+            </div>
+        </li>
         @endif
 
 
-
         <!-- Dynamic Pages -->
-        {{-- @php if( in_array('Dynamic Pages', $arr_one) || $logged_user_role_id==1 ): @endphp
-        <li class="nav-item {{ Request::is('admin/dynamic-page/*') ? 'active' : '' }}">
+         @php if( in_array('contact', $arr_one) || $logged_user_role_id==1 ): @endphp
+        <li class="nav-item {{ Request::is('admin/contact/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.dynamic_page.index') }}">
                 <i class="fas fa-cube"></i>
-                <span>Dynamic Pages</span>
+                <span>Contact Us</span>
             </a>
         </li>
-        @endif --}}
+        @endif 
 
         <!-- Menu Manage -->
         {{-- @php if( in_array('Menu Manage', $arr_one) || $logged_user_role_id==1 ): @endphp

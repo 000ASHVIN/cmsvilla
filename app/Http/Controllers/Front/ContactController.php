@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactPageMessage;
 use App\Models\Admin;
+use App\Models\DynamicPage;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Mail;
@@ -14,7 +15,10 @@ class ContactController extends Controller
     {
         $g_setting = DB::table('general_settings')->where('id', 1)->first();
         $contact = DB::table('page_contact_items')->where('id', 1)->first();
-        return view('pages.contact', compact('contact','g_setting'));
+        $industries_menu = DB::table('industry')->get();
+        $dynamic_pages =  DB::table('dynamic_pages')->get();
+        // dd($dynamic_pages);
+        return view('pages.contact', compact('contact','g_setting','industries_menu','dynamic_pages'));
     }
 
     public function send_email(Request $request)

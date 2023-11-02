@@ -94,7 +94,12 @@
             @csrf
             <div class="hero-form">
               <div class="flex-card">
-                <h2 class="form-header">Reach Out To Us!</h2>
+                @foreach ($dynamic_pages as $item)
+                <h2 class="form-header">
+                  {{ $item->dynamic_page_name }}
+                </h2>
+                @endforeach
+               
                 <div class="field">
                   <div class="control has-icons-left">
                     <input

@@ -82,7 +82,10 @@ class CaseStudyController extends Controller
                 ],
                 'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
-            unlink(public_path('uploads/'.$service->photo));
+            if($request->input('current_photo') && file_exists($service->photo)){
+                unlink(public_path('uploads/'.$service->photo));
+            }
+            // unlink(public_path('uploads/'.$service->photo));
             $ext = $request->file('photo')->extension();
             $final_name = 'service-'.$id.'.'.$ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);
@@ -111,7 +114,7 @@ class CaseStudyController extends Controller
         }
         
         $service = CaseStudy::findOrFail($id);
-        unlink(public_path('uploads/'.$service->photo));
+        // unlink(public_path('uploads/'.$service->photo));
         $service->delete();
         return Redirect()->back()->with('success', 'Service is deleted successfully!');
     }

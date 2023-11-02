@@ -17,7 +17,8 @@ class BlogController extends Controller
         $blog_items = DB::table('blogs')->orderby('id', 'desc')->paginate(4);
         $blog_items_no_pagi = DB::table('blogs')->orderby('id', 'desc')->get();
         $categories = DB::table('categories')->get();
-        return view('pages.blogs', compact('blog','g_setting','blog_items','categories','blog_items_no_pagi'));
+        $industries_menu = DB::table('industry')->get();
+        return view('pages.blogs', compact('blog','g_setting','blog_items','categories','blog_items_no_pagi','industries_menu'));
     }
 
     public function detail($slug)
@@ -27,12 +28,13 @@ class BlogController extends Controller
         $blog_items = DB::table('blogs')->get();
         $blog_items_no_pagi = DB::table('blogs')->orderby('id', 'desc')->get();
         $categories = DB::table('categories')->get();
+        $industries_menu = DB::table('industry')->get();
         if(!$blog_detail) {
             return abort(404);
         }
         $comments = '';
         $comments = DB::table('comments')->where('blog_id', $blog_detail->id)->where('comment_status', 'Approved')->get();
-        return view('pages.blog_detail', compact('g_setting','blog_detail','blog_items','blog_items_no_pagi','categories','comments'));
+        return view('pages.blog_detail', compact('g_setting','blog_detail','blog_items','blog_items_no_pagi','categories','comments','industries_menu'));
     }
 
     public function comment(Request $request)

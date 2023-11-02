@@ -78,25 +78,31 @@
                 <div class="card blog-grid-item is-masonry masonry-size-3">
                     <a href="CaseStudyDetails.html">
                         <div class="card-image">
-                            <img class="item-featured-image" src="{{ asset('uploads/'.$row->blog_photo) }}" alt=""
+                            <a href="{{ route('blog.detail', $row->blog_slug) }}">
+                              <img class="item-featured-image" src="{{ asset('uploads/'.$row->blog_photo) }}" alt=""
                                 width="100" />
+                            </a>
                             <div class="post-date">
                                 <div class="post-date-inner">
-                                    <span>{{ date('M', strtotime($row->created_at)) }}</span>
-                                    <span>{{ date('d', strtotime($row->created_at)) }}</span>
+                                    <a href="{{ route('blog.detail', $row->blog_slug) }}">
+                                       <span>{{ date('M', strtotime($row->created_at)) }}</span>
+                                       <span>{{ date('d', strtotime($row->created_at)) }}</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-content">
                             <div class="featured-post-title">
                                 <div class="title-avatar">
-                                    <img src="{{ asset('uploads/'.$row->blog_photo) }}" alt="" class="w-100" alt=""
+                                    <a href="{{ route('blog.detail', $row->blog_slug) }}">
+                                        <img src="{{ asset('uploads/'.$row->blog_photo) }}" alt="" class="w-100" alt=""
                                         data-demo-src="assets/img/avatars/alan.jpg" />
+                                    </a>
                                 </div>
                                 <div class="title-meta">
                                     <a class="read-more-link" href="{{ route('blog.detail', $row->blog_slug ) }}"> 
                                         <h2 class="post-title">{{ $row->blog_title }}</h2>
-                                    {{-- </a> --}}
+                                    </a>
                                 </div>
                             </div>
                             <p>

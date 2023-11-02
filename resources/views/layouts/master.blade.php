@@ -67,28 +67,26 @@
               </a>
 
               <ul class="dropdown_menu">
-                <a href="industrialusecaes.html">
-                  <li>Restaurant Chains</li>
-                </a>
-                <a href="industrialusecaes.html">
-                  <li>Ecommerce and D2C</li>
-                </a>
-                <a href="industrialusecaes.html">
-                  <li>Financial Product Intermediaries</li>
-                </a>
-              </ul>
+                @foreach ($industries_menu as $industries)
+                    <a href="/industry/{{ $industries->slug }}">
+                        <li class="dynamic-item">{{ $industries->name }}</li>
+                    </a>
+                @endforeach
+            </ul>
+            
+              
             </div>
             <a class="navbar-item is-slide" href="/case-study">
               Case Studies</a>
             <!-- Dropdown -->
             <div id="my-dropdown" class="jq-dropdown jq-dropdown-tip">
               <ul class="jq-dropdown-menu">
-                <li><a href="Blogs.html">Blogs</a></li>
+                <li><a href="{{ route('front.blogs') }}">Blogs</a></li>
                 <li><a href="{{ route('front.faq') }}">FAQs</a></li>
               </ul>
             </div>
             <div class="dropdown">
-              <a class="navbar-item is-slide isWeb-nav" href="./Blogs.html">
+              <a class="navbar-item is-slide isWeb-nav" href="{{ route('front.blogs') }}">
                 Resources</a>
               <ul class="dropdown_menu">
                 <a href="{{ route('front.blogs') }}">
@@ -99,7 +97,7 @@
                 </a>
               </ul>
             </div>
-            <a class="navbar-item is-slide ismobile-nav" href="./Blogs.html">
+            <a class="navbar-item is-slide ismobile-nav" href="{{ route('front.blogs') }}">
               Blogs</a>
             <a class="navbar-item is-slide ismobile-nav" href="{{ route('front.faq') }}">
               FAQs</a>
@@ -290,6 +288,7 @@
     id="aisensy-wa-widget" widget-id="LtmBFL"  >
     </script> -->
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     let clientScrollImage1 = document.getElementById("client-scroll-1");
       clientScrollImage1.addEventListener("mouseover", () => {
@@ -361,6 +360,13 @@
           });
       });
   </script>
+  <script>
+    $(document).ready(function() {
+        // Hide dynamic list items after the first three
+        $('.dropdown_menu .dynamic-item:gt(2)').hide();
+    });
+</script>
+
 </body>
 
 </html>

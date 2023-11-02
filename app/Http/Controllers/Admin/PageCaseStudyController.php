@@ -16,6 +16,7 @@ class PageCaseStudyController extends Controller
     	$why_choose_items = DB::table('why_choose_items')->get();
     	$services = DB::table('services')->get();
 		$industry_items = DB::table('industry_details_items')->get();
+		$industries_menu = DB::table('industry')->get();
     	$companies = DB::table('companies')->get();
     	$testimonials = DB::table('testimonials')->get();
     	$projects = DB::table('projects')->get();
@@ -24,7 +25,7 @@ class PageCaseStudyController extends Controller
 		$case_studies = DB::table('case_studies')->paginate(8);
         $how_helps = DB::table('how_help')->get();
         $page_industry =DB::table('page_industry_items')->where('id',1)->first();
-        return view('pages.case_study', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies', 'how_helps','industry_items'));
+        return view('pages.case_study', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies', 'how_helps','industry_items','industries_menu'));
     }
 	public function details($slug)
     {
@@ -40,6 +41,7 @@ class PageCaseStudyController extends Controller
     	$why_choose_items = DB::table('why_choose_items')->get();
     	$services = DB::table('services')->get();
 		$industry_items = DB::table('industry_details_items')->get();
+		$industries_menu = DB::table('industry')->get();
     	$companies = DB::table('companies')->get();
     	$testimonials = DB::table('testimonials')->get();
     	$projects = DB::table('projects')->get();
@@ -47,7 +49,7 @@ class PageCaseStudyController extends Controller
     	$blogs = DB::table('blogs')->get();
         $how_helps = DB::table('how_help')->get();
         $page_industry =DB::table('page_industry_items')->where('id',1)->first();
-        return view('pages.case_study_items', compact('case_study','sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items'));
+        return view('pages.case_study_items', compact('case_study','sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items','industries_menu'));
     }
 	public function caseStudyFront(Request $request)
     {   
@@ -57,6 +59,7 @@ class PageCaseStudyController extends Controller
     	$why_choose_items = DB::table('why_choose_items')->get();
     	$services = DB::table('services')->get();
 		$industry_items = DB::table('industry_details_items')->get();
+		$industries_menu = DB::table('industry')->get();
     	$companies = DB::table('companies')->get();
     	$testimonials = DB::table('testimonials')->get();
     	$projects = DB::table('projects')->get();
@@ -65,7 +68,7 @@ class PageCaseStudyController extends Controller
 		$case_studies_items = DB::table('case_study_items')->get();
         $how_helps = DB::table('how_help')->get();
         $page_industry =DB::table('page_industry_items')->where('id',1)->first();
-        return view('pages.case_study_items', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items'));
+        return view('pages.case_study_items', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items','industries_menu'));
     }
 
 }

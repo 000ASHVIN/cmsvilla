@@ -97,7 +97,7 @@ use App\Http\Controllers\Front\VideoGalleryController;
 /* --------------------------------------- */
 /* Front End */
 /* --------------------------------------- */
-Route::get('/', [HomeController::class,'index']);
+Route::get('/', [HomeController::class,'master']);
 Route::get('/master', [HomeController::class,'master']);
 // Route::get('/home', [HomeController::class,'home']);
 
@@ -458,6 +458,7 @@ Route::middleware(['admin:admin'])->group(function() {
     /* --------------------------------------- */
     /* Dynamic Pages - Admin */
     /* --------------------------------------- */
+    // Route::get('admin/dynamic-page/view', [DynamicPageController::class,'index'])->name('admin.dynamic_page.index');
     Route::get('admin/dynamic-page/view', [DynamicPageController::class,'index'])->name('admin.dynamic_page.index');
     Route::get('admin/dynamic-page/create', [DynamicPageController::class,'create'])->name('admin.dynamic_page.create');
     Route::post('admin/dynamic-page/store', [DynamicPageController::class,'store'])->name('admin.dynamic_page.store');
