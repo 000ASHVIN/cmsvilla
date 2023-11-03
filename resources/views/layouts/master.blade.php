@@ -18,6 +18,8 @@
   <link id="theme-sheet" rel="stylesheet" href="/assets/css/core.css" />
   <link rel="stylesheet" href="/assets/css/contact.css" />
   <link rel="stylesheet" href="/assets/css/custom.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 
   @yield('css')
 </head>
@@ -54,6 +56,9 @@
         </div>
 
         <!-- Navbar menu -->
+        @php
+          $industries_menu = \DB::table('industry')->take(3)->get();
+      @endphp
         <div class="navbar-menu">
           <!-- Navbar Start -->
           <div class="navbar-start">
@@ -204,30 +209,34 @@
                 <h3>Quick Links</h3>
               </div>
               <ul class="link-list">
-                <li><a href="/index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>
-                  <a href="/industrialusecaes.html">Industrial Details</a>
+                  <a href="/industry/{{ $industries->slug }}">Industrial Details</a>
                 </li>
                 <li>
-                  <a href="/Industries.html">Indusrial Display</a>
+                  <a href="{{ route('front.industries') }}">Indusrial Display</a>
                 </li>
                 <li><a href="#">Weekly sessions</a></li>
                 <li><a href="#">Free trials and demo</a></li>
-                <li><a href="/Contact.html">Contact</a></li>
+                <li><a href="{{ route('front.contact') }}">Contact</a></li>
               </ul>
             </div>
           </div>
+          @php
+           $blog_items_footer = \DB::table('blogs')->take(5)->get();
+         @endphp
+          
           <div class="column">
             <div class="footer-column">
               <div class="footer-header">
                 <h3>Blogs</h3>
               </div>
               <ul class="link-list">
-                <li><a href="BlogDetails.html">Blog 1</a></li>
-                <li><a href="BlogDetails.html">Blog 2</a></li>
-                <li><a href="BlogDetails.html">Blog 3</a></li>
-                <li><a href="BlogDetails.html">Blog 4</a></li>
-                <li><a href="BlogDetails.html">Blog 5</a></li>
+                <ul>
+                  @foreach($blog_items_footer as $row)
+                      <li><a href="{{ url('blog/'.$row->blog_slug) }}">Blog {{ $loop->iteration }}</a></li>
+                  @endforeach
+              </ul>
               </ul>
             </div>
           </div>
@@ -246,6 +255,10 @@
                       </ul>
                   </div>
               </div> -->
+            @php
+              $social_media = \DB::table('social_media_items')->take(6)->get();
+            @endphp
+             
         <div class="column">
           <div class="footer-column">
             <div class="footer-logo">
@@ -254,25 +267,12 @@
             <div class="footer-header">
               <nav class="level is-mobile">
                 <div class="level-left level-social">
-                  <a href="#" class="level-item">
-                    <span class="icon"><i class="fa fa-facebook" style="color: white"></i></span>
-                  </a>
-                  <a href="#" class="level-item">
-                    <span class="icon"><i class="fa fa-youtube" style="color: white"></i></span>
-                  </a>
-                  <a href="#" class="level-item">
-                    <span class="icon"><i class="fa fa-twitter" style="color: white"></i></span>
-                  </a>
-                  <a href="#" class="level-item">
-                    <span class="icon"><i class="fa fa-linkedin" style="color: white"></i></span>
-                  </a>
-                  <a href="#" class="level-item">
-                    <span class="icon"><i class="fa fa-dribbble" style="color: white"></i></span>
-                  </a>
-                  <a href="#" class="level-item">
-                    <span class="icon"><i class="fa fa-github" style="color: white"></i></span>
-                  </a>
-                </div>
+                    @foreach($social_media as $row)
+                    <a href="#" class="level-item">
+                      <span class="icon"><i class="{{ $row->social_icon }}" style="color: white"></i></span>
+                    </a>
+                    @endforeach
+                  </div>
               </nav>
             </div>
             <!-- <div class="copyright">
@@ -287,6 +287,9 @@
   <!-- <script type="text/javascript" src="https://d3mkw6s8thqya7.cloudfront.net/integration-plugin.js"
     id="aisensy-wa-widget" widget-id="LtmBFL"  >
     </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
+use App\Models\SocialMediaItem;
 use Illuminate\Http\Request;
 use DB;
 
@@ -18,9 +19,8 @@ class HomeController extends Controller
     	$financials = DB::table('financials')->get()->take(3);
 		$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
-		$case_studies = DB::table('case_studies')->get()->take(3);
-		$industries_menu = DB::table('industry')->get();
-        return view('pages.home.home', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','financials','team_members','blogs', 'case_studies','companies','industries_menu'));
+		$case_studies = DB::table('case_studies')->take(3)->get();
+        return view('pages.home.home', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','financials','team_members','blogs','case_studies','companies'));
 	}
     public function index()
     {

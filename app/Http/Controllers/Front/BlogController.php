@@ -14,11 +14,10 @@ class BlogController extends Controller
     {
         $g_setting = DB::table('general_settings')->where('id', 1)->first();
         $blog = DB::table('page_blog_items')->where('id', 1)->first();
-        $blog_items = DB::table('blogs')->orderby('id', 'desc')->paginate(4);
+        $blog_items = DB::table('blogs')->orderby('id', 'desc')->paginate(15);
         $blog_items_no_pagi = DB::table('blogs')->orderby('id', 'desc')->get();
         $categories = DB::table('categories')->get();
-        $industries_menu = DB::table('industry')->get();
-        return view('pages.blogs', compact('blog','g_setting','blog_items','categories','blog_items_no_pagi','industries_menu'));
+        return view('pages.blogs', compact('blog','g_setting','blog_items','categories','blog_items_no_pagi'));
     }
 
     public function detail($slug)
@@ -26,15 +25,14 @@ class BlogController extends Controller
         $g_setting = DB::table('general_settings')->where('id', 1)->first();
         $blog_detail = DB::table('blogs')->where('blog_slug', $slug)->first();
         $blog_items = DB::table('blogs')->get();
-        $blog_items_no_pagi = DB::table('blogs')->orderby('id', 'desc')->get();
+        $blog_items_no_pagi = DB::table('blogs')->orderby('id', 'desc')->paginate(4);
         $categories = DB::table('categories')->get();
-        $industries_menu = DB::table('industry')->get();
         if(!$blog_detail) {
             return abort(404);
         }
         $comments = '';
         $comments = DB::table('comments')->where('blog_id', $blog_detail->id)->where('comment_status', 'Approved')->get();
-        return view('pages.blog_detail', compact('g_setting','blog_detail','blog_items','blog_items_no_pagi','categories','comments','industries_menu'));
+        return view('pages.blog_detail', compact('g_setting','blog_detail','blog_items','blog_items_no_pagi','categories','comments'));
     }
 
     public function comment(Request $request)

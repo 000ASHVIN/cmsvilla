@@ -182,9 +182,9 @@
     </div>
     <div class="content-wrapper">
       <div class="columns is-vcentered">
-        @php $counter = 0 @endphp
+        {{-- @php $counter = 0 @endphp --}}
         @foreach($case_studies as $row)
-          @if ($counter < 3)
+          {{-- @if ($counter < 3) --}}
             <div class="column is-4">
               <div class="card ressource-card">
                 <div class="card-image">
@@ -205,10 +205,17 @@
                 </div>
               </div>
             </div>
-            @php $counter++ @endphp
-          @endif
+            {{-- @php $counter++ @endphp --}}
+          {{-- @endif --}}
         @endforeach
       </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          {{ $case_studies->links() }}
+      </li>
+      </ul>
+  </nav>
     </div>
   </div>
 </div>

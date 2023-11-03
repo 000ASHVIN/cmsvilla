@@ -61,7 +61,7 @@
     <div class="container">
         <center>
             <h1 class="clean-title is-1 mt-5 mb-5" style="color: white">
-                Reconcify is superfast solution to complex and voluminious reconciliations
+                Blogs
             </h1>
         </center>
     </div>
@@ -117,9 +117,13 @@
             </div>
             @endforeach
         </div>
-        {{-- <div class="d-flex justify-content-center">
-            {{ $case_studies->links() }}
-        </div> --}}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                {{ $blog_items->links() }}
+            </li>
+            </ul>
+        </nav>
     </div>
 </div>
 

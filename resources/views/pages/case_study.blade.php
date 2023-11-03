@@ -21,20 +21,26 @@
                 <div class="card blog-grid-item is-masonry masonry-size-3">
                     <a href="CaseStudyDetails.html">
                         <div class="card-image">
-                            <img class="item-featured-image" src="{{ asset('uploads/'.$row->photo) }}" alt=""
+                            <a class="read-more-link" href="{{ route('front.case.study.details', $row->slug ) }}">
+                              <img class="item-featured-image" src="{{ asset('uploads/'.$row->photo) }}" alt=""
                                 width="100" />
+                            </a>
                             <div class="post-date">
                                 <div class="post-date-inner">
-                                    <span>{{ date('M', strtotime($row->created_at)) }}</span>
-                                    <span>{{ date('d', strtotime($row->created_at)) }}</span>
+                                    <a class="read-more-link" href="{{ route('front.case.study.details', $row->slug ) }}">
+                                        <span>{{ date('M', strtotime($row->created_at)) }}</span>
+                                        <span>{{ date('d', strtotime($row->created_at)) }}</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-content">
                             <div class="featured-post-title">
                                 <div class="title-avatar">
-                                    <img src="{{ asset('uploads/'.$row->photo) }}" alt="" class="w-100" alt=""
+                                    <a href="{{ route('front.case.study.details', $row->slug ) }}">
+                                        <img src="{{ asset('uploads/'.$row->photo) }}" alt="" class="w-100" alt=""
                                         data-demo-src="assets/img/avatars/alan.jpg" />
+                                    </a>
                                 </div>
                                 <div class="title-meta">
                                     <a class="read-more-link" href="{{ route('front.case.study.details', $row->slug ) }}"> 
@@ -57,9 +63,13 @@
             </div>
             @endforeach
         </div>
-        <div class="d-flex justify-content-center">
-            {{ $case_studies->links() }}
-        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                {{ $case_studies->links() }}
+            </li>
+            </ul>
+        </nav>
     </div>
 </div>
 @include('pages.includes.companies')

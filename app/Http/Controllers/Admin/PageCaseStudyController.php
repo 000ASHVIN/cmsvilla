@@ -22,7 +22,7 @@ class PageCaseStudyController extends Controller
     	$projects = DB::table('projects')->get();
     	$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
-		$case_studies = DB::table('case_studies')->paginate(8);
+		$case_studies = DB::table('case_studies')->paginate(6);
         $how_helps = DB::table('how_help')->get();
         $page_industry =DB::table('page_industry_items')->where('id',1)->first();
         return view('pages.case_study', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies', 'how_helps','industry_items','industries_menu'));

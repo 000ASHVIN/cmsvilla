@@ -217,7 +217,7 @@
 </div>
 
   <!-- Uses Section -->
-  <div class="section section-feature-grey is-medium">
+  {{-- <div class="section section-feature-grey is-medium">
     <div class="container">
       <div class="centered-title">
         <h2>{{ $page_home->project_title }}</h2>
@@ -257,7 +257,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <!-- Final CTA section -->
   <div class="section section-feature-grey is-medium">

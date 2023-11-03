@@ -217,10 +217,14 @@
                                  @endif
                                     @endforeach
                                 </div>
-                                
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center">
+                                      <li class="page-item">
+                                        {{ $blog_items_no_pagi->links() }}
+                                    </li>
+                                    </ul>
+                                </nav>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
