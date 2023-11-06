@@ -133,9 +133,9 @@
 @endif
 
 <!-- Uses Section -->
-<div class="section section-feature-grey is-medium">
+<div class="section section-feature-grey is-medium" id="uses">
   <div class="container">
-    <div class="centered-title" id="uses">
+    <div class="centered-title">
       <h2>{{ $page_home->service_title }}</h2>
       <div class="title-divider"></div>
       <!-- <div class="subheading">
@@ -175,9 +175,9 @@
 </div>
 
 <!-- Uses Section -->
-<div class="section section-feature-grey is-medium">
+<div class="section section-feature-grey is-medium" id="financial_reconciliation">
   <div class="container">
-    <div class="centered-title" id="financial_reconciliation">
+    <div class="centered-title" >
       <h2>{{ $page_home->project_title }}</h2>
       <div class="title-divider"></div>
       <!-- <div class="subheading">
@@ -298,7 +298,7 @@
 </div>
 
 <!-- Learning -->
-<div id="learning" class="section is-medium">
+<div id="learning" class="section is-medium" id="reconciliation">
   <div class="container">
     <!-- Title -->
     <!-- <div class="section-title-wrapper has-text-centered">
@@ -306,7 +306,7 @@
         <h4>We have a dedicated user training section</h4>
       </div> -->
 
-    <div class="centered-title mb-30" id="reconciliation">
+    <div class="centered-title mb-30">
       <h2>Reconciliation</h2>
       <div class="title-divider"></div>
     </div>
