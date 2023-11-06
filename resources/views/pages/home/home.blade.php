@@ -135,7 +135,7 @@
 <!-- Uses Section -->
 <div class="section section-feature-grey is-medium">
   <div class="container">
-    <div class="centered-title">
+    <div class="centered-title" id="uses">
       <h2>{{ $page_home->service_title }}</h2>
       <div class="title-divider"></div>
       <!-- <div class="subheading">
@@ -177,7 +177,7 @@
 <!-- Uses Section -->
 <div class="section section-feature-grey is-medium">
   <div class="container">
-    <div class="centered-title">
+    <div class="centered-title" id="financial_reconciliation">
       <h2>{{ $page_home->project_title }}</h2>
       <div class="title-divider"></div>
       <!-- <div class="subheading">
@@ -306,7 +306,7 @@
         <h4>We have a dedicated user training section</h4>
       </div> -->
 
-    <div class="centered-title mb-30">
+    <div class="centered-title mb-30" id="reconciliation">
       <h2>Reconciliation</h2>
       <div class="title-divider"></div>
     </div>
@@ -327,7 +327,7 @@
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
-                  <a href="{{ url('service/'.$row->slug) }}" class="color-primary is-handwritten">
+                  <a class="color-primary is-handwritten" href="{{ route('front.case.study.details', $row->slug ) }}">
                     <h4>{{ $row->name }}</h4>
                   </a>
                   <p class="subtitle is-6 mt-2">
