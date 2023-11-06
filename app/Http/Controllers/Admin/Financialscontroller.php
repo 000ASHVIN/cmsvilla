@@ -45,6 +45,17 @@ class Financialscontroller extends Controller
         $ext = $request->file('project_featured_photo')->extension();
         $final_name = 'project-featured-photo-'.$ai_id.'.'.$ext;
         $request->file('project_featured_photo')->move(public_path('uploads/'), $final_name);
+        // $data['project_featured_photo'] = $final_name;
+        
+        $blog = new Financials();
+        $data = $request->only($blog->getFillable());
+        if(empty($data['project_slug']))
+        {
+            unset($data['project_slug']);
+            $data['project_slug'] = Str::slug($request->project_name);
+        }
+
+        unset($data['project_featured_photo']);
         $data['project_featured_photo'] = $final_name;
 
         $project->fill($data)->save();
@@ -53,7 +64,7 @@ class Financialscontroller extends Controller
     public function edit($id)
     {
         $project = Financials::findOrFail($id);
-        return view('admin.financials.edit', compact('project'));
+        return view('admin.Financials.edit', compact('project'));
     }
 
     public function update(Request $request, $id)
@@ -76,7 +87,10 @@ class Financialscontroller extends Controller
                 ],
                 'project_featured_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
-            unlink(public_path('uploads/'.$project->project_featured_photo));
+            if($request->input('project_featured_photo') && file_exists($project->project_featured_photo)){
+                unlink(public_path('uploads/'.$project->project_featured_photo));
+            }
+            // unlink(public_path('uploads/'.$project->project_featured_photo));
             $ext = $request->file('project_featured_photo')->extension();
             $final_name = 'project-featured-photo-'.$id.'.'.$ext;
             $request->file('project_featured_photo')->move(public_path('uploads/'), $final_name);
