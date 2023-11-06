@@ -298,7 +298,7 @@
 </div>
 
 <!-- Learning -->
-<div id="learning" class="section is-medium" id="reconciliation">
+<div id="learning" class="section is-medium">
   <div class="container">
     <!-- Title -->
     <!-- <div class="section-title-wrapper has-text-centered">
@@ -306,7 +306,7 @@
         <h4>We have a dedicated user training section</h4>
       </div> -->
 
-    <div class="centered-title mb-30">
+    <div class="centered-title mb-30" id="reconciliation">
       <h2>Reconciliation</h2>
       <div class="title-divider"></div>
     </div>
