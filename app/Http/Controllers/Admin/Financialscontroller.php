@@ -27,8 +27,8 @@ class Financialscontroller extends Controller
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
         
-        $project = new Financials();
-        $data = $request->only($project->getFillable());
+        // $project = new Financials();
+        // $data = $request->only($project->getFillable());
 
         $request->validate([
             'project_name' => 'required|unique:projects',
@@ -36,9 +36,9 @@ class Financialscontroller extends Controller
             'project_featured_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        if(empty($data['project_slug'])) {
-            $data['project_slug'] = str::slug($request->project_name);
-        }
+        // if(empty($data['project_slug'])) {
+        //     $data['project_slug'] = str::slug($request->project_name);
+        // }
 
         $statement = DB::select("SHOW TABLE STATUS LIKE 'projects'");
         $ai_id = $statement[0]->Auto_increment;
@@ -46,9 +46,9 @@ class Financialscontroller extends Controller
         $final_name = 'project-featured-photo-'.$ai_id.'.'.$ext;
         $request->file('project_featured_photo')->move(public_path('uploads/'), $final_name);
         // $data['project_featured_photo'] = $final_name;
-        
-        $blog = new Financials();
-        $data = $request->only($blog->getFillable());
+
+        $project = new Financials();
+        $data = $request->only($project->getFillable());
         if(empty($data['project_slug']))
         {
             unset($data['project_slug']);
