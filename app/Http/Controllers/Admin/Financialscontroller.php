@@ -27,8 +27,8 @@ class Financialscontroller extends Controller
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
         
-        // $project = new Financials();
-        // $data = $request->only($project->getFillable());
+        $project = new Financials();
+        $data = $request->only($project->getFillable());
 
         $request->validate([
             'project_name' => 'required|unique:projects',
@@ -36,28 +36,30 @@ class Financialscontroller extends Controller
             'project_featured_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // if(empty($data['project_slug'])) {
-        //     $data['project_slug'] = str::slug($request->project_name);
-        // }
+        if(empty($data['project_slug'])) {
+            $data['project_slug'] = str::slug($request->project_name);
+        }
+        $filteredSlug = str_replace(' ', '_', $data['project_slug']);
+        $data['project_slug'] = $filteredSlug;
 
         $statement = DB::select("SHOW TABLE STATUS LIKE 'projects'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('project_featured_photo')->extension();
-        $final_name = 'project-featured-photo-'.$ai_id.'.'.$ext;
+        $final_name = 'project-featured-photo-'.$ai_id. rand(1, 6000) .'.'.$ext;
         $request->file('project_featured_photo')->move(public_path('uploads/'), $final_name);
-        // $data['project_featured_photo'] = $final_name;
-
-        $project = new Financials();
-        $data = $request->only($project->getFillable());
-        if(empty($data['project_slug']))
-        {
-            unset($data['project_slug']);
-            $data['project_slug'] = Str::slug($request->project_name);
-        }
-
-        unset($data['project_featured_photo']);
         $data['project_featured_photo'] = $final_name;
 
+        // $project = new Financials();
+        // $data = $request->only($project->getFillable());
+        // if(empty($data['project_slug']))
+        // {
+        //     unset($data['project_slug']);
+        //     $data['project_slug'] = Str::slug($request->project_name);
+        // }
+
+        // unset($data['project_featured_photo']);
+        // $data['project_featured_photo'] = $final_name;
+        // Financials::create($data);
         $project->fill($data)->save();
         return redirect()->route('admin.financials.index')->with('success', 'Financials is added successfully!');
     }
@@ -118,15 +120,17 @@ class Financialscontroller extends Controller
         }
         
         $project = Financials::findOrFail($id);
-        unlink(public_path('uploads/'.$project->project_featured_photo));
+        if(isset($project->project_featured_photo) && file_exists($project->project_featured_photo)){
+            unlink(public_path('uploads/'.$project->project_featured_photo));
+        }
         $project->delete();
 
-        $project_photo = ProjectPhoto::where('project_id',$id)->get();
-        foreach($project_photo as $row)
-        {
-            unlink(public_path('uploads/'.$row->project_photo));
-            DB::table('project_photos')->where('project_id',$row->project_id)->delete();
-        }
+        // $project_photo = ProjectPhoto::where('project_id',$id)->get();
+        // foreach($project_photo as $row)
+        // {
+        //     unlink(public_path('uploads/'.$row->project_photo));
+        //     DB::table('project_photos')->where('project_id',$row->project_id)->delete();
+        // }
 
         return Redirect()->back()->with('success', 'Financials is deleted successfully!');
     }

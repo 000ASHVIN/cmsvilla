@@ -108,7 +108,10 @@ class ProjectController extends Controller
         }
         
         $project = Project::findOrFail($id);
-        unlink(public_path('uploads/'.$project->project_featured_photo));
+        if(isset($project->project_featured_photo) && file_exists($project->project_featured_photo)){
+            unlink(public_path('uploads/'.$project->project_featured_photo));
+        }
+        // unlink(public_path('uploads/'.$project->project_featured_photo));
         $project->delete();
 
         $project_photo = ProjectPhoto::where('project_id',$id)->get();
