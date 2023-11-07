@@ -20,7 +20,7 @@
                     <label for="">Slider Text</label>
                     <textarea name="slider_text" class="form-control h_100" cols="30" rows="10">{{ old('slider_text') }}</textarea>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Slider Button Text</label>
                     <input type="text" name="slider_button_text" class="form-control" value="{{ old('slider_button_text') }}" autofocus>
                 </div>
@@ -33,7 +33,7 @@
                     <div>
                         <input type="file" name="slider_photo">
                     </div>
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>

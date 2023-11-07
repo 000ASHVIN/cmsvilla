@@ -24,7 +24,7 @@
                     <label for="">Content</label>
                     <textarea name="project_content" class="form-control editor" cols="30" rows="10">{{ old('project_content') }}</textarea>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Content (Short)</label>
                     <textarea name="project_content_short" class="form-control h_100" cols="30" rows="10">{{ old('project_content_short') }}</textarea>
                 </div>
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label for="">Video (YouTube ID)</label>
                     <input type="text" name="project_video" class="form-control" value="{{ old('project_video') }}" autofocus>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="">Featured Photo *</label>
                     <div>

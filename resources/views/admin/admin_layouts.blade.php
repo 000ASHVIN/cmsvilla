@@ -455,7 +455,16 @@
         </li>
         @endif --}}
 
-        <!-- Project -->
+           <!-- Uses -->
+        @php if( in_array('Service', $arr_one) || $logged_user_role_id==1 ): @endphp
+           <li class="nav-item {{ Request::is('admin/service/*') ? 'active' : '' }}">
+               <a class="nav-link" href="{{ route('admin.service.index') }}">
+                   <i class="fas fa-certificate"></i>
+                   <span>Uses</span>
+               </a>
+           </li>
+        @endif
+        <!-- Features -->
         @php if( in_array('Project', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/project/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.project.index') }}">
@@ -569,15 +578,7 @@
         </li>
         @endif
 
-        <!-- Services -->
-        @php if( in_array('Service', $arr_one) || $logged_user_role_id==1 ): @endphp
-        <li class="nav-item {{ Request::is('admin/service/*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('admin.service.index') }}">
-                <i class="fas fa-certificate"></i>
-                <span>Uses</span>
-            </a>
-        </li>
-        @endif
+     
 
         {{-- <li class="nav-item {{ Request::is('admin/case-study/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.case-study.index') }}">

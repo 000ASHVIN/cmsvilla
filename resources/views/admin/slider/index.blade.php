@@ -15,9 +15,10 @@
                     <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Photo</th>
-                        <th>Right Photo</th>
+                        {{-- <th>Photo</th> --}}
+                        {{-- <th>Right Photo</th> --}}
                         <th>Slider Heading</th>
+                        <th>Slider Text</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -26,9 +27,11 @@
                         @foreach($slider as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img src="{{ asset('uploads/'.$row->slider_photo) }}" alt="" class="w_150"></td>
-                            <td><img src="{{ asset('uploads/'.$row->right_side_photo) }}" alt="" class="w_150"></td>
+                            {{-- <td><img src="{{ asset('uploads/'.$row->slider_photo) }}" alt="" class="w_150"></td>
+                            <td><img src="{{ asset('uploads/'.$row->right_side_photo) }}" alt="" class="w_150"></td> --}}
                             <td>{{ $row->slider_heading }}</td>
+                            <td>{{ $row->slider_text }}</td>
+
                             <td>
                                 <a href="{{ URL::to('admin/slider/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                 <a href="{{ URL::to('admin/slider/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>

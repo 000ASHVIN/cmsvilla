@@ -35,7 +35,7 @@ class PageCaseStudyController extends Controller
         if(!$case_studies_items) {
             return abort(404);
         }
-		
+		$case_studies = CaseStudy::with('CaseStudyItems')->where('slug', $slug)->first();
 		$sliders = DB::table('sliders')->get();
     	$page_home = DB::table('page_home_items')->where('id',1)->first();
     	$why_choose_items = DB::table('why_choose_items')->get();
@@ -49,7 +49,7 @@ class PageCaseStudyController extends Controller
     	$blogs = DB::table('blogs')->get();
         $how_helps = DB::table('how_help')->get();
         $page_industry =DB::table('page_industry_items')->where('id',1)->first();
-        return view('pages.case_study_items', compact('case_study','sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items','industries_menu'));
+        return view('pages.case_study_items', compact('case_study','case_studies','sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items','industries_menu'));
     }
 	public function caseStudyFront(Request $request)
     {   

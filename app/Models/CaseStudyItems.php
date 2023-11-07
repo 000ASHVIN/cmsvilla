@@ -19,4 +19,7 @@ class CaseStudyItems extends Model
         'seo_title',
         'seo_meta_description'
     ];
+    public function CaseStudy() {
+        return $this->hasMany(CaseStudy::class,'id', 'industry_id');
+    }
 }

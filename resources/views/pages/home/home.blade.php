@@ -154,13 +154,11 @@
               <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
             </div>
             <div class="card-title mt-3">
-              <a href="{{ url('service/'.$row->slug) }}">
                 <h4>{{ $row->name }}</h4>
-              </a>
             </div>
             <div class="card-feature-description">
               <span class="">
-                {!! nl2br(e($row->short_description)) !!}
+                {{ $row->short_description }}
               </span>
             </div>
           </div>
@@ -196,9 +194,7 @@
               <img src="{{ asset('uploads/'.$row->project_featured_photo) }}" alt="">
             </div>
             <div class="card-title mt-3">
-              <a href="{{ url('project/'.$row->project_slug) }}">
                 <h4>{{ $row->project_name }}</h4>
-              </a>
             </div>
             <div class="card-feature-description">
               <span class="">
@@ -281,12 +277,10 @@
                 <img src="{{ asset('uploads/'.$row->project_featured_photo) }}" alt="">
               </div>
               <div class="card-title">
-                <a href="{{ url('project/'.$row->project_slug) }}"><h4>{{ $row->project_name }}</h4></a>
+                <a href=""><h4>{{ $row->project_name }}</h4></a>
               </div>
               <div class="card-feature-description">
-                <span class=""
-                  > {!! nl2br(e($row->project_content_short)) !!}
-                </span>
+                <span class="">{!! strip_tags($row->project_content) !!}</span>
               </div>
             </div>
           </div>

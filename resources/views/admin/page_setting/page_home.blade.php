@@ -9,7 +9,7 @@
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         {{-- <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meta Information</a> --}}
                         {{-- <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Why Choose Us Section</a> --}}
-                        {{-- <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Special Section</a> --}}
+                        <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Special Section</a>
                         <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a>
                         <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
                         <a class="nav-link" id="v-pills-13-tab" data-toggle="pill" href="#v-pills-13" role="tab" aria-controls="v-pills-13" aria-selected="false">Financials Section</a>
@@ -81,22 +81,22 @@
                                     <label for="">Title</label>
                                     <input type="text" name="special_title" class="form-control" value="{{ $page_home->special_title }}">
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="">Subtitle</label>
                                     <input type="text" name="special_subtitle" class="form-control" value="{{ $page_home->special_subtitle }}">
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="">Content</label>
                                     <textarea name="special_content" class="form-control h_200" cols="30" rows="10">{{ $page_home->special_content }}</textarea>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="">Button Text</label>
                                     <input type="text" name="special_btn_text" class="form-control" value="{{ $page_home->special_btn_text }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Button URL</label>
                                     <input type="text" name="special_btn_url" class="form-control" value="{{ $page_home->special_btn_url }}">
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="">YouTube Video Preview</label>
                                     <div class="iframe-container-300">
@@ -107,7 +107,7 @@
                                     <label for="">YouTube Video</label>
                                     <input type="text" name="special_yt_video" class="form-control" value="{{ $page_home->special_yt_video }}">
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="">Existing Background</label>
                                     <div><img src="{{ asset('uploads/'.$page_home->special_bg) }}" alt="" class="w_200"></div>
                                 </div>
@@ -126,7 +126,7 @@
                                 <div class="form-group">
                                     <label for="special_bg_color">Background Color</label>
                                     <div><input type="color" id="special_bg_color" name="special_bg_color" value="{{ $page_home->special_bg_color }}"></div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="">Status</label>
                                     <div>

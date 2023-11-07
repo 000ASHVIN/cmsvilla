@@ -2,11 +2,13 @@
 @section('banner')
 <div class="contact-banner">
     <div class="container">
-       <center>
+
+        <center>
         <h1 class="clean-title is-1 mt-5 mb-5" style="color: white">
-          {{-- {{ $contact->name }} --}}Analyze, rate and score corporate suppliers at scale.
-      </h1>
-       </center>
+          {{ $case_studies->name }}
+        </h1>
+        </center>
+     
     </div>
 </div>
 @endsection

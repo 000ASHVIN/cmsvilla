@@ -23,7 +23,7 @@
                     <label for="">Slider Text</label>
                     <textarea name="slider_text" class="form-control h_100" cols="30" rows="10">{{ $slider->slider_text }}</textarea>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Slider Button Text</label>
                     <input type="text" name="slider_button_text" class="form-control" value="{{ $slider->slider_button_text }}" autofocus>
                 </div>
@@ -57,7 +57,7 @@
                     <div>
                         <input type="file" name="right_side_photo">
                     </div>
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
         </div>
