@@ -18,8 +18,8 @@
           <div
             class="column is-6 is-offset-3 has-text-centered is-subheader-caption"
           >
-            <h2 class="">
-              <p class="subtitle">{!! $contact->detail !!}</p>
+            <h2 class="subtitle">
+               {!! $contact->detail !!}
             </h2>
           </div>
         </div>

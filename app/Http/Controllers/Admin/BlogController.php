@@ -143,7 +143,10 @@ class BlogController extends Controller
         }
         
         $blog = Blog::findOrFail($id);
-        unlink(public_path('uploads/'.$blog->blog_photo));
+        if(isset($blog->blog_photo) && file_exists($blog->blog_photo)){
+            unlink(public_path('uploads/'.$blog->blog_photo));
+        }
+        // unlink(public_path('uploads/'.$blog->blog_photo));
         $blog->delete();
 
         // Success Message and redirect
