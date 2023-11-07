@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PageHomeItem;
 use App\Models\Project;
 use App\Models\ProjectPhoto;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class ProjectController extends Controller
     public function index()
     {
         $project = Project::all();
-        return view('admin.project.index', compact('project'));
+        $page_home = PageHomeItem::where('id',1)->first();
+        return view('admin.project.index', compact('project','page_home'));
     }
 
     public function create()

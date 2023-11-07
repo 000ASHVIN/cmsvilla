@@ -1,6 +1,6 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Edit Service</h1>
+    <h1 class="h3 mb-3 text-gray-800">Edit Uses</h1>
 
     <form action="{{ url('admin/service/update/'.$service->id) }}" method="post" enctype="multipart/form-data">
         @csrf

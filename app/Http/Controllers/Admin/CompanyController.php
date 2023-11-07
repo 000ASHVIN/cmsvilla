@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\PageHomeItem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
@@ -13,7 +14,8 @@ class CompanyController extends Controller
     public function index()
     {
         $company = Company::all();
-        return view('admin.company.index', compact('company'));
+        $page_home = PageHomeItem::where('id',1)->first();
+        return view('admin.company.index', compact('company','page_home'));
     }
 
     public function create()

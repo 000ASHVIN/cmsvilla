@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Financials;
+use App\Models\PageHomeItem;
 use App\Models\ProjectPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,7 +16,8 @@ class Financialscontroller extends Controller
     public function index()
     {
         $project = Financials::all();
-        return view('admin.Financials.index', compact('project'));
+        $page_home = PageHomeItem::where('id',1)->first();
+        return view('admin.Financials.index', compact('project','page_home'));
     }
     public function create()
     {

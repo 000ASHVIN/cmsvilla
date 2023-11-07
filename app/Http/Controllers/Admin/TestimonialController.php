@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PageHomeItem;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -14,7 +15,8 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonial = Testimonial::all();
-        return view('admin.testimonial.index', compact('testimonial'));
+        $page_home = PageHomeItem::where('id',1)->first();
+        return view('admin.testimonial.index', compact('testimonial','page_home'));
     }
 
     public function create()

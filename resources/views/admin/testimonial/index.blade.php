@@ -1,7 +1,22 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Testimonials</h1>
-
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-header py-3">
+            <h6 class="m-0 mt-2 font-weight-bold text-primary">Title</h6>
+        </div>
+        <div class="card-body">
+            <form action="{{ url('admin/page/home/5') }}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="current_photo" value="{{ $page_home->testimonial_bg }}">
+                @csrf
+                <div class="form-group">
+                    <label for="">Title</label>
+                    <input type="text" name="testimonial_title" class="form-control" value="{{ $page_home->testimonial_title }}">
+                </div>
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 mt-2 font-weight-bold text-primary">View Testimonials</h6>

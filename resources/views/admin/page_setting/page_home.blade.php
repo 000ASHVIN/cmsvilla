@@ -2,29 +2,30 @@
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Edit Home Page Information</h1>
     
-    <div class="card shadow mb-4 t-left">
+    <div class="">
+        {{-- card shadow mb-4 t-left --}}
         <div class="card-body">
             <div class="row">
-                <div class="col-3">
+                {{-- <div class="col-3"> --}}
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         {{-- <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meta Information</a> --}}
                         {{-- <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Why Choose Us Section</a> --}}
-                        <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Special Section</a>
-                        <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a>
-                        <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
-                        <a class="nav-link" id="v-pills-13-tab" data-toggle="pill" href="#v-pills-13" role="tab" aria-controls="v-pills-13" aria-selected="false">Financials Section</a>
-                        <a class="nav-link" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Trusted Companies Section</a>
-                        <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Testimonial Section</a>
+                        {{-- <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Special Section</a> --}}
+                        {{-- <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a> --}}
+                        {{-- <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a> --}}
+                        {{-- <a class="nav-link" id="v-pills-13-tab" data-toggle="pill" href="#v-pills-13" role="tab" aria-controls="v-pills-13" aria-selected="false">Financials Section</a> --}}
+                        {{-- <a class="nav-link" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Trusted Companies Section</a> --}}
+                        {{-- <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Testimonial Section</a> --}}
                         {{-- <a class="nav-link" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Case Studies Section</a> --}}
                         {{-- <a class="nav-link" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Team Member Section</a> --}}
                         {{-- <a class="nav-link" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Appointment Section</a> --}}
                         {{-- <a class="nav-link" id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-9" aria-selected="false">Latest Blog Section</a> --}}
                         {{-- <a class="nav-link" id="v-pills-10-tab" data-toggle="pill" href="#v-pills-10" role="tab" aria-controls="v-pills-10" aria-selected="false">Newsletter Section</a> --}}
                     </div>
-                </div>
-                <div class="col-9">
+                {{-- </div> --}}
+                <div class="col-12">
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                        <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
 
                             <!-- Tab 1 -->
                             <form action="{{ url('admin/page/home/1') }}" method="post">
@@ -71,77 +72,82 @@
                             </form>
                             <!-- // Tab 2 -->
                         </div>
-                        <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                        <div class="tab-pane fade show active" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
                             <!-- Tab 3 -->
-                            <form action="{{ url('admin/page/home/3') }}" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="current_photo" value="{{ $page_home->special_bg }}">
-                                <input type="hidden" name="current_photo1" value="{{ $page_home->special_video_bg }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="">Title</label>
-                                    <input type="text" name="special_title" class="form-control" value="{{ $page_home->special_title }}">
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label for="">Subtitle</label>
-                                    <input type="text" name="special_subtitle" class="form-control" value="{{ $page_home->special_subtitle }}">
-                                </div> --}}
-                                <div class="form-group">
-                                    <label for="">Content</label>
-                                    <textarea name="special_content" class="form-control h_200" cols="30" rows="10">{{ $page_home->special_content }}</textarea>
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label for="">Button Text</label>
-                                    <input type="text" name="special_btn_text" class="form-control" value="{{ $page_home->special_btn_text }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Button URL</label>
-                                    <input type="text" name="special_btn_url" class="form-control" value="{{ $page_home->special_btn_url }}">
-                                </div> --}}
-                                <div class="form-group">
-                                    <label for="">YouTube Video Preview</label>
-                                    <div class="iframe-container-300">
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $page_home->special_yt_video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">YouTube Video</label>
-                                    <input type="text" name="special_yt_video" class="form-control" value="{{ $page_home->special_yt_video }}">
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label for="">Existing Background</label>
-                                    <div><img src="{{ asset('uploads/'.$page_home->special_bg) }}" alt="" class="w_200"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Change Background</label>
-                                    <div><input type="file" name="special_bg"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Existing Video Background</label>
-                                    <div><img src="{{ asset('uploads/'.$page_home->special_video_bg) }}" alt="" class="w_200"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Change Video Background</label>
-                                    <div><input type="file" name="special_video_bg"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="special_bg_color">Background Color</label>
-                                    <div><input type="color" id="special_bg_color" name="special_bg_color" value="{{ $page_home->special_bg_color }}"></div>
-                                </div> --}}
-                                <div class="form-group">
-                                    <label for="">Status</label>
-                                    <div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="special_status" id="rr1" value="Show" @if($page_home->special_status == 'Show') checked @endif>
-                                            <label class="form-check-label font-weight-normal" for="rr1">Show</label>
+                           
+                            <div class="card shadow mb-4">
+                                <div class="card-body">
+                                    <form action="{{ url('admin/page/home/3') }}" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="current_photo" value="{{ $page_home->special_bg }}">
+                                        <input type="hidden" name="current_photo1" value="{{ $page_home->special_video_bg }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="">Title</label>
+                                            <input type="text" name="special_title" class="form-control" value="{{ $page_home->special_title }}">
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="special_status" id="rr2" value="Hide" @if($page_home->special_status == 'Hide') checked @endif>
-                                            <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
+                                        {{-- <div class="form-group">
+                                            <label for="">Subtitle</label>
+                                            <input type="text" name="special_subtitle" class="form-control" value="{{ $page_home->special_subtitle }}">
+                                        </div> --}}
+                                        <div class="form-group">
+                                            <label for="">Content</label>
+                                            <textarea name="special_content" class="form-control h_200" cols="30" rows="10">{{ $page_home->special_content }}</textarea>
                                         </div>
-                                    </div>
+                                        {{-- <div class="form-group">
+                                            <label for="">Button Text</label>
+                                            <input type="text" name="special_btn_text" class="form-control" value="{{ $page_home->special_btn_text }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Button URL</label>
+                                            <input type="text" name="special_btn_url" class="form-control" value="{{ $page_home->special_btn_url }}">
+                                        </div> --}}
+                                        <div class="form-group">
+                                            <label for="">YouTube Video Preview</label>
+                                            <div class="iframe-container-300">
+                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $page_home->special_yt_video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">YouTube Video</label>
+                                            <input type="text" name="special_yt_video" class="form-control" value="{{ $page_home->special_yt_video }}">
+                                        </div>
+                                        {{-- <div class="form-group">
+                                            <label for="">Existing Background</label>
+                                            <div><img src="{{ asset('uploads/'.$page_home->special_bg) }}" alt="" class="w_200"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Change Background</label>
+                                            <div><input type="file" name="special_bg"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Existing Video Background</label>
+                                            <div><img src="{{ asset('uploads/'.$page_home->special_video_bg) }}" alt="" class="w_200"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Change Video Background</label>
+                                            <div><input type="file" name="special_video_bg"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="special_bg_color">Background Color</label>
+                                            <div><input type="color" id="special_bg_color" name="special_bg_color" value="{{ $page_home->special_bg_color }}"></div>
+                                        </div> --}}
+                                        <div class="form-group">
+                                            <label for="">Status</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="special_status" id="rr1" value="Show" @if($page_home->special_status == 'Show') checked @endif>
+                                                    <label class="form-check-label font-weight-normal" for="rr1">Show</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="special_status" id="rr2" value="Hide" @if($page_home->special_status == 'Hide') checked @endif>
+                                                    <label class="form-check-label font-weight-normal" for="rr2">Hide</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Update</button>
+                                    </form>
                                 </div>
-                                <button type="submit" class="btn btn-success">Update</button>
-                            </form>
+                            </div>
                             <!-- // Tab 3 -->
                         </div>
                         <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">

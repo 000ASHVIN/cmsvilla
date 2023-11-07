@@ -255,15 +255,21 @@
 
         <!-- Page Settings -->
         @php if( in_array('Page Settings', $arr_one) || $logged_user_role_id==1 ): @endphp
-        <li class="nav-item {{ Request::is('admin/home/*') ? 'active' : '' }}">
+        <li class="nav-item {{ Request::is('admin/home/*') || Request::is('admin/service/*') || Request::is('admin/project/*') || Request::is('admin/financials/*') || Request::is('admin/company/*') || Request::is('admin/testimonial/*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHomeSettings" aria-expanded="true" aria-controls="collapseHomeSettings">
                 <i class="fas fa-paste"></i>
                 <span>Home Settings</span>
             </a>
-            <div id="collapseHomeSettings" class="collapse {{ Request::is('admin/home/*') ? 'show' : '' }}" aria-labelledby="headingHome" data-parent="#accordionSidebar">
+            <div id="collapseHomeSettings" class="collapse {{ Request::is('admin/home/*') || Request::is('admin/service/*') || Request::is('admin/project/*')|| Request::is('admin/financials/*') || Request::is('admin/company/*') || Request::is('admin/testimonial/*')  ? 'show' : '' }}" aria-labelledby="headingHome" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('admin.home.edit') }}">Home</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.home.edit') }}">Home</a> --}}
                     <a class="collapse-item" href="{{ route('admin.home.banner') }}">Banner</a>
+                    <a class="collapse-item" href="/admin/home/edit#v-pills-3">Special Section</a>
+                    <a class="collapse-item" href="{{ route('admin.service.index') }}">Uses</a>
+                    <a class="collapse-item" href="{{ route('admin.project.index') }}">Features</a>
+                    <a class="collapse-item" href="{{ route('admin.financials.index') }}">Financials</a>
+                    <a class="collapse-item" href="{{ route('admin.company.index') }}">Company</a>
+                    <a class="collapse-item" href="{{ route('admin.testimonial.index') }}">Testimonial</a>
                 </div>
             </div>
         </li>
@@ -388,15 +394,15 @@
 
 
 
-        <!-- Sliders -->
-        @php if( in_array('Sliders', $arr_one) || $logged_user_role_id==1 ): @endphp
+        <!-- Banner -->
+        {{-- @php if( in_array('Sliders', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/slider/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.slider.index') }}">
                 <i class="fas fa-sliders-h"></i>
                 <span>Banner</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Blog Section -->
         {{-- @php if( in_array('Blog Section', $arr_one) || $logged_user_role_id==1 ): @endphp
@@ -425,7 +431,7 @@
             </a>
             <div id="collapseCareer" class="collapse {{ Request::is('admin/blog/*') || Request::is('admin/category/*') || Request::is('admin/comment/*') ||  Request::is('admin/comment/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('admin.category.index') }}">Categories</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.category.index') }}">Categories</a> --}}
                     <a class="collapse-item" href="{{ route('admin.blog.index') }}">Blogs</a>
                     {{-- <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
                     <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a> --}}
@@ -456,7 +462,7 @@
         @endif --}}
 
            <!-- Uses -->
-        @php if( in_array('Service', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Service', $arr_one) || $logged_user_role_id==1 ): @endphp
            <li class="nav-item {{ Request::is('admin/service/*') ? 'active' : '' }}">
                <a class="nav-link" href="{{ route('admin.service.index') }}">
                    <i class="fas fa-certificate"></i>
@@ -481,7 +487,7 @@
                 <span>Financials</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Career Section -->
         {{-- @php if( in_array('Career Section', $arr_one) || $logged_user_role_id==1 ): @endphp
@@ -569,14 +575,14 @@
 
 
         <!-- company -->
-        @php if( $logged_user_role_id==1 ): @endphp
+        {{-- @php if( $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/company/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.company.index') }}">
                 <i class="fas fa-certificate"></i>
                 <span>Company</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
      
 
@@ -595,14 +601,14 @@
         </li> --}}
 
         <!-- Testimonials -->
-        @php if( in_array('Testimonial', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Testimonial', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/testimonial/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.testimonial.index') }}">
                 <i class="fas fa-award"></i>
                 <span>Testimonial</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
         {{-- <!-- Team Members -->
         @php if( in_array('Team Member', $arr_one) || $logged_user_role_id==1 ): @endphp

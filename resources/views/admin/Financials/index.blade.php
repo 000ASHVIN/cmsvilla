@@ -1,7 +1,22 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
     <h1 class="h3 mb-3 text-gray-800">Projects</h1>
-
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-header py-3">
+            <h6 class="m-0 mt-2 font-weight-bold text-primary">Title</h6>
+        </div>
+        <div class="card-body">
+            <form action="{{ url('admin/page/home/13') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="current_photo" value="{{ $page_home->project_bg }}">
+                <div class="form-group">
+                    <label for="">Title</label>
+                    <input type="text" name="financials_title" class="form-control" value="{{ $page_home->financials_title }}">
+                </div>
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 mt-2 font-weight-bold text-primary">View Projects</h6>
@@ -17,7 +32,7 @@
                         <th>SL</th>
                         <th>Featured Photo</th>
                         <th>Project Name</th>
-                        <th>Manage Gallery</th>
+                        {{-- <th>Manage Gallery</th> --}}
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -27,9 +42,9 @@
                             <td>{{ $loop->iteration }}</td>
                             <td><img src="{{ asset('uploads/'.$row->project_featured_photo) }}" alt="" class="w_200"></td>
                             <td>{{ $row->project_name }}</td>
-                            <td>
+                            {{-- <td>
                                 <a href="{{ URL::to('admin/financials/gallery/'.$row->id) }}" class="btn btn-success btn-sm">Manage Gallery</a>
-                            </td>
+                            </td> --}}
                             <td>
                                 <a href="{{ URL::to('admin/financials/edit/'.$row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                 <a href="{{ URL::to('admin/financials/delete/'.$row->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>

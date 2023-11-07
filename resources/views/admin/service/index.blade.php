@@ -1,10 +1,33 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Services</h1>
-
-    <div class="card shadow mb-4">
+    <h1 class="h3 text-gray-800">Services</h1>
+    {{-- <div style="display: flex; justify-content: flex-end;">
+        <a href="{{ route('admin.company.index') }}">
+            <button type="submit" class="btn btn-primary">List</button>
+        </a>
+    </div> --}}
+    
+    <div class="card shadow mb-4 mt-3">
         <div class="card-header py-3">
-            <h6 class="m-0 mt-2 font-weight-bold text-primary">View Services</h6>
+            <h6 class="m-0 mt-2 font-weight-bold text-primary">Title</h6>
+            {{-- <div class="float-right d-inline">
+                <a href="{{ route('admin.service.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
+            </div> --}}
+        </div>
+        <div class="card-body">
+            <form action="{{ url('admin/page/home/4') }}" method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="">Title</label>
+                    <input type="text" name="service_title" class="form-control" value="{{ $page_home->service_title }}">
+                </div>
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+    </div>
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-header py-3">
+            <h6 class="m-0 mt-2 font-weight-bold text-primary">View Uses</h6>
             <div class="float-right d-inline">
                 <a href="{{ route('admin.service.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
             </div>

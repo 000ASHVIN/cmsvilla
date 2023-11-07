@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PageHomeItem;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -14,7 +15,8 @@ class ServiceController extends Controller
     public function index()
     {
         $service = Service::all();
-        return view('admin.service.index', compact('service'));
+        $page_home = PageHomeItem::where('id',1)->first();
+        return view('admin.service.index', compact('service','page_home'));
     }
 
     public function create()

@@ -58,8 +58,9 @@
                         <input type="file" name="project_featured_photo">
                     </div>
                 </div>
+                <button type="submit" class="btn btn-success">Submit</button>
             </div>
-            <div class="card-header py-3">
+            {{-- <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>
             </div>
             <div class="card-body">
@@ -71,8 +72,7 @@
                     <label for="">Meta Description</label>
                     <textarea name="seo_meta_description" class="form-control h_100" cols="30" rows="10">{{ old('seo_meta_description') }}</textarea>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </div>
+            </div> --}}
         </div>
     </form>
 @endsection
