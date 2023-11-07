@@ -1,6 +1,6 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Edit Project</h1>
+    <h1 class="h3 mb-3 text-gray-800">Edit Financials</h1>
 
     <form action="{{ url('admin/financials/update/'.$project->id) }}" method="post" enctype="multipart/form-data">
         @csrf

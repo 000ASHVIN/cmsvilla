@@ -1,6 +1,6 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 text-gray-800">Services</h1>
+    <h1 class="h3 text-gray-800">Uses</h1>
     {{-- <div style="display: flex; justify-content: flex-end;">
         <a href="{{ route('admin.company.index') }}">
             <button type="submit" class="btn btn-primary">List</button>
