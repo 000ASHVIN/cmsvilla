@@ -174,51 +174,53 @@
     </div>
   </form>
 </div>
-<div id="learning" class="section is-medium">
-  <div class="container">
-    <div class="centered-title">
-      <h2>Case Studies ?</h2>
-      <div class="title-divider"></div>
-    </div>
-    <div class="content-wrapper">
-      <div class="columns is-vcentered">
-        {{-- @php $counter = 0 @endphp --}}
-        @foreach($case_studies as $row)
-          {{-- @if ($counter < 3) --}}
-            <div class="column is-4">
-              <div class="card ressource-card">
-                <div class="card-image">
-                  <div class="card-image-overlay primary"></div>
-                  <figure class="image is-4by3 zoomOut">
-                    <img class="item-featured-image" src="{{ asset('uploads/'.$row->photo) }}" alt="" width="100" />
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <a href="{{ route('front.case.study.details', $row->slug ) }}">
-                        {{ $row->name }}
-                      </a>
-                      <p class="subtitle is-6"><b>{{ $row->short_description }}</b></p>
+@if (isset($case_studies) && count($case_studies)>0)
+  <div id="learning" class="section is-medium">
+    <div class="container">
+      <div class="centered-title">
+        <h2>Case Studies ?</h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="content-wrapper">
+        <div class="columns is-vcentered">
+          {{-- @php $counter = 0 @endphp --}}
+          @foreach($case_studies as $row)
+            {{-- @if ($counter < 3) --}}
+              <div class="column is-4">
+                <div class="card ressource-card">
+                  <div class="card-image">
+                    <div class="card-image-overlay primary"></div>
+                    <figure class="image is-4by3 zoomOut">
+                      <img class="item-featured-image" src="{{ asset('uploads/'.$row->photo) }}" alt="" width="100" />
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <a href="{{ route('front.case.study.details', $row->slug ) }}">
+                          {{ $row->name }}
+                        </a>
+                        <p class="subtitle is-6"><b>{{ $row->short_description }}</b></p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            {{-- @php $counter++ @endphp --}}
-          {{-- @endif --}}
-        @endforeach
+              {{-- @php $counter++ @endphp --}}
+            {{-- @endif --}}
+          @endforeach
+        </div>
+      {{-- <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            {{ $case_studies->links() }}
+        </li>
+        </ul>
+      </nav> --}}
       </div>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          {{ $case_studies->links() }}
-      </li>
-      </ul>
-  </nav>
     </div>
   </div>
-</div>
+@endif
 
 @include('pages.includes.companies')
 @include('pages.includes.testimonial')

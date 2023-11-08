@@ -292,51 +292,52 @@
 </div>
 
 <!-- Learning -->
-<div id="learning" class="section is-medium">
-  <div class="container">
-    <!-- Title -->
-    <!-- <div class="section-title-wrapper has-text-centered">
-        <h2 class="section-title-landing">Reconciliation</h2>
-        <h4>We have a dedicated user training section</h4>
-      </div> -->
+@if (isset($case_studies) && count($case_studies)>0)
+  <div id="learning" class="section is-medium">
+    <div class="container">
+      <!-- Title -->
+      <!-- <div class="section-title-wrapper has-text-centered">
+          <h2 class="section-title-landing">Reconciliation</h2>
+          <h4>We have a dedicated user training section</h4>
+        </div> -->
 
-    <div class="centered-title mb-30" id="reconciliation">
-      <h2>Reconciliation</h2>
-      <div class="title-divider"></div>
-    </div>
-
-    <div class="content-wrapper">
-      <div class="columns is-vcentered">
-        <!-- Card -->
-        @foreach($case_studies as $row)
-        <div class="column is-4" style="min-height: 500px">
-          <div class="card ressource-card">
-            <div class="card-image">
-              <div class="card-image-overlay"></div>
-              <figure class="image is-4by3 zoomOut">
-                <img src="{{ asset('uploads/'.$row->photo) }}" alt=""
-                  data-demo-src="assets/img/demo/kit/data-insight.jpeg" />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <a class="color-primary is-handwritten" href="{{ route('front.case.study.details', $row->slug ) }}">
-                    <h4>{{ $row->name }}</h4>
-                  </a>
-                  <p class="subtitle is-6 mt-2">
-                    {!! nl2br(e($row->short_description)) !!}
-                  </p>
+      <div class="centered-title mb-30" id="reconciliation">
+        <h2>Reconciliation</h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="content-wrapper">
+        <div class="columns is-vcentered">
+          <!-- Card -->
+          @foreach($case_studies as $row)
+          <div class="column is-4" style="min-height: 500px">
+            <div class="card ressource-card">
+              <div class="card-image">
+                <div class="card-image-overlay"></div>
+                <figure class="image is-4by3 zoomOut">
+                  <img src="{{ asset('uploads/'.$row->photo) }}" alt=""
+                    data-demo-src="assets/img/demo/kit/data-insight.jpeg" />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <a class="color-primary is-handwritten" href="{{ route('front.case.study.details', $row->slug ) }}">
+                      <h4>{{ $row->name }}</h4>
+                    </a>
+                    <p class="subtitle is-6 mt-2">
+                      {!! nl2br(e($row->short_description)) !!}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          @endforeach
         </div>
-        @endforeach
       </div>
     </div>
   </div>
-</div>
+@endif
 
 
 @include('pages.includes.companies')

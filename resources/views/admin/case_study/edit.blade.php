@@ -46,7 +46,17 @@
                         <select name="located_page" id="located_page" class="custom-select">
                             <option value="" selected>Select Page</option>
                             <option value="home"  {{ ($service->located_page === 'home') ? 'selected' : '' }} >Home</option>
-                            <option value="industry" {{ ($service->located_page === 'industry') ? 'selected' : '' }}>Industry</option>
+                            {{-- <option value="industry" {{ ($service->located_page === 'industry') ? 'selected' : '' }}>Industry</option> --}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Select Industry</label>
+                    <div>
+                        <select name="located_industry[]" id="located_industry" class="custom-select select2"  multiple="multiple" data-placeholder="Select Industry">
+                            @foreach ($industrys as $industry)
+                            <option value="{{ $industry->id }}" @if(in_array($industry->id, $service->industries->pluck('id')->toArray())) selected @endif>{{ $industry->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

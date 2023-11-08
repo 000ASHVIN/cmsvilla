@@ -20,5 +20,9 @@ class CaseStudy extends Model
     public function CaseStudyItems() {
         return $this->hasMany(CaseStudyItems::class, 'industry_id', 'id');
     }
+    public function industries()
+    {
+        return $this->belongsToMany(Industry::class);
+    }
     
 }

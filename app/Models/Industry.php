@@ -23,4 +23,9 @@ class Industry extends Model
     public function howHelp() {
         return $this->hasMany(HowHelp::class, 'industry_id', 'id');
     }
+
+    public function caseStudies()
+    {
+        return $this->belongsToMany(CaseStudy::class);
+    }
 }

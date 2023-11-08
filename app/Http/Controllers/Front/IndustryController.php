@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
+use App\Models\CaseStudy;
 use App\Models\Industry;
 use App\Models\IndustryBanner;
 use App\Models\IndustryDetails;
@@ -23,7 +24,7 @@ class IndustryController extends Controller
     {
         $industry = Industry::with('howHelp')->where('slug', $slug)->first();
         $industries_menu = DB::table('industry')->get();
-        $case_studies = DB::table('case_studies')->paginate(3);
+        $case_studies = $industry->caseStudies;
         if(!$industry) {
             return abort(404);
         }

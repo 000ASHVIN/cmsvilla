@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CaseStudy;
+use App\Models\Industry;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,7 +21,8 @@ class CaseStudyController extends Controller
 
     public function create()
     {
-        return view('admin.case_study.create');
+        $industrys = Industry::all();
+        return view('admin.case_study.create',compact('industrys'));
     }
 
     public function store(Request $request)
@@ -52,13 +54,15 @@ class CaseStudyController extends Controller
         $data['photo'] = $final_name;
 
         $service->fill($data)->save();
+        $service->industries()->sync($request->located_industry);
         return redirect()->route('admin.case-study.index')->with('success', 'Service is added successfully!');
     }
 
     public function edit($id)
     {
         $service = CaseStudy::findOrFail($id);
-        return view('admin.case_study.edit', compact('service'));
+        $industrys = Industry::all();
+        return view('admin.case_study.edit', compact('service','industrys'));
     }
 
     public function update(Request $request, $id)
@@ -103,6 +107,7 @@ class CaseStudyController extends Controller
             $data['photo'] = $service->photo;
         }
 
+        $service->industries()->sync($request->located_industry);
         $service->fill($data)->save();
         return redirect()->route('admin.case-study.index')->with('success', 'Service is updated successfully!');
     }

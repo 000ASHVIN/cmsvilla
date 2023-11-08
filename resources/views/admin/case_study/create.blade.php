@@ -40,7 +40,17 @@
                         <select name="located_page" id="located_page" class="custom-select">
                             <option value="" selected>Select Page</option>
                             <option value="home">Home</option>
-                            <option value="industry">Industry</option>
+                            {{-- <option value="industry">Industry</option> --}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Select Industry</label>
+                    <div>
+                        <select name="located_industry[]" id="located_industry" class="custom-select select2"  multiple="multiple" data-placeholder="Select Industry">
+                            @foreach ($industrys as $industry)
+                            <option value="{{ $industry->id }}">{{ $industry->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
