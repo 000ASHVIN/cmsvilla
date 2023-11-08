@@ -270,17 +270,15 @@
           <!-- Card -->
           @foreach($financials as $row)
           <div class="column">
-            <div
-              class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal"
-            >
+            <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal" style="cursor: default">
               <div class="card-icon">
                 <img src="{{ asset('uploads/'.$row->project_featured_photo) }}" alt="">
               </div>
               <div class="card-title">
-                <a href=""><h4>{{ $row->project_name }}</h4></a>
+                <h4>{{ $row->project_name }}</h4>
               </div>
               <div class="card-feature-description">
-                <span class="">{!! strip_tags($row->project_content) !!}</span>
+                <span>{!! strip_tags($row->project_content) !!}</span>
               </div>
             </div>
           </div>
