@@ -111,7 +111,7 @@
     <div class="columns is-vcentered">
       <div class="column is-6 is-relative is-centered-portrait">
         <div class="column is-6 is-relative is-centered-portrait">
-          <div class="Reconcify-player-container is-square reversed-play">
+          <div class="Reconcify-player-container is-square reversed-play myhome">
             <div class="custom-video-poster">
               <!-- Custom poster image here -->
               <img src="{{ asset('uploads/blog-6') }}" alt="Custom Poster Image">

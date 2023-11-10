@@ -35,18 +35,20 @@
                                             <h2 class="title" style="margin-bottom: 0">{{ $row->name }}</h2>
                                             <div class="title-divider"></div>
                                         </div>
-                                        <p class="side-paragraph is-size-6 mb-10">
+                                        <p class="side-paragraph is-size-6 mb-10 case-study">
                                             {!! $row->description !!}
                                         </p>
-                                        <p class="side-paragraph is-size-6 mb-20">
+                                        <p class="side-paragraph is-size-6 mb-20 case-study">
                                             {{ $row->short_description }}
                                         </p>
-                                        {{-- <div class="buttons">
-                                            <button data-modal="vertical-form-modal-contact"
-                                                    class="button button-cta is-bold btn-align primary-btn raised modal-trigger">
-                                                Get in Touch
-                                            </button>
-                                        </div> --}}
+                                        @if (count($case_studies_items) == $key + 1)
+                                          <div class="buttons">
+                                              <button data-modal="vertical-form-modal-contact"
+                                                      class="button button-cta is-bold btn-align primary-btn raised modal-trigger">
+                                                  Get in Touch
+                                              </button>
+                                          </div>
+                                        @endif
                                     </div>
                                     @if (intval($key) % 2 != 0)
                                         <div class="column is-6 is-relative is-centered-portrait">

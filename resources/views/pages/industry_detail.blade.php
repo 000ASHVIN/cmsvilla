@@ -39,14 +39,17 @@
               </div>
             </div>
             {!! $row->description !!}
-            {{-- <div class="buttons">
-              <button
-                data-modal="vertical-form-modal-contact"
-                class="button button-cta is-bold btn-align primary-btn raised modal-trigger"
-              >
-                Get in Touch
-              </button>
-            </div> --}}
+            @if (count($industry->howHelp) == $key + 1)
+              <div class="buttons">
+                <button
+                  data-modal="vertical-form-modal-contact"
+                  class="button button-cta is-bold btn-align primary-btn raised modal-trigger"
+                >
+                  Get in Touch
+                </button>
+              </div>
+            @endif
+            
           </div>
         </div>
       </div>
@@ -65,14 +68,16 @@
               </div>
             </div>
             {!! $row->description !!}
-            {{-- <div class="buttons">
-              <button
-                data-modal="vertical-form-modal-contact"
-                class="button button-cta is-bold btn-align primary-btn raised modal-trigger"
-              >
-                Get in Touch
-              </button>
-            </div> --}}
+            @if (count($industry->howHelp) == $key + 1)
+              <div class="buttons">
+                <button
+                  data-modal="vertical-form-modal-contact"
+                  class="button button-cta is-bold btn-align primary-btn raised modal-trigger"
+                >
+                  Get in Touch
+                </button>
+              </div>
+            @endif
           </div>
           <div class="column is-6 is-relative is-centered-portrait">
             <!-- Square video -->
