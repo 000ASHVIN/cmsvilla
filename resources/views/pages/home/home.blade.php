@@ -145,7 +145,7 @@
     </div>
 
     <div class="content-wrapper">
-      <div class="columns services-cards is-left">
+      <div class="columns services-cards is-left is-flex-wrap-wrap">
         <!-- Card -->
         @foreach($services as $row)
         <div class="column">
@@ -185,7 +185,7 @@
     </div>
 
     <div class="content-wrapper">
-      <div class="columns services-cards is-left">
+      <div class="columns services-cards is-left is-flex-wrap-wrap">
         <!-- Card -->
         @foreach($projects as $row)
         <div class="column">
@@ -225,7 +225,7 @@
       </div>
 
       <div class="content-wrapper">
-        <div class="columns services-cards is-left">
+        <div class="columns services-cards is-left is-flex-wrap-wrap">
           <!-- Card -->
           @foreach($projects as $row)
             <div class="column">
@@ -266,7 +266,7 @@
       </div>
 
       <div class="content-wrapper">
-        <div class="columns services-cards is-left" style="align-items: flex-start;">
+        <div class="columns services-cards is-left is-flex-wrap-wrap" style="align-items: flex-start;">
           <!-- Card -->
           @foreach($industries as $row)
           <div class="column">
@@ -307,7 +307,7 @@
         <div class="title-divider"></div>
       </div>
       <div class="content-wrapper">
-        <div class="columns is-vcentered">
+        <div class="columns is-left is-flex-wrap-wrap">
           <!-- Card -->
           @foreach($case_studies as $row)
           <div class="column is-4" style="min-height: 500px">
