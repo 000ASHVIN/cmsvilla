@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $page_home = \DB::table('page_home_items')->where('id',1)->first();
     $testimonials = \DB::table('testimonials')->get();
 @endphp
@@ -7,7 +7,6 @@
   
       <div class="centered-title mb-30">
         <h2>{{ $page_home->testimonial_title }}</h2>
-        {{-- <h3>{{ $page_home->testimonial_subtitle }}</h3> --}}
         <div class="title-divider"></div>
       </div>
       <div class="content-wrapper">
@@ -42,4 +41,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}

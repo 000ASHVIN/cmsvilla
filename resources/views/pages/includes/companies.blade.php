@@ -1,4 +1,4 @@
-<!-- Trust -->
+{{-- <!-- Trust -->
 @php
     $page_home = \DB::table('page_home_items')->where('id',1)->first();
     $companies = \DB::table('companies')->get();
@@ -8,14 +8,7 @@
       <!-- Title -->
       <div class="section-title-wrapper">
         <div class="bg-number">
-          {{-- <i class="material-icons trust-bg-image">domain</i> --}}
         </div>
-        <!-- <h2 class="section-title-landing has-text-centered dark-text">
-            We build Trust
-          </h2>
-          <h4 class="has-text-centered">
-            More than <b>900 Teams</b> use our product.
-          </h4> -->
   
         <div class="centered-title mb-40">
           <h2>{{ $page_home->trusted_company_title }}</h2>
@@ -50,4 +43,4 @@
           </div> -->
       </div>
     </div>
-</div>
+</div> --}}
