@@ -24,11 +24,11 @@
                     <label for="">Content</label>
                     <textarea name="project_content" class="form-control editor" cols="30" rows="10">{{ $project->project_content }}</textarea>
                 </div>
-                {{-- <div class="form-group">
+                <div class="form-group">
                     <label for="">Content (Short)</label>
                     <textarea name="project_content_short" class="form-control h_100" cols="30" rows="10">{{ $project->project_content_short }}</textarea>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Project Start Date</label>
                     <input type="text" name="project_start_date" class="form-control" value="{{ $project->project_start_date }}">
                 </div>

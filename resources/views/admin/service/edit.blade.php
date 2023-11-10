@@ -24,10 +24,10 @@
                     <label for="">Description</label>
                     <textarea name="description" class="form-control editor" cols="30" rows="10">{{ $service->description }}</textarea>
                 </div>
-                {{-- <div class="form-group">
+                <div class="form-group">
                     <label for="">Short Description</label>
                     <textarea name="short_description" class="form-control h_100" cols="30" rows="10">{{ $service->short_description }}</textarea>
-                </div> --}}
+                </div>
                 <div class="form-group">
                     <label for="">Existing Photo</label>
                     <div>

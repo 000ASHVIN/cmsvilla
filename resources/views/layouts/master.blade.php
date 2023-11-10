@@ -73,7 +73,7 @@
 
               <ul class="dropdown_menu">
                 @foreach ($industries_menu as $industries)
-                    <a href="/industry/{{ $industries->slug }}">
+                    <a href="/industries/{{ $industries->slug }}">
                         <li class="dynamic-item">{{ $industries->name }}</li>
                     </a>
                 @endforeach
@@ -81,7 +81,7 @@
             
               
             </div>
-            <a class="navbar-item is-slide" href="/case-study">
+            <a class="navbar-item is-slide" href="/casestudies">
               Case Studies</a>
             <!-- Dropdown -->
             <div id="my-dropdown" class="jq-dropdown jq-dropdown-tip">

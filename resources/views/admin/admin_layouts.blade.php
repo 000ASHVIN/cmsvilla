@@ -300,6 +300,7 @@
             </a>
             <div id="collapseIndustry1" class="collapse {{ Request::is('admin/case/study/items/*')||Request::is('admin/case-study/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.case_study.banner.index') }}">Banner</a>
                     <a class="collapse-item" href="{{ route('admin.case-study.index') }}">Case Studies</a>
                     <a class="collapse-item" href="{{ route('admin.case.study.items.index') }}">Case Study Items</a>
                 </div>

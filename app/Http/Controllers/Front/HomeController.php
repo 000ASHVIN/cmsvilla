@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
+use App\Models\CaseStudyBanner;
+use App\Models\IndustryBanner;
 use App\Models\SocialMediaItem;
 use Illuminate\Http\Request;
 use DB;
@@ -20,7 +22,10 @@ class HomeController extends Controller
 		$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
 		$case_studies = DB::table('case_studies')->where('located_page','home')->get();
-        return view('pages.home.home', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','financials','team_members','blogs','case_studies','companies'));
+		$industries= DB::table('industry')->get();
+		$industry_banner = IndustryBanner::first();
+		$case_study_banner = CaseStudyBanner::first();
+        return view('pages.home.home', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','financials','team_members','blogs','case_studies','companies', 'industries', 'industry_banner', 'case_study_banner'));
 	}
     public function index()
     {

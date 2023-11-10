@@ -55,6 +55,7 @@ use App\Http\Controllers\Admin\JobController as JobControllerForAdmin;
 use App\Http\Controllers\Admin\FaqController as FaqControllerForAdmin;
 use App\Http\Controllers\Admin\Financialscontroller;
 use App\Http\Controllers\Admin\IndustryBannerController;
+use App\Http\Controllers\Admin\CaseStudyBannerController;
 use App\Http\Controllers\Admin\IndustryDisplayController;
 use App\Http\Controllers\Admin\PageIndustryController;
 use App\Http\Controllers\Admin\PageCaseStudyController;
@@ -102,18 +103,18 @@ Route::get('/master', [HomeController::class,'master']);
 // Route::get('/home', [HomeController::class,'home']);
 
 Route::get('/industries', [IndustryController::class, 'index'])->name('front.industries');
-Route::get('/industry/{slug}', [IndustryController::class,'details'])->name('front.industry.details');
+Route::get('/industries/{slug}', [IndustryController::class,'details'])->name('front.industry.details');
 Route::get('/restuarant/chains', [IndustryController::class, 'restuarant'])->name('front.restuarant');
 // Route::get('/industry/{slug?}', [PageIndustryController::class,'index'])->name('front.industry');
 Route::get('/case-study/front', [PageCaseStudyController::class,'caseStudyFront'])->name('front.case.study.items');
-Route::get('/case-study/{slug}', [PageCaseStudyController::class,'details'])->name('front.case.study.details');
+Route::get('/casestudies/{slug}', [PageCaseStudyController::class,'details'])->name('front.case.study.details');
 
-Route::get('/case-study', [PageCaseStudyController::class,'index'])->name('front.case_study');
+Route::get('/casestudies', [PageCaseStudyController::class,'index'])->name('front.case_study');
 Route::get('about', [AboutController::class,'index'])->name('front.about');
 Route::get('services', [ServiceControllerForFront::class,'index'])->name('front.services');
 Route::get('service/{slug}', [ServiceControllerForFront::class,'detail']);
-Route::get('blog', [BlogControllerForFront::class,'index'])->name('front.blogs');
-Route::get('blog/{slug}', [BlogControllerForFront::class,'detail'])->name('blog.detail');
+Route::get('blogs', [BlogControllerForFront::class,'index'])->name('front.blogs');
+Route::get('blogs/{slug}', [BlogControllerForFront::class,'detail'])->name('blog.detail');
 Route::post('blog/comment', [BlogControllerForFront::class,'comment'])->name('front.comment');
 Route::get('category/{slug}', [CategoryControllerForFront::class,'detail']);
 Route::post('search', [SearchController::class,'index']);
@@ -249,6 +250,13 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/industry/banner/delete/{id}', [IndustryBannerController::class,'destroy']);
     Route::get('admin/industry/banner/edit/{id}', [IndustryBannerController::class,'edit']);
     Route::post('admin/industry/banner/update/{id}', [IndustryBannerController::class,'update']);
+
+    Route::get('admin/case_study/banner/view', [CaseStudyBannerController::class,'index'])->name('admin.case_study.banner.index');
+    Route::get('admin/case_study/banner/create', [CaseStudyBannerController::class,'create'])->name('admin.case_study.banner.create');
+    Route::post('admin/case_study/banner/store', [CaseStudyBannerController::class,'store'])->name('admin.case_study.banner.store');
+    Route::get('admin/case_study/banner/delete/{id}', [CaseStudyBannerController::class,'destroy']);
+    Route::get('admin/case_study/banner/edit/{id}', [CaseStudyBannerController::class,'edit']);
+    Route::post('admin/case_study/banner/update/{id}', [CaseStudyBannerController::class,'update']);
     /* --------------------------------------- */
     /* Slider - Admin */
     /* --------------------------------------- */

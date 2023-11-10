@@ -145,7 +145,7 @@
     </div>
 
     <div class="content-wrapper">
-      <div class="columns services-cards is-vcentered">
+      <div class="columns services-cards is-left">
         <!-- Card -->
         @foreach($services as $row)
         <div class="column">
@@ -185,7 +185,7 @@
     </div>
 
     <div class="content-wrapper">
-      <div class="columns services-cards is-vcentered">
+      <div class="columns services-cards is-left">
         <!-- Card -->
         @foreach($projects as $row)
         <div class="column">
@@ -225,7 +225,7 @@
       </div>
 
       <div class="content-wrapper">
-        <div class="columns services-cards is-vcentered">
+        <div class="columns services-cards is-left">
           <!-- Card -->
           @foreach($projects as $row)
             <div class="column">
@@ -260,25 +260,28 @@
     <div class="container">
       <div class="centered-title">
         <h2>
-          {{ $page_home->financials_title }}
+          {{ $industry_banner->name ?? 'Industries'}}
         </h2>
         <div class="title-divider"></div>
       </div>
 
       <div class="content-wrapper">
-        <div class="columns services-cards is-vcentered" style="align-items: flex-start;">
+        <div class="columns services-cards is-left" style="align-items: flex-start;">
           <!-- Card -->
-          @foreach($financials as $row)
+          @foreach($industries as $row)
           <div class="column">
             <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal" style="cursor: default">
               <div class="card-icon">
-                <img src="{{ asset('uploads/'.$row->project_featured_photo) }}" alt="">
+                <img src="{{ asset('uploads/'.$row->photo) }}" alt="">
               </div>
-              <div class="card-title">
-                <h4>{{ $row->project_name }}</h4>
+              <div class="card-title mt-3">
+                <a class="read-more-link" href="{{ route('front.industry.details', $row->slug) }}"> 
+                  <h4>{{ $row->name }}</h4>
+                </a>
+                
               </div>
               <div class="card-feature-description">
-                <span>{!! strip_tags($row->project_content) !!}</span>
+                <span>{!! strip_tags($row->description) !!}</span>
               </div>
             </div>
           </div>
@@ -300,7 +303,7 @@
         </div> -->
 
       <div class="centered-title mb-30" id="reconciliation">
-        <h2>Reconciliation</h2>
+        <h2>{{ $case_study_banner->name ?? 'Case Studies'}}</h2>
         <div class="title-divider"></div>
       </div>
       <div class="content-wrapper">

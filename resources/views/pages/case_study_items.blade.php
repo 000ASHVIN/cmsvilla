@@ -41,12 +41,12 @@
                                         <p class="side-paragraph is-size-6 mb-20">
                                             {{ $row->short_description }}
                                         </p>
-                                        <div class="buttons">
+                                        {{-- <div class="buttons">
                                             <button data-modal="vertical-form-modal-contact"
                                                     class="button button-cta is-bold btn-align primary-btn raised modal-trigger">
                                                 Get in Touch
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     @if (intval($key) % 2 != 0)
                                         <div class="column is-6 is-relative is-centered-portrait">

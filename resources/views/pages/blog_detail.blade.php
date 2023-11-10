@@ -197,7 +197,7 @@
                                             <div class="card-content">
                                                 <div class="featured-post-title">
                                                     <div class="title-meta">
-                                                        <a href="{{ url('blog/'.$row->blog_slug) }}">
+                                                        <a href="{{ url('blogs/'.$row->blog_slug) }}">
                                                             <h2 class="post-title">{{ $row->blog_title }}</h2>
                                                         </a>
                                                         <h4 class="post-subtitle">

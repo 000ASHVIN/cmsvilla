@@ -4,7 +4,7 @@
     <div class="container">
         <center>
             <h1 class="clean-title is-1 mt-5 mb-5" style="color: white">
-                Reconcify is superfast solution to complex and voluminious reconciliations
+                {{ $banner->name ?? 'Case Studies' }}
             </h1>
         </center>
     </div>

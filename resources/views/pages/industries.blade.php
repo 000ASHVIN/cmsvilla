@@ -31,7 +31,7 @@
 
         <div class="content-wrapper">
             <div class="content-wrapper">
-                <div class="columns services-cards is-vcentered" style="align-items: flex-start">
+                <div class="columns services-cards is-left" style="align-items: flex-start">
                     <!-- Card -->
                     @foreach ($industries as $industry)
                       {{-- <div class="column">

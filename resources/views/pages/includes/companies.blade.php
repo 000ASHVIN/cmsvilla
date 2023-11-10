@@ -33,7 +33,7 @@
             @foreach($company as $row)
             <!-- Client -->
             <div class="column">
-              <a><img class="client" id="" src="{{ asset('uploads/'.$row->photo) }}" alt="" /></a>
+              <a href="{{ $row->slug }}" target="_blank"><img class="client" id="" src="{{ asset('uploads/'.$row->photo) }}" alt="" /></a>
             </div>
             @endforeach
             <div class="column is-hidden-mobile"></div>
