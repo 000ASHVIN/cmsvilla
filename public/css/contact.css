@@ -38,9 +38,12 @@
 
 form {
   max-width: 960px;
+  margin:0px !important;
   /* border: 1px solid red; */
-  margin: 2.5vw auto;
 }
+/*.contact-form{*/
+/*  margin: 2.5vw auto;*/
+/*}*/
 
 @media screen and (max-width: 800px) {
   .contact-banner {
@@ -53,6 +56,5 @@ form {
   }
   form {
     width: 90% !important;
-    padding: ;
   }
 }

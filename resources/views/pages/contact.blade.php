@@ -90,7 +90,7 @@
                     {!! $contact->detail !!}
                 </div>
             </div> --}}
-            <form action="{{ route('front.contact_form') }}" method="post">
+            <form class="contact-form" action="{{ route('front.contact_form') }}" method="post">
             @csrf
             <div class="hero-form">
               <div class="flex-card">

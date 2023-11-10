@@ -8580,7 +8580,7 @@ label.panel-block:hover {
 .columns.is-vcentered {
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
+  align-items: start;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -22301,9 +22301,10 @@ footer.colored-footer .footer-footer .footer-inner .social a i {
   transition: all 0.5s;
 }
 .form-header {
-    font-size: 1.6rem;
-    /* line-height: 1.2; */
+    font-size: 1.4rem;
     font-weight: 700;
+    /* line-height: 1.2; */
+    color: #2f353e;
     text-align: center;
     font-family: 'Rubik', sans-serif;
 }
@@ -40528,6 +40529,7 @@ body.is-theme-red .hero.is-wavy-bg:before {
   opacity: 0.1;
 }
 .side-paragraph {
+  padding:1.5rem 0rem;
   color: #999;
   font-size: 1.3rem;
   /* max-width: 450px; */
@@ -41584,7 +41586,7 @@ a:not(.button).is-link {
   max-width: 940px;
   padding: 24px;
   background: #fff;
-  border: 1px solid #dee2e6;
+  border: 1px solid #333;
   border-radius: 18px;
   -webkit-box-shadow: -1px 3px 15px 0 rgba(0, 0, 0, 0.06);
   box-shadow: -1px 3px 15px 0 rgba(0, 0, 0, 0.06);
@@ -41596,7 +41598,7 @@ a:not(.button).is-link {
   text-align: left;
   -webkit-box-shadow: none;
   box-shadow: none;
-  border: 1px solid #dee2e6;
+  border: 1px solid #333;
 }
 .search-box-wrapper .search-box .search-button {
   width: 100%;
@@ -41623,7 +41625,7 @@ a:not(.button).is-link {
   width: 100%;
   height: 80px;
   margin-top: -10px;
-  border-right: 1px solid #dee2e6;
+  border-right: 1px solid #333;
   background: #fff;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -53278,7 +53280,7 @@ pre {
   letter-spacing: 1px;
   font-size: 1.1rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #333;
 }
 .is-single-post .sharing-links > span,
 .is-single-post .post-tags > span {
@@ -59723,7 +59725,7 @@ figure.team-slanted:hover .member-position {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 .plyr--full-ui.plyr--video .plyr__control--overlaid {
   background: #0747b4 !important;
