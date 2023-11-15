@@ -8580,7 +8580,7 @@ label.panel-block:hover {
 .columns.is-vcentered {
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: start;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -40529,10 +40529,17 @@ body.is-theme-red .hero.is-wavy-bg:before {
   opacity: 0.1;
 }
 .side-paragraph {
-  padding:1.5rem 0rem;
   color: #999;
+  padding:1.5rem 0rem;
   font-size: 1.3rem;
   /* max-width: 450px; */
+}
+.side-paragraph.case-study {
+    padding:0rem;
+    color: #999;
+    font-size: 1.3rem;
+    /* max-width: 450px; */
+  
 }
 .side-paragraph.is-small {
   font-size: 1rem;
@@ -59643,6 +59650,11 @@ figure.team-slanted:hover .member-position {
   overflow: hidden;
 }
 .Reconcify-player-container.is-square {
+  position: relative;
+  /* height: 440px; */
+  width: 480px;
+}
+.Reconcify-player-container.is-square.myhome {
   position: relative;
   height: 440px;
   width: 480px;
