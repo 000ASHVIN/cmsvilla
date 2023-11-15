@@ -5,13 +5,13 @@
     <div class="card shadow mb-4 t-left">
         <div class="card-body">
             <div class="row">
-                <div class="col-3">
+                {{-- <div class="col-3">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="v-pills-edit-tab" data-toggle="pill" href="#v-pills-edit" role="tab" aria-controls="v-pills-edit" aria-selected="false">Edit</a>
                         <a class="nav-link" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Need Section</a>
-                        <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Workflow</a>
+                        <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Workflow</a> --}}
                         {{-- <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="true">Case Studies</a> --}}
-                        <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Trusted Companies Section</a>
+                        {{-- <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Trusted Companies Section</a> --}}
                         {{-- <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Testimonial Section</a> --}}
                         {{-- <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meta Information</a>
                        
@@ -21,17 +21,17 @@
                         <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
                         
                         <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Uses Section</a> --}}
-                        <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">How Reconcify Helps</a>
-                        <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Industry</a>
+                        {{-- <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">How Reconcify Helps</a>
+                        <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Industry</a> --}}
                         {{-- <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Features Section</a>
                         <a class="nav-link" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Case Studies Section</a>
                         <a class="nav-link" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Team Member Section</a>
                         <a class="nav-link" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Appointment Section</a>
                         <a class="nav-link" id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-9" aria-selected="false">Latest Blog Section</a>
                         <a class="nav-link" id="v-pills-10-tab" data-toggle="pill" href="#v-pills-10" role="tab" aria-controls="v-pills-10" aria-selected="false">Newsletter Section</a> --}}
-                    </div>
-                </div>
-                <div class="col-9">
+                    {{-- </div>
+                </div> --}}
+                <div class="col-12">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-edit" role="tabpanel" aria-labelledby="v-pills-edit-tab">
                             {{-- <h1 class="h3 mb-3 text-gray-800">Edit Industry</h1> --}}
@@ -69,6 +69,17 @@
                                             <label for="">Change Photo</label>
                                             <div>
                                                 <input type="file" name="photo">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Select Page</label>
+                                            <div>
+                                                <select name="located_page" id="located_page" class="custom-select">
+                                                    <option value="" selected>Select Page</option>
+                                                    <option value="home"  {{ ($industry->located_page === 'home') ? 'selected' : '' }} >Home</option>
+                                                    {{-- <option value="industry" {{ ($service->located_page === 'industry') ? 'selected' : '' }}>Industry</option> --}}
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

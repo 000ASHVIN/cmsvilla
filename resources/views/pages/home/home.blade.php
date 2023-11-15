@@ -254,7 +254,7 @@
       </div>
     </div>
   </div> --}}
-
+@if (isset($industries) && count($industries)>0)
   <!-- Final CTA section -->
   <div class="section section-feature-grey is-medium">
     <div class="container">
@@ -291,7 +291,7 @@
     </div>
   </div>
 </div>
-
+@endif
 <!-- Learning -->
 @if (isset($case_studies) && count($case_studies)>0)
   <div id="learning" class="section is-medium">

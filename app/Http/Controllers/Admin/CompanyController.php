@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\CaseStudy;
 use App\Models\Company;
+use App\Models\Industry;
 use App\Models\PageHomeItem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
@@ -20,7 +22,9 @@ class CompanyController extends Controller
 
     public function create()
     {
-        return view('admin.company.create');
+        $industrys = Industry::all();
+        $case_studies = CaseStudy::all();
+        return view('admin.company.create', compact('industrys', 'case_studies'));
     }
     public function store(Request $request)
     {
@@ -45,13 +49,17 @@ class CompanyController extends Controller
         $data['photo'] = $final_name;
         $data['located_page'] = json_encode($selectedPages);
         $company->fill($data)->save();
+        $company->industries()->sync($request->located_industry);
+        $company->caseStudies()->sync($request->located_case_study);
         return redirect()->route('admin.company.index')->with('success', 'Company is added successfully!');
     }
 
     public function edit($id)
     {
         $company = Company::findOrFail($id);
-        return view('admin.company.edit', compact('company'));
+        $industrys = Industry::all();
+        $case_studies = CaseStudy::all();
+        return view('admin.company.edit', compact('company', 'industrys', 'case_studies'));
     }
 
     public function update(Request $request, $id)
@@ -88,6 +96,8 @@ class CompanyController extends Controller
         }
 
         $company->fill($data)->save();
+        $company->industries()->sync($request->located_industry);
+        $company->caseStudies()->sync($request->located_case_study);
         return redirect()->route('admin.company.index')->with('success', 'Company is updated successfully!');
     }
 

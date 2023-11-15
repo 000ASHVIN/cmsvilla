@@ -13,7 +13,8 @@ class Industry extends Model
         'description',
         'seo_title',
         'seo_meta_description',
-        'photo'
+        'photo',
+        'located_page'
     ];
 
     public function pageIndustryItem() {
@@ -27,5 +28,15 @@ class Industry extends Model
     public function caseStudies()
     {
         return $this->belongsToMany(CaseStudy::class);
+    }
+    
+    public function company()
+    {
+        return $this->belongsToMany(Company::class, 'industry_company');
+    }
+
+    public function testimonial()
+    {
+        return $this->belongsToMany(Testimonial::class, 'testimonial_industry');
     }
 }

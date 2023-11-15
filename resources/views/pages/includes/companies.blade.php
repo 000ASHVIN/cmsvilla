@@ -1,7 +1,6 @@
-{{-- <!-- Trust -->
+<!-- Trust -->
 @php
     $page_home = \DB::table('page_home_items')->where('id',1)->first();
-    $companies = \DB::table('companies')->get();
 @endphp
 <div id="trust" class="section is-medium">
     <div class="container">
@@ -43,4 +42,4 @@
           </div> -->
       </div>
     </div>
-</div> --}}
+</div>

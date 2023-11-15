@@ -1,6 +1,5 @@
-{{-- @php
+@php
     $page_home = \DB::table('page_home_items')->where('id',1)->first();
-    $testimonials = \DB::table('testimonials')->get();
 @endphp
 <div class="section is-medium">
     <div class="container">
@@ -41,4 +40,4 @@
         </div>
       </div>
     </div>
-  </div> --}}
+  </div>

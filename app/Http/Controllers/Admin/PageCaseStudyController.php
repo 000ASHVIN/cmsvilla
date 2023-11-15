@@ -18,8 +18,8 @@ class PageCaseStudyController extends Controller
     	$services = DB::table('services')->get();
 		$industry_items = DB::table('industry_details_items')->get();
 		$industries_menu = DB::table('industry')->get();
-    	$companies = DB::table('companies')->get();
-    	$testimonials = DB::table('testimonials')->get();
+    	// $companies = DB::table('companies')->get();
+    	// $testimonials = DB::table('testimonials')->get();
     	$projects = DB::table('projects')->get();
     	$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
@@ -27,6 +27,9 @@ class PageCaseStudyController extends Controller
         $how_helps = DB::table('how_help')->get();
         $page_industry =DB::table('page_industry_items')->where('id',1)->first();
 		$banner = CaseStudyBanner::first();
+
+		$companies = DB::table('companies')->where('located_page', 'like', '%case_study%')->get();
+    	$testimonials = DB::table('testimonials')->where('located_page', 'like', '%case_study%')->get();
         return view('pages.case_study', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies', 'how_helps','industry_items','industries_menu', 'banner'));
     }
 	public function details($slug)
@@ -44,13 +47,16 @@ class PageCaseStudyController extends Controller
     	$services = DB::table('services')->get();
 		$industry_items = DB::table('industry_details_items')->get();
 		$industries_menu = DB::table('industry')->get();
-    	$companies = DB::table('companies')->get();
-    	$testimonials = DB::table('testimonials')->get();
+    	// $companies = DB::table('companies')->get();
+    	// $testimonials = DB::table('testimonials')->get();
     	$projects = DB::table('projects')->get();
     	$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
         $how_helps = DB::table('how_help')->get();
         $page_industry =DB::table('page_industry_items')->where('id',1)->first();
+
+		$companies = $case_study->company;
+        $testimonials = $case_study->testimonial;
         return view('pages.case_study_items', compact('case_study','case_studies','sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items','industries_menu'));
     }
 	public function caseStudyFront(Request $request)

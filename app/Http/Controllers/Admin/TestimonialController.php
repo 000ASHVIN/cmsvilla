@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CaseStudy;
+use App\Models\Industry;
 use App\Models\PageHomeItem;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -21,7 +23,9 @@ class TestimonialController extends Controller
 
     public function create()
     {
-        return view('admin.testimonial.create');
+        $industrys = Industry::all();
+        $case_studies = CaseStudy::all();
+        return view('admin.testimonial.create', compact('industrys', 'case_studies'));
     }
 
     public function store(Request $request)
@@ -48,13 +52,17 @@ class TestimonialController extends Controller
         $data['photo'] = $final_name;
         $data['located_page'] = json_encode($selectedPages);
         $testimonial->fill($data)->save();
+        $testimonial->industries()->sync($request->located_industry);
+        $testimonial->caseStudies()->sync($request->located_case_study);
         return redirect()->route('admin.testimonial.index')->with('success', 'Testimonial is added successfully!');
     }
 
     public function edit($id)
     {
         $testimonial = Testimonial::findOrFail($id);
-        return view('admin.testimonial.edit', compact('testimonial'));
+        $industrys = Industry::all();
+        $case_studies = CaseStudy::all();
+        return view('admin.testimonial.edit', compact('testimonial', 'industrys', 'case_studies'));
     }
 
     public function update(Request $request, $id)
@@ -101,6 +109,8 @@ class TestimonialController extends Controller
         }
 
         $testimonial->fill($data)->save();
+        $testimonial->industries()->sync($request->located_industry);
+        $testimonial->caseStudies()->sync($request->located_case_study);
         return redirect()->route('admin.testimonial.index')->with('success', 'Testimonial is updated successfully!');
     }
 

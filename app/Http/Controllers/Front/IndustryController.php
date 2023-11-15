@@ -17,7 +17,10 @@ class IndustryController extends Controller
         $banner = IndustryBanner::first();
         $industryhead = Industry::first();
         $industry_item = IndustryDetails::all();
-        return view('pages.industries', compact('industries','banner','industryhead','industry_item'));
+
+        $companies = DB::table('companies')->where('located_page', 'like', '%industry%')->get();
+    	$testimonials = DB::table('testimonials')->where('located_page', 'like', '%industry%')->get();
+        return view('pages.industries', compact('industries','banner','industryhead','industry_item', 'companies', 'testimonials'));
     }
 
     public function details($slug)
@@ -28,7 +31,8 @@ class IndustryController extends Controller
         if(!$industry) {
             return abort(404);
         }
-
-        return view('pages.industry_detail', compact('industry','industries_menu','case_studies'));
+        $companies = $industry->company;
+        $testimonials = $industry->testimonial;
+        return view('pages.industry_detail', compact('industry','industries_menu','case_studies', 'companies', 'testimonials'));
     }
 }

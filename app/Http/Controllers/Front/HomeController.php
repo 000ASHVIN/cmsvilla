@@ -15,14 +15,16 @@ class HomeController extends Controller
     	$page_home = DB::table('page_home_items')->where('id',1)->first();
     	$why_choose_items = DB::table('why_choose_items')->get();
     	$services = DB::table('services')->get();
-    	$companies = DB::table('companies')->get();
-    	$testimonials = DB::table('testimonials')->get();
+
+    	$companies = DB::table('companies')->where('located_page', 'like', '%home%')->get();
+    	$testimonials = DB::table('testimonials')->where('located_page', 'like', '%home%')->get();
+
     	$projects = DB::table('projects')->get();
     	$financials = DB::table('financials')->get();
 		$team_members = DB::table('team_members')->get();
     	$blogs = DB::table('blogs')->get();
 		$case_studies = DB::table('case_studies')->where('located_page','home')->get();
-		$industries= DB::table('industry')->get();
+		$industries= DB::table('industry')->where('located_page','home')->get();
 		$industry_banner = IndustryBanner::first();
 		$case_study_banner = CaseStudyBanner::first();
         return view('pages.home.home', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','financials','team_members','blogs','case_studies','companies', 'industries', 'industry_banner', 'case_study_banner'));

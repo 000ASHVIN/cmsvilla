@@ -153,5 +153,7 @@
             </div>
           </form>
         </div>
+        
+        @include('pages.includes.companies')
         @include('pages.includes.testimonial')
 @endsection

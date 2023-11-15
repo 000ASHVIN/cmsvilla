@@ -13,4 +13,14 @@ class Company extends Model
         'photo',
         'located_page',
     ];
+
+    public function industries()
+    {
+        return $this->belongsToMany(Industry::class, 'industry_company');
+    }
+
+    public function caseStudies()
+    {
+        return $this->belongsToMany(CaseStudy::class, 'case_study_company');
+    }
 }

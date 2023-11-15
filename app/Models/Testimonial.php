@@ -14,4 +14,13 @@ class Testimonial extends Model
         'comment'
     ];
 
+    public function industries()
+    {
+        return $this->belongsToMany(Industry::class, 'testimonial_industry');
+    }
+
+    public function caseStudies()
+    {
+        return $this->belongsToMany(CaseStudy::class, 'case_study_testimonial');
+    }
 }

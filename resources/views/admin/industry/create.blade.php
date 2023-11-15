@@ -30,6 +30,17 @@
                         <input type="file" name="photo">
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="">Select Page</label>
+                    <div>
+                        <select name="located_page" id="located_page" class="custom-select">
+                            <option value="" selected>Select Page</option>
+                            <option value="home">Home</option>
+                            {{-- <option value="industry">Industry</option> --}}
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>

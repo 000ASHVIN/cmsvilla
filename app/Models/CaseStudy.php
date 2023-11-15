@@ -24,5 +24,13 @@ class CaseStudy extends Model
     {
         return $this->belongsToMany(Industry::class);
     }
-    
+    public function company()
+    {
+        return $this->belongsToMany(Company::class, 'case_study_company');
+    }
+
+    public function testimonial()
+    {
+        return $this->belongsToMany(Testimonial::class, 'case_study_testimonial');
+    }
 }
