@@ -68,7 +68,7 @@ class JobController extends Controller
         $ai_id = $statement[0]->Auto_increment;
 
         $ext = $request->file('applicant_cv')->extension();
-        $final_name = 'cv-'.$ai_id.'.'.$ext;
+        $final_name = 'cv-'.$ai_id.rand(1, 6000).'.'.$ext;
         $request->file('applicant_cv')->move(public_path('uploads/'), $final_name);
         $data['applicant_cv'] = $final_name;
 

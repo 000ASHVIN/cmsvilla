@@ -158,7 +158,7 @@ class Financialscontroller extends Controller
         $statement = DB::select("SHOW TABLE STATUS LIKE 'project_photos'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('project_photo')->extension();
-        $final_name = 'project-photo-'.$ai_id.'.'.$ext;
+        $final_name = 'project-photo-'.$ai_id.rand(1, 6000).'.'.$ext;
         $request->file('project_photo')->move(public_path('uploads/'), $final_name);
         $data['project_photo'] = $final_name;
         $data['project_id'] = $request->project_id;

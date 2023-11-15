@@ -44,7 +44,7 @@ class BlogController extends Controller
         $ai_id = $statement[0]->Auto_increment;
 
         $ext = $request->file('blog_photo')->extension();
-        $final_name = 'blog-'.$ai_id.'.'.$ext;
+        $final_name = 'blog-'.$ai_id.rand(1, 6000).'.'.$ext;
         $request->file('blog_photo')->move(public_path('uploads'), $final_name);
 
         $blog = new Blog();

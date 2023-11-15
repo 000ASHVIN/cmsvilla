@@ -36,7 +36,7 @@ class SliderController extends Controller
         $ai_id = $statement[0]->Auto_increment;
 
         $ext = $request->file('slider_photo')->extension();
-        $final_name = 'slider-'.$ai_id.'.'.$ext;
+        $final_name = 'slider-'.$ai_id.rand(1, 6000).'.'.$ext;
         $request->file('slider_photo')->move(public_path('uploads'), $final_name);
 
         $slider = new Slider();
