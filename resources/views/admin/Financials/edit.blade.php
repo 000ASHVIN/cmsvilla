@@ -16,10 +16,10 @@
                     <label for="">Name *</label>
                     <input type="text" name="project_name" class="form-control" value="{{ $project->project_name }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Slug</label>
                     <input type="text" name="project_slug" class="form-control" value="{{ $project->project_slug }}">
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="">Content</label>
                     <textarea name="project_content" class="form-control editor" cols="30" rows="10">{{ $project->project_content }}</textarea>
@@ -65,18 +65,18 @@
                     </div>
                 </div>
             </div>
-            <div class="card-header py-3">
+            {{-- <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>
-            </div>
+            </div> --}}
             <div class="card-body">
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Title</label>
                     <input type="text" name="seo_title" class="form-control" value="{{ $project->seo_title }}">
                 </div>
                 <div class="form-group">
                     <label for="">Meta Description</label>
                     <textarea name="seo_meta_description" class="form-control h_100" cols="30" rows="10">{{ $project->seo_meta_description }}</textarea>
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
         </div>

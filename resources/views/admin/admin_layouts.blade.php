@@ -237,17 +237,17 @@
                     <a class="collapse-item" href="{{ route('admin.general_setting.logo') }}">Logo</a>
                     <a class="collapse-item" href="{{ route('admin.general_setting.favicon') }}">Favicon</a>
                     <a class="collapse-item" href="{{ route('admin.general_setting.loginbg') }}">Login Background</a>
-                    <a class="collapse-item" href="{{ route('admin.general_setting.topbar') }}">Top Bar</a>
-                    <a class="collapse-item" href="{{ route('admin.general_setting.banner') }}">Banner</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.general_setting.topbar') }}">Top Bar</a> --}}
+                    {{-- <a class="collapse-item" href="{{ route('admin.general_setting.banner') }}">Banner</a> --}}
                     <a class="collapse-item" href="{{ route('admin.general_setting.footer') }}">Footer</a>
                     <a class="collapse-item" href="{{ route('admin.general_setting.sidebar') }}">Sidebar</a>
-                    <a class="collapse-item" href="{{ route('admin.general_setting.color') }}">Color</a>
-                    <a class="collapse-item" href="{{ route('admin.general_setting.preloader') }}">Preloader</a>
-                    <a class="collapse-item" href="{{ route('admin.general_setting.stickyheader') }}">Sticky Header</a>
-                    <a class="collapse-item" href="{{ route('admin.general_setting.googleanalytic') }}">Google Analytic</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.general_setting.color') }}">Color</a> --}}
+                    {{-- <a class="collapse-item" href="{{ route('admin.general_setting.preloader') }}">Preloader</a> --}}
+                    {{-- <a class="collapse-item" href="{{ route('admin.general_setting.stickyheader') }}">Sticky Header</a> --}}
+                    {{-- <a class="collapse-item" href="{{ route('admin.general_setting.googleanalytic') }}">Google Analytic</a> --}}
                     <a class="collapse-item" href="{{ route('admin.general_setting.googlerecaptcha') }}">Google Recaptcha</a>
                     <a class="collapse-item" href="{{ route('admin.general_setting.tawklivechat') }}">Tawk Live Chat</a>
-                    <a class="collapse-item" href="{{ route('admin.general_setting.cookieconsent') }}">Cookie Consent</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.general_setting.cookieconsent') }}">Cookie Consent</a> --}}
                 </div>
             </div>
         </li>
@@ -267,7 +267,7 @@
                     <a class="collapse-item" href="/admin/home/edit#v-pills-3">Special Section</a>
                     <a class="collapse-item" href="{{ route('admin.service.index') }}">Uses</a>
                     <a class="collapse-item" href="{{ route('admin.project.index') }}">Features</a>
-                    <a class="collapse-item" href="{{ route('admin.financials.index') }}">Financials</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.financials.index') }}">Financials</a> --}}
                     <a class="collapse-item" href="{{ route('admin.company.index') }}">Company</a>
                     <a class="collapse-item" href="{{ route('admin.testimonial.index') }}">Testimonial</a>
                 </div>

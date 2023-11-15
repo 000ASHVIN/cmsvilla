@@ -10,6 +10,14 @@
 </div>
 @endsection
 
+@section('css')
+<style>
+    .blog-grid-item .card-content .featured-post-title .title-meta {
+        margin-left: 0;
+    }
+</style>
+@endsection
+
 @section('content')
 <!-- Benefits section -->
 <div class="section is-medium">

@@ -16,10 +16,10 @@
                     <label for="">Name *</label>
                     <input type="text" name="project_name" class="form-control" value="{{ old('project_name') }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Slug</label>
                     <input type="text" name="project_slug" class="form-control" value="{{ old('project_slug') }}" autofocus>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="">Content</label>
                     <textarea name="project_content" class="form-control editor" cols="30" rows="10">{{ old('project_content') }}</textarea>
