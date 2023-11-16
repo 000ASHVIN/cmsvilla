@@ -52,7 +52,8 @@
           </div>
           <div class="shadow-title dark-text">{{ PHONE }}</div>
           <div class="description shadow-description">
-            <a href="mailto:info@reconcify.com"> {!! nl2br(e($contact->contact_phone)) !!}</a>
+            {{-- <a href="mailto:info@reconcify.com"> </a> --}}
+            {!! nl2br(e($contact->contact_phone)) !!}
           </div>
         </div>
         @endif
@@ -94,11 +95,11 @@
             @csrf
             <div class="hero-form">
               <div class="flex-card">
-                @foreach ($dynamic_pages as $item)
+                {{-- @foreach ($dynamic_pages as $item)
                 <h2 class="form-header">
                   {{ $item->dynamic_page_name }}
                 </h2>
-                @endforeach
+                @endforeach --}}
                
                 <div class="field">
                   <div class="control has-icons-left">

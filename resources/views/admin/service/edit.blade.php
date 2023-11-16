@@ -6,7 +6,7 @@
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit Service</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit Uses</h6>
                 <div class="float-right d-inline">
                     <a href="{{ route('admin.service.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
                 </div>

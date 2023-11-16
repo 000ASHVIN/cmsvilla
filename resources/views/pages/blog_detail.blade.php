@@ -154,7 +154,7 @@
                                 </div>
                             </div>
 
-                            <div class="post-tags">
+                            {{-- <div class="post-tags">
                                 <span>Tags</span>
                                 <div class="tags">
                                     <a class="tag is-medium">Aesthetics</a>
@@ -176,7 +176,7 @@
                                         Donec
                                         pulvinar maximus dui ut porttitor.</p>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <!--Related Posts-->
                             <div class="related-posts">

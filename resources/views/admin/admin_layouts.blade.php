@@ -324,11 +324,11 @@
             </a>
             <div id="collapsePageSettings" class="collapse {{ Request::is('admin/page/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('admin.page_home.edit') }}">Home</a>
-                    <a class="collapse-item" href="{{ route('admin.page_industry.edit') }}">Industry</a>
-                    <a class="collapse-item" href="{{ route('admin.page_about.edit') }}">About</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.page_home.edit') }}">Home</a>
+                    <a class="collapse-item" href="{{ route('admin.page_industry.edit') }}">Industry</a> --}}
+                    {{-- <a class="collapse-item" href="{{ route('admin.page_about.edit') }}">About</a>
                     <a class="collapse-item" href="{{ route('admin.page_service.edit') }}">Service</a>
-                    <a class="collapse-item" href="{{ route('admin.page_shop.edit') }}">Shop</a>
+                    <a class="collapse-item" href="{{ route('admin.page_shop.edit') }}">Shop</a> --}}
                     <a class="collapse-item" href="{{ route('admin.page_blog.edit') }}">Blog</a>
                     {{-- <a class="collapse-item" href="{{ route('admin.page_project.edit') }}">Project</a> --}}
                     <a class="collapse-item" href="{{ route('admin.page_faq.edit') }}">FAQ</a>
@@ -337,9 +337,9 @@
                     {{-- <a class="collapse-item" href="{{ route('admin.page_video_gallery.edit') }}">Video Gallery</a> --}}
                     <a class="collapse-item" href="{{ route('admin.page_contact.edit') }}">Contact</a>
                     {{-- <a class="collapse-item" href="{{ route('admin.page_career.edit') }}">Career</a> --}}
-                    <a class="collapse-item" href="{{ route('admin.page_term.edit') }}">Term</a>
+                    {{-- <a class="collapse-item" href="{{ route('admin.page_term.edit') }}">Term</a>
                     <a class="collapse-item" href="{{ route('admin.page_privacy.edit') }}">Privacy</a>
-                    <a class="collapse-item" href="{{ route('admin.page_other.edit') }}">Other</a>
+                    <a class="collapse-item" href="{{ route('admin.page_other.edit') }}">Other</a> --}}
                 </div>
             </div>
         </li>
@@ -366,7 +366,7 @@
 
 
         <!-- Translation Section -->
-        @php if( in_array('Translation Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Translation Section', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/translation/front/*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTranslation" aria-expanded="true" aria-controls="collapseTranslation">
                 <i class="fas fa-user-secret"></i>
@@ -378,7 +378,7 @@
                 </div>
             </div>
         </li>
-        @endif
+        @endif --}}
 
 
 
@@ -443,14 +443,14 @@
 
 
         <!-- Dynamic Pages -->
-         @php if( in_array('contact', $arr_one) || $logged_user_role_id==1 ): @endphp
+         {{-- @php if( in_array('contact', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/contact/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.dynamic_page.index') }}">
                 <i class="fas fa-cube"></i>
                 <span>Contact Us</span>
             </a>
         </li>
-        @endif 
+        @endif  --}}
 
         <!-- Menu Manage -->
         {{-- @php if( in_array('Menu Manage', $arr_one) || $logged_user_role_id==1 ): @endphp
@@ -642,7 +642,7 @@
         @endif --}}
 
         <!-- Subscriber -->
-        @php if( in_array('Subscriber Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Subscriber Section', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/subscriber/*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubscriber" aria-expanded="true" aria-controls="collapseSubscriber">
                 <i class="fas fa-share-alt-square"></i>
@@ -655,7 +655,7 @@
                 </div>
             </div>
         </li>
-        @endif
+        @endif --}}
 
         <!-- Social Media -->
         @php if( in_array('Social Media', $arr_one) || $logged_user_role_id==1 ): @endphp

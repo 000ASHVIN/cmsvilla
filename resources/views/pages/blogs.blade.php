@@ -61,7 +61,7 @@
     <div class="container">
         <center>
             <h1 class="clean-title is-1 mt-5 mb-5" style="color: white">
-                Blogs
+                {{ $blog->name }}
             </h1>
         </center>
     </div>

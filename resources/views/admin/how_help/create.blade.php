@@ -1,12 +1,12 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Add How Help</h1>
+    <h1 class="h3 mb-3 text-gray-800">Add Industry Item</h1>
 
     <form action="{{ route('admin.how-help.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 mt-2 font-weight-bold text-primary">Add How Help</h6>
+                <h6 class="m-0 mt-2 font-weight-bold text-primary">Add Industry Item</h6>
                 <div class="float-right d-inline">
                     <a href="{{ route('admin.how-help.index') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> View All</a>
                 </div>
@@ -16,10 +16,10 @@
                     <label for="">Name *</label>
                     <input type="text" name="name" class="form-control" value="{{ old('name') }}" autofocus>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Slug</label>
                     <input type="text" name="slug" class="form-control" value="{{ old('slug') }}">
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="">Description</label>
                     <textarea name="description" class="form-control editor" cols="30" rows="10">{{ old('description') }}</textarea>
@@ -44,18 +44,18 @@
                     </div>
                 </div>
             </div>
-            <div class="card-header py-3">
+            {{-- <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>
-            </div>
+            </div> --}}
             <div class="card-body">
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Title</label>
                     <input type="text" name="seo_title" class="form-control" value="{{ old('seo_title') }}">
                 </div>
                 <div class="form-group">
                     <label for="">Meta Description</label>
                     <textarea name="seo_meta_description" class="form-control h_100" cols="30" rows="10">{{ old('seo_meta_description') }}</textarea>
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>

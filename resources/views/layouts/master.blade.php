@@ -57,7 +57,7 @@
 
         <!-- Navbar menu -->
         @php
-          $industries_menu = \DB::table('industry')->take(3)->get();
+          $industries_menu = \DB::table('industry')->get();
       @endphp
         <div class="navbar-menu">
           <!-- Navbar Start -->
@@ -77,7 +77,7 @@
                         <li class="dynamic-item">{{ $industries->name }}</li>
                     </a>
                 @endforeach
-            </ul>
+              </ul>
             
               
             </div>
@@ -366,7 +366,7 @@
   <script>
     $(document).ready(function() {
         // Hide dynamic list items after the first three
-        $('.dropdown_menu .dynamic-item:gt(2)').hide();
+        // $('.dropdown_menu .dynamic-item:gt(2)').hide();
     });
 </script>
 

@@ -1,10 +1,10 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
-    <h1 class="h3 mb-3 text-gray-800">Sliders</h1>
+    <h1 class="h3 mb-3 text-gray-800">Banner</h1>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 mt-2 font-weight-bold text-primary">View Sliders</h6>
+            <h6 class="m-0 mt-2 font-weight-bold text-primary">View Banner</h6>
             <div class="float-right d-inline">
                 {{-- <a href="{{ route('admin.slider.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a> --}}
             </div>
@@ -17,8 +17,8 @@
                         <th>SL</th>
                         {{-- <th>Photo</th> --}}
                         {{-- <th>Right Photo</th> --}}
-                        <th>Slider Heading</th>
-                        <th>Slider Text</th>
+                        <th>Banner Heading</th>
+                        <th>Banner Text</th>
                         <th>Action</th>
                     </tr>
                     </thead>

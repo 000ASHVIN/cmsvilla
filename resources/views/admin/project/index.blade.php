@@ -31,7 +31,7 @@
                     <tr>
                         <th>SL</th>
                         <th>Featured Photo</th>
-                        <th>Project Name</th>
+                        <th>Feature Name</th>
                         {{-- <th>Manage Gallery</th> --}}
                         <th>Action</th>
                     </tr>
