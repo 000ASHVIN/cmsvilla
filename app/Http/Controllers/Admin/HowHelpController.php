@@ -35,7 +35,7 @@ class HowHelpController extends Controller
         $data = $request->only($service->getFillable());
 
         $request->validate([
-            'name' => 'required|unique:how_help',
+            'name' => 'required',
             'slug' => 'unique:how_help',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);

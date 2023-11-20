@@ -30,12 +30,12 @@
         </h2>
       </div> -->
 
-        <div class="centered-title mb-30">
+        {{-- <div class="centered-title mb-30">
             <h2>
                 Our team is made of recognized business process experts from all over the world
             </h2>
             <div class="title-divider"></div>
-        </div>
+        </div> --}}
 
         <div class="content-wrapper">
             <div class="content-wrapper">
