@@ -47,9 +47,9 @@
                                         <h2 class="post-title">{{ $row->name }}</h2>
                                     </a>
                                     <h4 class="post-subtitle">
-                                        <span>by <a class="author-name" href="#">Alan M.</a></span>
+                                        <span><a class="author-name" href="#">Alan M.</a></span>
                                         <i class="fa fa-circle"></i>
-                                        <span>Posted in <a href="#">Web Design</a></span>
+                                        <span> <a href="#">Web Design</a></span>
                                     </h4>
                                 </div>
                             </div>
