@@ -53,7 +53,7 @@ class PageIndustryController extends Controller
         if($request->hasFile('need_video_bg'))
         {
             $request->validate([
-                'need_video_bg' => 'image|mimes:jpeg,png,jpg,gif'
+                'need_video_bg' => 'image|mimes:jpeg,png,jpg,gif,svg'
             ]);
 
             // Unlink old photo
@@ -174,7 +174,7 @@ class PageIndustryController extends Controller
     //     if($request->hasFile('testimonial_bg'))
     //     {
     //         $request->validate([
-    //             'testimonial_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+    //             'testimonial_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     //         ]);
 
     //         // Unlink old photo
@@ -245,7 +245,7 @@ class PageIndustryController extends Controller
         if($request->hasFile('how_help_bg'))
         {
             $request->validate([
-                'how_help_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'how_help_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
@@ -282,7 +282,7 @@ class PageIndustryController extends Controller
     //     if($request->hasFile('project_bg'))
     //     {
     //         $request->validate([
-    //             'project_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+    //             'project_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     //         ]);
 
     //         // Unlink old photo
@@ -328,7 +328,7 @@ class PageIndustryController extends Controller
     //     if($request->hasFile('appointment_bg'))
     //     {
     //         $request->validate([
-    //             'appointment_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+    //             'appointment_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     //         ]);
 
     //         // Unlink old photo
@@ -389,7 +389,7 @@ class PageIndustryController extends Controller
     //     if($request->hasFile('newsletter_bg'))
     //     {
     //         $request->validate([
-    //             'newsletter_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+    //             'newsletter_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     //         ]);
 
     //         // Unlink old photo

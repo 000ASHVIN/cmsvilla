@@ -32,7 +32,7 @@ class IndustryDisplayController extends Controller
 
         $request->validate([
             'name' => 'required|unique:why_choose_items',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $statement = DB::select("SHOW TABLE STATUS LIKE 'industry_details_items'");
@@ -67,7 +67,7 @@ class IndustryDisplayController extends Controller
                     'required',
                     Rule::unique('industry_details_items')->ignore($id),
                 ],
-                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             unlink(public_path('uploads/'.$industry_item->photo));
             $ext = $request->file('photo')->extension();

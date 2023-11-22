@@ -37,7 +37,7 @@ class CompanyController extends Controller
 
         $request->validate([
             'slug' => 'required|unique:companies',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif'
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
         $selectedPages = $request->input('located_page');
 
@@ -77,7 +77,7 @@ class CompanyController extends Controller
                 'slug'   =>  [
                     Rule::unique('companies')->ignore($id),
                 ],
-                'photo' => 'image|mimes:jpeg,png,jpg,gif'
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg'
             ]);
             if($request->input('current_photo') && file_exists($company->photo)){
                 unlink(public_path('uploads/'.$company->photo));

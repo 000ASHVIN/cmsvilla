@@ -35,7 +35,7 @@ class WhyChooseController extends Controller
 
         $request->validate([
             'name' => 'required|unique:why_choose_items',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $statement = DB::select("SHOW TABLE STATUS LIKE 'why_choose_items'");
@@ -83,7 +83,7 @@ class WhyChooseController extends Controller
                     'required',
                     Rule::unique('why_choose_items')->ignore($id),
                 ],
-                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             if($request->input('current_photo') && file_exists($why_choose->photo)){
                 unlink(public_path('uploads/'.$why_choose->photo));

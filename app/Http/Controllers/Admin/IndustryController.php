@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Industry;
 use App\Models\Blog;
 use App\Models\PageIndustryItem;
+use App\Models\Seo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -18,13 +19,14 @@ class IndustryController extends Controller
         $industry = Industry::all();
         return view('admin.industry.index', compact('industry'));
     }
-
+    
     public function create()
     {
-        return view('admin.industry.create');
+        $seo = Seo::where('page','industry')->first();
+        return view('admin.industry.create',compact('seo'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request,$content_id = 0)
     {
         if(env('PROJECT_MODE') == 0) {
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
@@ -33,8 +35,9 @@ class IndustryController extends Controller
         $request->validate([
             'name' => 'required|unique:industry',
             'slug' => 'unique:industry',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        
         $category = new Industry();
         $data = $request->only($category->getFillable());
         if(empty($data['slug']))
@@ -52,11 +55,60 @@ class IndustryController extends Controller
         $request->file('photo')->move(public_path('uploads/'), $final_name);
         $data['photo'] = $final_name;
         $category->fill($data)->save();
+
+        $seo = Seo::where('page', $request->input('page'));
+        // dd($seo);
+        // if(isset($content_id) && $content_id && !empty($content_id)) {
+            $seo = $seo->where('content_id', $category->id);
+        // }
+
+        $seo_home = $seo->first();
+        if(!$seo_home) {
+            $seo_home = new Seo();
+        }
+
+        if ($request->hasFile('meta_image')) {
+    
+            if($request->input('current_photo') && file_exists($request->photo)){
+                unlink(public_path('uploads/'.$request->photo));
+            }
+            $metaImage = $request->file('meta_image');
+            $metaImageName = time() . '_' . $metaImage->getClientOriginalName();
+            $metaImage->storeAs('public/meta_images', $metaImageName);
+            $data['meta_image'] = 'meta_images/' . $metaImageName;
+        }
+    
+        if ($request->hasFile('facebook_image')) {
+            $facebookImage = $request->file('facebook_image');
+            $facebookImageName = time() . '_' . $facebookImage->getClientOriginalName();
+            $facebookImage->storeAs('public/facebook_images', $facebookImageName);
+            $data['facebook_image'] = 'facebook_images/' . $facebookImageName;
+        }
+    
+        if ($request->hasFile('twitter_image')) {
+            $twitterImage = $request->file('twitter_image');
+            $twitterImageName = time() . '_' . $twitterImage->getClientOriginalName();
+            $twitterImage->storeAs('public/twitter_images', $twitterImageName);
+            $data['twitter_image'] = 'twitter_images/' . $twitterImageName;
+        }
+        $data['page'] = $request->input('page');
+        $data['content_id'] = $category->id;
+        $data['meta_title'] = $request->input('meta_title');
+        $data['meta_description'] = $request->input('meta_description');
+        $data['facebook_title'] = $request->input('facebook_title');
+        $data['facebook_description'] = $request->input('facebook_description');
+        $data['twitter_title'] = $request->input('twitter_title');
+        $data['twitter_description'] = $request->input('twitter_description');
+        $data['key_words'] = $request->input('key_words');
+        $data['meta_robots'] = $request->input('meta_robots');
+        $seo_home->fill($data)->save();
+
         return redirect()->route('admin.industry.index')->with('success', 'Industry is added successfully!');
     }
 
     public function edit($id)
     {
+        $seo = Seo::where('page','industry')->where('content_id', $id)->first();
         $industry = Industry::findOrFail($id);
         $page_home = $industry->pageIndustryItem;
         if(!$page_home) {
@@ -76,7 +128,7 @@ class IndustryController extends Controller
             ]);
             
         }
-        return view('admin.industry.edit', compact('industry', 'page_home'));
+        return view('admin.industry.edit', compact('industry', 'page_home','seo'));
     }
 
     public function update(Request $request, $id)
@@ -95,7 +147,7 @@ class IndustryController extends Controller
                 'slug'   =>  [
                     Rule::unique('industry')->ignore($id),
                 ],
-                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             if(isset($service->photo) && $service->photo != null) {
                 if(file_exists($service->photo)) {
@@ -128,6 +180,54 @@ class IndustryController extends Controller
         $data['slug'] = $filteredSlug;
         
         $service->fill($data)->save();
+
+        $seo = Seo::where('page', $request->input('page'));
+        // dd($seo);
+        // if(isset($content_id) && $content_id && !empty($content_id)) {
+            $seo = $seo->where('content_id', $id);
+        // }
+
+        $seo_home = $seo->first();
+        if(!$seo_home) {
+            $seo_home = new Seo();
+        }
+
+        if ($request->hasFile('meta_image')) {
+    
+            if($request->input('current_photo') && file_exists($request->photo)){
+                unlink(public_path('uploads/'.$request->photo));
+            }
+            $metaImage = $request->file('meta_image');
+            $metaImageName = time() . '_' . $metaImage->getClientOriginalName();
+            $metaImage->storeAs('public/meta_images', $metaImageName);
+            $data['meta_image'] = 'meta_images/' . $metaImageName;
+        }
+    
+        if ($request->hasFile('facebook_image')) {
+            $facebookImage = $request->file('facebook_image');
+            $facebookImageName = time() . '_' . $facebookImage->getClientOriginalName();
+            $facebookImage->storeAs('public/facebook_images', $facebookImageName);
+            $data['facebook_image'] = 'facebook_images/' . $facebookImageName;
+        }
+    
+        if ($request->hasFile('twitter_image')) {
+            $twitterImage = $request->file('twitter_image');
+            $twitterImageName = time() . '_' . $twitterImage->getClientOriginalName();
+            $twitterImage->storeAs('public/twitter_images', $twitterImageName);
+            $data['twitter_image'] = 'twitter_images/' . $twitterImageName;
+        }
+        $data['page'] = $request->input('page');
+        $data['content_id'] = $id;
+        $data['meta_title'] = $request->input('meta_title');
+        $data['meta_description'] = $request->input('meta_description');
+        $data['facebook_title'] = $request->input('facebook_title');
+        $data['facebook_description'] = $request->input('facebook_description');
+        $data['twitter_title'] = $request->input('twitter_title');
+        $data['twitter_description'] = $request->input('twitter_description');
+        $data['key_words'] = $request->input('key_words');
+        $data['meta_robots'] = $request->input('meta_robots');
+        $seo_home->fill($data)->save();
+        
         return redirect()->route('admin.industry.index')->with('success', 'Industry is updated successfully!');
     }
 

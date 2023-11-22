@@ -37,7 +37,7 @@ class ProjectController extends Controller
         $request->validate([
             'project_name' => 'required|unique:projects',
             'project_slug' => 'unique:projects',
-            'project_featured_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'project_featured_photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         if(empty($data['project_slug'])) {
@@ -79,7 +79,7 @@ class ProjectController extends Controller
                 'project_slug'   =>  [
                     Rule::unique('projects')->ignore($id),
                 ],
-                'project_featured_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'project_featured_photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             unlink(public_path('uploads/'.$project->project_featured_photo));
             $ext = $request->file('project_featured_photo')->extension();
@@ -143,7 +143,7 @@ class ProjectController extends Controller
         $data = $request->only($project_photo->getFillable());
 
         $request->validate([
-            'project_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'project_photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $statement = DB::select("SHOW TABLE STATUS LIKE 'project_photos'");
         $ai_id = $statement[0]->Auto_increment;

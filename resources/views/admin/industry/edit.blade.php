@@ -38,6 +38,8 @@
 
                             <form action="{{ url('admin/industry/update/'.$industry->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="page" value="industry">
+                                <input type="hidden" name="content_id" value="{{ $industry->id }}">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0 mt-2 font-weight-bold text-primary">Edit Industry</h6>
@@ -87,15 +89,8 @@
                                         <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>
                                     </div>
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="">Title</label>
-                                            <input type="text" name="seo_title" class="form-control" value="{{ $industry->seo_title }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Meta Description</label>
-                                            <textarea name="seo_meta_description" class="form-control h_100" cols="30" rows="10">{{ $industry->seo_meta_description }}</textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-success">Update</button>
+                                        @include('admin.seo.includes.seo_form')
+                                        <button type="submit" class="btn btn-success mt-3">Update</button>
                                     </div>
                                 </div>
                             </form>

@@ -52,7 +52,7 @@ class PageHomeController extends Controller
         if($request->hasFile('special_bg'))
         {
             $request->validate([
-                'special_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'special_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
@@ -69,7 +69,7 @@ class PageHomeController extends Controller
         if($request->hasFile('special_video_bg'))
         {
             $request->validate([
-                'special_video_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'special_video_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
@@ -120,7 +120,7 @@ class PageHomeController extends Controller
         if($request->hasFile('testimonial_bg'))
         {
             $request->validate([
-                'testimonial_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'testimonial_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
@@ -152,7 +152,7 @@ class PageHomeController extends Controller
         if($request->hasFile('project_bg'))
         {
             $request->validate([
-                'project_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'project_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
@@ -183,7 +183,7 @@ class PageHomeController extends Controller
         if($request->hasFile('financials_bg'))
         {
             $request->validate([
-                'financials_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'financials_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
@@ -229,7 +229,7 @@ class PageHomeController extends Controller
         if($request->hasFile('appointment_bg'))
         {
             $request->validate([
-                'appointment_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'appointment_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo
@@ -290,7 +290,7 @@ class PageHomeController extends Controller
         if($request->hasFile('newsletter_bg'))
         {
             $request->validate([
-                'newsletter_bg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'newsletter_bg' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             // Unlink old photo

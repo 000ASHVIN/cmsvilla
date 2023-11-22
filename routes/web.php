@@ -62,6 +62,7 @@ use App\Http\Controllers\Admin\PageCaseStudyController;
 use App\Http\Controllers\Admin\ProductController as ProductControllerForAdmin;
 use App\Http\Controllers\Admin\OrderController as OrderControllerForAdmin;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\TranslationController;
 
 use App\Http\Controllers\Customer\CheckoutController;
@@ -585,7 +586,22 @@ Route::middleware(['admin:admin'])->group(function() {
     Route::get('admin/company/edit/{id}', [CompanyControllerForAdmin::class,'edit']);
     Route::post('admin/company/update/{id}', [CompanyControllerForAdmin::class,'update']);
 
+     /* --------------------------------------- */
+    /* Seo - Admin */
+    /* --------------------------------------- */
+    Route::get('admin/seo/view', [SeoController::class,'index'])->name('admin.seo.index');
+    Route::get('admin/seo/create', [SeoController::class,'create'])->name('admin.seo.create');
+    Route::post('admin/seo/store/{content_id?}', [SeoController::class,'store'])->name('admin.seo.store');
+    // Route::get('admin/testimonial/delete/{id}', [TestimonialController::class,'destroy']);
+    // Route::get('admin/testimonial/edit/{id}', [TestimonialController::class,'edit']);
+    // Route::post('admin/testimonial/update/{id}', [TestimonialController::class,'update']);
+    Route::get('admin/industry/seo/view', [SeoController::class,'industryIndex'])->name('admin.industry.seo.index');
+    Route::get('admin/industry/seo/create', [SeoController::class,'industryCreate'])->name('admin.industry.seo.create');
+    Route::post('admin/industry/seo/store/{content_id?}', [SeoController::class,'store'])->name('admin.seo.store');
 
+    Route::get('admin/casestudy/seo/view', [SeoController::class,'casestudyIndex'])->name('admin.casestudy.seo.index');
+    Route::get('admin/casestudy/seo/create', [SeoController::class,'casestudyCreate'])->name('admin.casestudy.seo.create');
+    Route::post('admin/casestudy/seo/store/{content_id?}', [SeoController::class,'store'])->name('admin.seo.store');
     /* --------------------------------------- */
     /* Testimonial - Admin */
     /* --------------------------------------- */

@@ -2,12 +2,48 @@
 <html lang="en">
 
 <head>
-  <!-- Required Meta Tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  {{-- @php
+  $page = 'home'; // Change this to the current page or get it dynamically
+  
+  if ($page == 'home') {
+      $seo = \DB::table('seos')->where('page', 'home')->first();
+  } elseif ($page == 'industry') {
+      $seo = \DB::table('seos')->where('page', 'industry')->first();
+  } elseif ($page == 'case_study') {
+      $seo = \DB::table('seos')->where('page', 'case_study')->first();
+  } else {
+      $seo = null;
+  }
+@endphp --}}
 
-  <title>Reconify :: HomePage</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+@if (isset($seo) && $seo)
+    @if (isset($seo->meta_title))
+        <title>{{ $seo->meta_title }}</title>
+    @else
+        <title>Reconify :: HomePage</title>
+    @endif
+
+    <meta name="description" content="{{ $seo->meta_description }}" >
+    <meta name="keywords" content="{{ $seo->key_words }}">
+    <meta name="robots" content="index, follow" value="{{ $seo->meta_robots }}">
+
+    <meta property="og:title" content="{{ $seo->facebook_title }}">
+    <meta property="og:description" content="{{ $seo->facebook_description }}">
+    <meta property="og:image" content="{{ $seo->facebook_image }}">
+
+    <meta name="twitter:title" content="{{ $seo->twitter_title }}">
+    <meta name="twitter:description" content="{{ $seo->twitter_description }}">
+    <meta name="twitter:image" content="{{ $seo->twitter_image }}">
+
+@else
+    <title>Reconify :: HomePage</title>
+@endif
+
+ 
   <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
 
   <!--Core CSS -->

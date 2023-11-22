@@ -60,7 +60,7 @@
                     <div class="column is-4">
                       <!--Post Card-->
                       <div class="card blog-grid-item is-masonry masonry-size-3">
-                          <a href="CaseStudyDetails.html">
+                          <a href="{{ route('front.industry.details', $industry->slug) }}">
                               <div class="card-image">
                                   <img class="item-featured-image" src="{{ asset('uploads/' . $industry->photo) }}" alt=""
                                       width="100" />

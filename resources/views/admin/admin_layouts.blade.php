@@ -270,6 +270,7 @@
                     {{-- <a class="collapse-item" href="{{ route('admin.financials.index') }}">Financials</a> --}}
                     <a class="collapse-item" href="{{ route('admin.company.index') }}">Company</a>
                     <a class="collapse-item" href="{{ route('admin.testimonial.index') }}">Testimonial</a>
+                    <a class="collapse-item" href="{{ route('admin.seo.index') }}">Seo</a>
                 </div>
             </div>
         </li>
@@ -287,6 +288,7 @@
                     {{-- <a class="collapse-item" href="{{ route('admin.industry_item.index') }}">Industry Item</a> --}}
                     {{-- <a class="collapse-item" href="{{ route('admin.why_choose.index') }}">WorkFlow</a> --}}
                     <a class="collapse-item" href="{{ route('admin.how-help.index') }}">Industry Item</a>
+                    <a class="collapse-item" href="{{ route('admin.industry.seo.index') }}">Seo</a>
                     {{-- <a class="collapse-item" href="{{ route('admin.blog.index') }}">Blogs</a>
                     <a class="collapse-item" href="{{ route('admin.comment.approved') }}">Approved Comments</a>
                     <a class="collapse-item" href="{{ route('admin.comment.pending') }}">Pending Comments</a> --}}
@@ -303,6 +305,7 @@
                     <a class="collapse-item" href="{{ route('admin.case_study.banner.index') }}">Banner</a>
                     <a class="collapse-item" href="{{ route('admin.case-study.index') }}">Case Studies</a>
                     <a class="collapse-item" href="{{ route('admin.case.study.items.index') }}">Case Study Items</a>
+                    <a class="collapse-item" href="{{ route('admin.casestudy.seo.index') }}">Seo</a>
                 </div>
             </div>
         </li>

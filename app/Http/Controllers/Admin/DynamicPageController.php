@@ -34,7 +34,7 @@ class DynamicPageController extends Controller
         $request->validate([
             'dynamic_page_name' => 'required|unique:dynamic_pages',
             'dynamic_page_slug' => 'unique:dynamic_pages',
-            'dynamic_page_banner' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'dynamic_page_banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         if(empty($data['dynamic_page_slug'])) {
@@ -76,7 +76,7 @@ class DynamicPageController extends Controller
                 'dynamic_page_slug'   =>  [
                     Rule::unique('dynamic_pages')->ignore($id),
                 ],
-                'dynamic_page_banner' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'dynamic_page_banner' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             unlink(public_path('uploads/'.$dynamic_page->dynamic_page_banner));
             $ext = $request->file('dynamic_page_banner')->extension();

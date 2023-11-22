@@ -37,7 +37,7 @@ class BlogController extends Controller
             'blog_slug' => 'unique:blogs',
             'blog_content' => 'required',
             'blog_content_short' => 'required',
-            'blog_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'blog_photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $statement = DB::select("SHOW TABLE STATUS LIKE 'blogs'");
@@ -100,7 +100,7 @@ class BlogController extends Controller
         if ($request->hasFile('blog_photo')) {
 
             $request->validate([
-                'blog_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'blog_photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             
             if($request->input('current_photo') && file_exists($blog->photo)){

@@ -37,7 +37,7 @@ class CaseStCaseStudyItemsController extends Controller
         $request->validate([
             'name' => 'required|unique:how_help',
             'slug' => 'unique:how_help',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         if(empty($data['slug'])) {
@@ -92,7 +92,7 @@ class CaseStCaseStudyItemsController extends Controller
                 'slug'   =>  [
                     Rule::unique('how_help')->ignore($id),
                 ],
-                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
 
             if($request->input('current_photo') && file_exists($service->photo)){

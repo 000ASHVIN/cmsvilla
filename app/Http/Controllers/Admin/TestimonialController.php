@@ -40,7 +40,7 @@ class TestimonialController extends Controller
         $request->validate([
             'name' => 'required|unique:testimonials',
             'designation' => 'required',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'comment' => 'required'
         ]);
         $selectedPages = $request->input('located_page');
@@ -83,7 +83,7 @@ class TestimonialController extends Controller
                 'designation'   =>  [
                     'required'
                 ],
-                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'comment' =>  [
                     'required'
                 ]

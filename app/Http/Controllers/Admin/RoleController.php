@@ -43,7 +43,7 @@ class RoleController extends Controller
             [
                 'name' => 'required',
                 'email' => 'required|unique:admins',
-                'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'password' => 'required',
                 're_password' => 'required|same:password'
             ],
@@ -95,7 +95,7 @@ class RoleController extends Controller
                 'email'   =>  [
                     Rule::unique('admins')->ignore($id),
                 ],
-                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
             unlink(public_path('uploads/'.$admin->photo));
             $ext = $request->file('photo')->extension();
