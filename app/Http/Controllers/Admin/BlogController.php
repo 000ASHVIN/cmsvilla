@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailToAllSubscribers;
+use App\Models\Seo;
 use DB;
 
 class BlogController extends Controller
@@ -78,6 +79,53 @@ class BlogController extends Controller
             }
         }
 
+        $seo = Seo::where('page', $request->input('page'));
+        // dd($seo);
+        // if(isset($content_id) && $content_id && !empty($content_id)) {
+            $seo = $seo->where('content_id', $blog->id);
+        // }
+
+        $seo_home = $seo->first();
+        if(!$seo_home) {
+            $seo_home = new Seo();
+        }
+
+        if ($request->hasFile('meta_image')) {
+    
+            if($request->input('current_photo') && file_exists($request->photo)){
+                unlink(public_path('uploads/'.$request->photo));
+            }
+            $metaImage = $request->file('meta_image');
+            $metaImageName = time() . '_' . $metaImage->getClientOriginalName();
+            $metaImage->storeAs('public/meta_images', $metaImageName);
+            $data['meta_image'] = 'meta_images/' . $metaImageName;
+        }
+    
+        if ($request->hasFile('facebook_image')) {
+            $facebookImage = $request->file('facebook_image');
+            $facebookImageName = time() . '_' . $facebookImage->getClientOriginalName();
+            $facebookImage->storeAs('public/facebook_images', $facebookImageName);
+            $data['facebook_image'] = 'facebook_images/' . $facebookImageName;
+        }
+    
+        if ($request->hasFile('twitter_image')) {
+            $twitterImage = $request->file('twitter_image');
+            $twitterImageName = time() . '_' . $twitterImage->getClientOriginalName();
+            $twitterImage->storeAs('public/twitter_images', $twitterImageName);
+            $data['twitter_image'] = 'twitter_images/' . $twitterImageName;
+        }
+        $data['page'] = $request->input('page');
+        $data['content_id'] = $blog->id;
+        $data['meta_title'] = $request->input('meta_title');
+        $data['meta_description'] = $request->input('meta_description');
+        $data['facebook_title'] = $request->input('facebook_title');
+        $data['facebook_description'] = $request->input('facebook_description');
+        $data['twitter_title'] = $request->input('twitter_title');
+        $data['twitter_description'] = $request->input('twitter_description');
+        $data['key_words'] = $request->input('key_words');
+        $data['meta_robots'] = $request->input('meta_robots');
+        $seo_home->fill($data)->save();
+
         return redirect()->route('admin.blog.index')->with('success', 'Blog is added successfully!');
     }
 
@@ -85,7 +133,8 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $category=DB::table('categories')->get();
-        return view('admin.blog.edit', compact('blog','category'));
+        $seo = Seo::where('page', 'blog_detail')->where('content_id', $blog->id)->first();
+        return view('admin.blog.edit', compact('blog','category', 'seo'));
     }
 
     public function update(Request $request, $id)
@@ -133,6 +182,53 @@ class BlogController extends Controller
 
         $blog->fill($data)->save();
 
+        $seo = Seo::where('page', $request->input('page'));
+        // dd($seo);
+        // if(isset($content_id) && $content_id && !empty($content_id)) {
+            $seo = $seo->where('content_id', $blog->id);
+        // }
+
+        $seo_home = $seo->first();
+        if(!$seo_home) {
+            $seo_home = new Seo();
+        }
+
+        if ($request->hasFile('meta_image')) {
+    
+            if($request->input('current_photo') && file_exists($request->photo)){
+                unlink(public_path('uploads/'.$request->photo));
+            }
+            $metaImage = $request->file('meta_image');
+            $metaImageName = time() . '_' . $metaImage->getClientOriginalName();
+            $metaImage->storeAs('public/meta_images', $metaImageName);
+            $data['meta_image'] = 'meta_images/' . $metaImageName;
+        }
+    
+        if ($request->hasFile('facebook_image')) {
+            $facebookImage = $request->file('facebook_image');
+            $facebookImageName = time() . '_' . $facebookImage->getClientOriginalName();
+            $facebookImage->storeAs('public/facebook_images', $facebookImageName);
+            $data['facebook_image'] = 'facebook_images/' . $facebookImageName;
+        }
+    
+        if ($request->hasFile('twitter_image')) {
+            $twitterImage = $request->file('twitter_image');
+            $twitterImageName = time() . '_' . $twitterImage->getClientOriginalName();
+            $twitterImage->storeAs('public/twitter_images', $twitterImageName);
+            $data['twitter_image'] = 'twitter_images/' . $twitterImageName;
+        }
+        $data['page'] = $request->input('page');
+        $data['content_id'] = $blog->id;
+        $data['meta_title'] = $request->input('meta_title');
+        $data['meta_description'] = $request->input('meta_description');
+        $data['facebook_title'] = $request->input('facebook_title');
+        $data['facebook_description'] = $request->input('facebook_description');
+        $data['twitter_title'] = $request->input('twitter_title');
+        $data['twitter_description'] = $request->input('twitter_description');
+        $data['key_words'] = $request->input('key_words');
+        $data['meta_robots'] = $request->input('meta_robots');
+        $seo_home->fill($data)->save();
+        
         return redirect()->route('admin.blog.index')->with('success', 'Blog is updated successfully!');
     }
 

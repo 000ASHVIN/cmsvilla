@@ -17,10 +17,10 @@ class IndustryController extends Controller
         $banner = IndustryBanner::first();
         $industryhead = Industry::first();
         $industry_item = IndustryDetails::all();
-
+        $seo = DB::table('seos')->where('page', 'industry_seo')->first();
         $companies = DB::table('companies')->where('located_page', 'like', '%industry%')->get();
     	$testimonials = DB::table('testimonials')->where('located_page', 'like', '%industry%')->get();
-        return view('pages.industries', compact('industries','banner','industryhead','industry_item', 'companies', 'testimonials'));
+        return view('pages.industries', compact('industries','banner','industryhead','industry_item','seo', 'companies', 'testimonials'));
     }
 
     public function details($slug)
@@ -33,6 +33,8 @@ class IndustryController extends Controller
         }
         $companies = $industry->company;
         $testimonials = $industry->testimonial;
-        return view('pages.industry_detail', compact('industry','industries_menu','case_studies', 'companies', 'testimonials'));
+        $seo = DB::table('seos')->where('page', 'industry')->where('content_id', $industry->id)->first();
+        
+        return view('pages.industry_detail', compact('industry','industries_menu','case_studies', 'companies', 'testimonials','seo'));
     }
 }

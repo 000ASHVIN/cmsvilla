@@ -60,14 +60,9 @@
                 <h6 class="m-0 font-weight-bold text-primary">SEO Information</h6>
             </div>
             <div class="card-body">
-                <div class="form-group">
-                    <label for="">Title</label>
-                    <input type="text" name="seo_title" class="form-control" value="{{ $blog->seo_title }}">
-                </div>
-                <div class="form-group">
-                    <label for="">Meta Description</label>
-                    <textarea name="seo_meta_description" class="form-control h_100" cols="30" rows="10">{{ $blog->seo_meta_description }}</textarea>
-                </div>
+                <input type="hidden" name="page" value="blog_detail">
+                <input type="hidden" name="content_id" value="{{ $blog->id }}">
+                @include('admin.seo.includes.seo_form')
                 <button type="submit" class="btn btn-success">Update</button>
             </div>
         </div>

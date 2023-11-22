@@ -30,7 +30,8 @@ class PageCaseStudyController extends Controller
 
 		$companies = DB::table('companies')->where('located_page', 'like', '%case_study%')->get();
     	$testimonials = DB::table('testimonials')->where('located_page', 'like', '%case_study%')->get();
-        return view('pages.case_study', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies', 'how_helps','industry_items','industries_menu', 'banner'));
+		$seo = DB::table('seos')->where('page', 'case_study_seo')->first();
+        return view('pages.case_study', compact('sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies', 'how_helps','industry_items','industries_menu', 'banner','seo'));
     }
 	public function details($slug)
     {
@@ -57,7 +58,8 @@ class PageCaseStudyController extends Controller
 
 		$companies = $case_study->company;
         $testimonials = $case_study->testimonial;
-        return view('pages.case_study_items', compact('case_study','case_studies','sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items','industries_menu'));
+		$seo = DB::table('seos')->where('page', 'case_study')->where('content_id', $case_study->id)->first();
+        return view('pages.case_study_items', compact('case_study','case_studies','sliders','page_industry','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies_items','companies', 'how_helps','industry_items','industries_menu','seo'));
     }
 	public function caseStudyFront(Request $request)
     {   

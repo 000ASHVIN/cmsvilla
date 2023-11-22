@@ -28,16 +28,17 @@
     @endif
 
     <meta name="description" content="{{ $seo->meta_description }}" >
+    <meta property="image" content="{{ asset('storage/' . $seo->meta_image) }}">
     <meta name="keywords" content="{{ $seo->key_words }}">
     <meta name="robots" content="index, follow" value="{{ $seo->meta_robots }}">
 
     <meta property="og:title" content="{{ $seo->facebook_title }}">
     <meta property="og:description" content="{{ $seo->facebook_description }}">
-    <meta property="og:image" content="{{ $seo->facebook_image }}">
+    <meta property="og:image" content="{{ asset('storage/' . $seo->facebook_image) }}">
 
     <meta name="twitter:title" content="{{ $seo->twitter_title }}">
     <meta name="twitter:description" content="{{ $seo->twitter_description }}">
-    <meta name="twitter:image" content="{{ $seo->twitter_image }}">
+    <meta name="twitter:image" src="{{ asset('storage/' . $seo->twitter_image) }}">
 
 @else
     <title>Reconify :: HomePage</title>

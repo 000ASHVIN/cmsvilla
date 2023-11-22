@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PageFaqItem;
+use App\Models\Seo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use DB;
@@ -13,7 +14,8 @@ class PageFaqController extends Controller
     public function edit()
     {
         $page_faq = PageFaqItem::where('id',1)->first();
-        return view('admin.page_setting.page_faq', compact('page_faq'));
+        $seo = Seo::where('page', 'faq')->first();
+        return view('admin.page_setting.page_faq', compact('page_faq', 'seo'));
     }
 
      public function update(Request $request)
@@ -29,6 +31,47 @@ class PageFaqController extends Controller
          $data['seo_meta_description'] = $request->input('seo_meta_description');
 
          PageFaqItem::where('id',1)->update($data);
+
+         $seo = Seo::where('page', 'faq');
+        $seo_home = $seo->first();
+        if(!$seo_home) {
+            $seo_home = new Seo();
+        }
+
+        if ($request->hasFile('meta_image')) {
+    
+            if($request->input('current_photo') && file_exists($request->photo)){
+                unlink(public_path('uploads/'.$request->photo));
+            }
+            $metaImage = $request->file('meta_image');
+            $metaImageName = time() . '_' . $metaImage->getClientOriginalName();
+            $metaImage->storeAs('public/meta_images', $metaImageName);
+            $data['meta_image'] = 'meta_images/' . $metaImageName;
+        }
+    
+        if ($request->hasFile('facebook_image')) {
+            $facebookImage = $request->file('facebook_image');
+            $facebookImageName = time() . '_' . $facebookImage->getClientOriginalName();
+            $facebookImage->storeAs('public/facebook_images', $facebookImageName);
+            $data['facebook_image'] = 'facebook_images/' . $facebookImageName;
+        }
+    
+        if ($request->hasFile('twitter_image')) {
+            $twitterImage = $request->file('twitter_image');
+            $twitterImageName = time() . '_' . $twitterImage->getClientOriginalName();
+            $twitterImage->storeAs('public/twitter_images', $twitterImageName);
+            $data['twitter_image'] = 'twitter_images/' . $twitterImageName;
+        }
+        $data['page'] = 'faq';
+        $data['meta_title'] = $request->input('meta_title');
+        $data['meta_description'] = $request->input('meta_description');
+        $data['facebook_title'] = $request->input('facebook_title');
+        $data['facebook_description'] = $request->input('facebook_description');
+        $data['twitter_title'] = $request->input('twitter_title');
+        $data['twitter_description'] = $request->input('twitter_description');
+        $data['key_words'] = $request->input('key_words');
+        $data['meta_robots'] = $request->input('meta_robots');
+        $seo_home->fill($data)->save();
 
          return redirect()->back()->with('success', 'FAQ Page Content is updated successfully!');
 

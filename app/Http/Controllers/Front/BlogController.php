@@ -17,7 +17,8 @@ class BlogController extends Controller
         $blog_items = DB::table('blogs')->orderby('id', 'desc')->paginate(15);
         $blog_items_no_pagi = DB::table('blogs')->orderby('id', 'desc')->get();
         $categories = DB::table('categories')->get();
-        return view('pages.blogs', compact('blog','g_setting','blog_items','categories','blog_items_no_pagi'));
+        $seo = DB::table('seos')->where('page', 'blog')->first();
+        return view('pages.blogs', compact('blog','g_setting','blog_items','categories','blog_items_no_pagi','seo'));
     }
 
     public function detail($slug)
@@ -32,7 +33,8 @@ class BlogController extends Controller
         }
         $comments = '';
         $comments = DB::table('comments')->where('blog_id', $blog_detail->id)->where('comment_status', 'Approved')->get();
-        return view('pages.blog_detail', compact('g_setting','blog_detail','blog_items','blog_items_no_pagi','categories','comments'));
+        $seo = DB::table('seos')->where('page', 'blog_detail')->where('content_id', $blog_detail->id)->first();
+        return view('pages.blog_detail', compact('g_setting','blog_detail','blog_items','blog_items_no_pagi','categories','comments','seo'));
     }
 
     public function comment(Request $request)
