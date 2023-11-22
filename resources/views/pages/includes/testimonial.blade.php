@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $page_home = \DB::table('page_home_items')->where('id',1)->first();
 @endphp
 <div class="section is-medium">
@@ -40,4 +40,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}

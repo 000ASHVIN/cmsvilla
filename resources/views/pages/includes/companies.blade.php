@@ -1,4 +1,4 @@
-<!-- Trust -->
+{{-- <!-- Trust -->
 @php
     $page_home = \DB::table('page_home_items')->where('id',1)->first();
 @endphp
@@ -42,4 +42,4 @@
           </div> -->
       </div>
     </div>
-</div>
+</div> --}}
