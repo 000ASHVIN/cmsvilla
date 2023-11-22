@@ -46,11 +46,11 @@
                                     <a class="read-more-link" href="{{ route('front.case.study.details', $row->slug ) }}"> 
                                         <h2 class="post-title">{{ $row->name }}</h2>
                                     </a>
-                                    <h4 class="post-subtitle">
+                                    {{-- <h4 class="post-subtitle">
                                         <span><a class="author-name" href="#">Alan M.</a></span>
                                         <i class="fa fa-circle"></i>
                                         <span> <a href="#">Web Design</a></span>
-                                    </h4>
+                                    </h4> --}}
                                 </div>
                             </div>
                             <p>
