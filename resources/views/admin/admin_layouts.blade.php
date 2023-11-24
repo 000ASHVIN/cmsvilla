@@ -384,16 +384,40 @@
         @endif --}}
 
 
+            <!-- Admin Users Section -->
+        @php if( in_array('Admin User Section', $arr_one) || $logged_user_role_id==1 ): @endphp
+        <li class="nav-item {{ Request::is('admin/footer/*') || Request::is('admin/social-media/*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminUser" aria-expanded="true" aria-controls="collapseAdminUser">
+                <i class="fas fa-user-secret"></i>
+                <span>Footer</span>
+            </a>
+            <div id="collapseAdminUser" class="collapse {{ Request::is('admin/footer/*') || Request::is('admin/social-media/*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.footer.index') }}">Footer Columns</a>
+                    <a class="collapse-item" href="{{ route('admin.social_media.index') }}">Social Media</a>
+                </div>
+            </div>
+        </li>
+        @endif
+
+        {{-- @php if( in_array('Social Media', $arr_one) || $logged_user_role_id==1 ): @endphp
+        <li class="nav-item {{ Request::is('admin/social-media/*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.social_media.index') }}">
+                <i class="fas fa-basketball-ball"></i>
+                <span>Social Media</span>
+            </a>
+        </li>
+        @endif --}}
 
         <!-- Footer Columns -->
-        @php if( in_array('Footer Columns', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Footer Columns', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/footer/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.footer.index') }}">
                 <i class="fas fa-fw fa-list-alt"></i>
                 <span>Footer Columns</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
 
 
@@ -661,14 +685,14 @@
         @endif --}}
 
         <!-- Social Media -->
-        @php if( in_array('Social Media', $arr_one) || $logged_user_role_id==1 ): @endphp
+        {{-- @php if( in_array('Social Media', $arr_one) || $logged_user_role_id==1 ): @endphp
         <li class="nav-item {{ Request::is('admin/social-media/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.social_media.index') }}">
                 <i class="fas fa-basketball-ball"></i>
                 <span>Social Media</span>
             </a>
         </li>
-        @endif
+        @endif --}}
 
 
         <!-- Divider -->

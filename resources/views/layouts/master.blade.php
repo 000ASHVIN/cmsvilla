@@ -240,38 +240,34 @@
     <div class="container">
       <div class="columns">
         <div class="footer_container">
+          @php
+          $blog_items_footer = \DB::table('footer_columns')->get();
+        @endphp
           <div class="column">
             <div class="footer-column">
               <div class="footer-header">
-                <h3>Quick Links</h3>
+                <h3></h3>
               </div>
               <ul class="link-list">
-                <li><a href="/">Home</a></li>
-                <li>
-                  <a href="/industry/{{ $industries->slug }}">Industrial Details</a>
-                </li>
-                <li>
-                  <a href="{{ route('front.industries') }}">Indusrial Display</a>
-                </li>
-                <li><a href="#">Weekly sessions</a></li>
-                <li><a href="#">Free trials and demo</a></li>
-                <li><a href="{{ route('front.contact') }}">Contact</a></li>
+                @foreach($blog_items_footer as $row)
+                  @if ($row->column_name == 'Column 1')
+                  <li><a href="{{ url($row->column_item_url) }}">{{ $row->column_item_text }}</li>
+                  @endif
+                @endforeach
               </ul>
             </div>
           </div>
-          @php
-           $blog_items_footer = \DB::table('blogs')->take(5)->get();
-         @endphp
-          
           <div class="column">
             <div class="footer-column">
               <div class="footer-header">
-                <h3>Blogs</h3>
+                <h3></h3>
               </div>
               <ul class="link-list">
                 <ul>
                   @foreach($blog_items_footer as $row)
-                      <li><a href="{{ url('blog/'.$row->blog_slug) }}">Blog {{ $loop->iteration }}</a></li>
+                    @if ($row->column_name == 'Column 2')
+                      <li><a href="{{ url($row->column_item_url) }}">{{ $row->column_item_text }}</li>
+                    @endif
                   @endforeach
               </ul>
               </ul>

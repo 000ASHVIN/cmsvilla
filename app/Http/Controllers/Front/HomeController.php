@@ -27,9 +27,9 @@ class HomeController extends Controller
 		$industries= DB::table('industry')->where('located_page','home')->get();
 		$industry_banner = IndustryBanner::first();
 		$case_study_banner = CaseStudyBanner::first();
-
+		$blog_items_footer = DB::table('footer_columns')->get();
 		$seo = DB::table('seos')->where('page', 'home')->first();
-        return view('pages.home.home', compact('sliders','page_home','why_choose_items','services', 'seo','testimonials','projects','financials','team_members','blogs','case_studies','companies', 'industries', 'industry_banner', 'case_study_banner'));
+        return view('pages.home.home', compact('sliders','page_home','why_choose_items','services', 'seo','testimonials','projects','financials','team_members','blogs','case_studies','companies', 'industries', 'industry_banner', 'case_study_banner','blog_items_footer'));
 	}
     public function index()
     {
@@ -45,6 +45,7 @@ class HomeController extends Controller
 		$case_studies = DB::table('case_studies')->get();
 		$industries_menu = DB::table('industry')->get();
 		$seo = DB::table('seos')->where('page', 'home')->first();
-        return view('pages.index', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies','industries_menu','seo'));
+		$blog_items_footer = DB::table('footer_columns')->get();
+        return view('pages.index', compact('sliders','page_home','why_choose_items','services', 'testimonials','projects','team_members','blogs', 'case_studies','companies','industries_menu','seo','blog_items_footer'));
     }
 }
