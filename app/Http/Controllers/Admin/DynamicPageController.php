@@ -44,7 +44,7 @@ class DynamicPageController extends Controller
         $statement = DB::select("SHOW TABLE STATUS LIKE 'dynamic_pages'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('dynamic_page_banner')->extension();
-        $final_name = 'dynamic-page-banner-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'dynamic-page-banner-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('dynamic_page_banner')->move(public_path('uploads/'), $final_name);
         $data['dynamic_page_banner'] = $final_name;
 
@@ -80,7 +80,7 @@ class DynamicPageController extends Controller
             ]);
             unlink(public_path('uploads/'.$dynamic_page->dynamic_page_banner));
             $ext = $request->file('dynamic_page_banner')->extension();
-            $final_name = 'dynamic-page-banner-'.$id.'.'.$ext;
+            $final_name = 'dynamic-page-banner-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('dynamic_page_banner')->move(public_path('uploads/'), $final_name);
             $data['dynamic_page_banner'] = $final_name;
         } else {

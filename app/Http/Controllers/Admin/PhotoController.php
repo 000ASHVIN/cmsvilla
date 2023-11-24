@@ -39,7 +39,7 @@ class PhotoController extends Controller
         $statement = DB::select("SHOW TABLE STATUS LIKE 'photos'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('photo_name')->extension();
-        $final_name = 'photo-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'photo-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('photo_name')->move(public_path('uploads/'), $final_name);
         $data['photo_name'] = $final_name;
 
@@ -69,7 +69,7 @@ class PhotoController extends Controller
             ]);
             unlink(public_path('uploads/'.$photo->photo_name));
             $ext = $request->file('photo_name')->extension();
-            $final_name = 'photo-'.$id.'.'.$ext;
+            $final_name = 'photo-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('photo_name')->move(public_path('uploads/'), $final_name);
             $data['photo_name'] = $final_name;
         } else {

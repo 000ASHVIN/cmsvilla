@@ -45,7 +45,7 @@ class BlogController extends Controller
         $ai_id = $statement[0]->Auto_increment;
 
         $ext = $request->file('blog_photo')->extension();
-        $final_name = 'blog-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'blog-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('blog_photo')->move(public_path('uploads'), $final_name);
 
         $blog = new Blog();
@@ -134,6 +134,7 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         $category=DB::table('categories')->get();
         $seo = Seo::where('page', 'blog_detail')->where('content_id', $blog->id)->first();
+        
         return view('admin.blog.edit', compact('blog','category', 'seo'));
     }
 
@@ -142,9 +143,11 @@ class BlogController extends Controller
         if(env('PROJECT_MODE') == 0) {
             return redirect()->back()->with('error', env('PROJECT_NOTIFICATION'));
         }
-        
         $blog = Blog::findOrFail($id);
         $data = $request->only($blog->getFillable());
+        
+        $blog->fill($data)->save();
+
 
         if ($request->hasFile('blog_photo')) {
 
@@ -157,7 +160,7 @@ class BlogController extends Controller
             }
             // Uploading the file
             $ext = $request->file('blog_photo')->extension();
-            $final_name = 'blog-'.$id.'.'.$ext;
+            $final_name = 'blog-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('blog_photo')->move(public_path('uploads/'), $final_name);
 
             unset($data['blog_photo']);

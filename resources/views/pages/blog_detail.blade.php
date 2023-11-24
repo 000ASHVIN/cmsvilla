@@ -132,11 +132,11 @@
                             <div class="featured-post-title">
                                 <div class="title-meta">
                                     <h2 class="post-title">{{ $blog_detail->blog_title }}</h2>
-                                    <h4 class="post-subtitle">
+                                    {{-- <h4 class="post-subtitle">
                                         <span>by <a class="author-name" href="#">Alan Maynard</a></span>
                                         <i class="fa fa-circle"></i>
                                         <span>Posted in <a href="#">Web Design</a></span>
-                                    </h4>
+                                    </h4> --}}
                                 </div>
                             </div>
 
@@ -179,7 +179,7 @@
                             </div> --}}
 
                             <!--Related Posts-->
-                            <div class="related-posts">
+                            {{-- <div class="related-posts">
                                 <h3 class="related-posts-head">You might also like</h3>
                                 <div class="columns">
                                     @foreach ($blog_items_no_pagi as $row)
@@ -224,7 +224,7 @@
                                     </li>
                                     </ul>
                                 </nav>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

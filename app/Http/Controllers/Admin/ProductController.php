@@ -49,7 +49,7 @@ class ProductController extends Controller
         $ai_id = $statement[0]->Auto_increment;
 
         $ext = $request->file('product_featured_photo')->extension();
-        $final_name = 'product-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'product-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('product_featured_photo')->move(public_path('uploads/'), $final_name);
         $data['product_featured_photo'] = $final_name;
 
@@ -86,7 +86,7 @@ class ProductController extends Controller
             ]);
             unlink(public_path('uploads/'.$product->product_featured_photo));
             $ext = $request->file('product_featured_photo')->extension();
-            $final_name = 'product-'.$id.'.'.$ext;
+            $final_name = 'product-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('product_featured_photo')->move(public_path('uploads/'), $final_name);
             $data['product_featured_photo'] = $final_name;
         } else {

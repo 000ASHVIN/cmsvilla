@@ -41,7 +41,7 @@ class WhyChooseController extends Controller
         $statement = DB::select("SHOW TABLE STATUS LIKE 'why_choose_items'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('photo')->extension();
-        $final_name = 'why-choose-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'why-choose-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('photo')->move(public_path('uploads/'), $final_name);
         $data['photo'] = $final_name;
         if($request->has('industry_id')){
@@ -89,7 +89,7 @@ class WhyChooseController extends Controller
                 unlink(public_path('uploads/'.$why_choose->photo));
             }
             $ext = $request->file('photo')->extension();
-            $final_name = 'why-choose-'.$id.'.'.$ext;
+            $final_name = 'why-choose-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);
             $data['photo'] = $final_name;
         } else {

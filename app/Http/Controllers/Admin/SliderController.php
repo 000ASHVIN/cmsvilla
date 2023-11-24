@@ -36,7 +36,7 @@ class SliderController extends Controller
         $ai_id = $statement[0]->Auto_increment;
 
         $ext = $request->file('slider_photo')->extension();
-        $final_name = 'slider-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'slider-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('slider_photo')->move(public_path('uploads'), $final_name);
 
         $slider = new Slider();
@@ -75,7 +75,7 @@ class SliderController extends Controller
 
             // Uploading the file
             $ext = $request->file('slider_photo')->extension();
-            $final_name = 'slider-'.$id.'.'.$ext;
+            $final_name = 'slider-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('slider_photo')->move(public_path('uploads/'), $final_name);
 
             unset($data['slider_photo']);
@@ -93,7 +93,7 @@ class SliderController extends Controller
 
             // Uploading the file
             $ext = $request->file('right_side_photo')->extension();
-            $final_name = 'slider-right-'.$id.'.'.$ext;
+            $final_name = 'slider-right-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('right_side_photo')->move(public_path('uploads/'), $final_name);
 
             unset($data['right_side_photo']);

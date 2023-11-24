@@ -47,7 +47,7 @@ class TestimonialController extends Controller
         $statement = DB::select("SHOW TABLE STATUS LIKE 'testimonials'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('photo')->extension();
-        $final_name = 'testimonial-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'testimonial-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('photo')->move(public_path('uploads/'), $final_name);
         $data['photo'] = $final_name;
         $data['located_page'] = json_encode($selectedPages);
@@ -90,7 +90,7 @@ class TestimonialController extends Controller
             ]);
             unlink(public_path('uploads/'.$testimonial->photo));
             $ext = $request->file('photo')->extension();
-            $final_name = 'testimonial-'.$id.'.'.$ext;
+            $final_name = 'testimonial-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);
             $data['photo'] = $final_name;
         } else {

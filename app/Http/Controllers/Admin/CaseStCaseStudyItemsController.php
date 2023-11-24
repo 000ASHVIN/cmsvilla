@@ -47,7 +47,7 @@ class CaseStCaseStudyItemsController extends Controller
         $statement = DB::select("SHOW TABLE STATUS LIKE 'how_help'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('photo')->extension();
-        $final_name = 'service-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'service-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('photo')->move(public_path('uploads/'), $final_name);
         $data['photo'] = $final_name;
 
@@ -99,7 +99,7 @@ class CaseStCaseStudyItemsController extends Controller
                 unlink(public_path('uploads/'.$service->photo));
             }
             $ext = $request->file('photo')->extension();
-            $final_name = 'service-'.$id.'.'.$ext;
+            $final_name = 'service-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);
             $data['photo'] = $final_name;
         } else {

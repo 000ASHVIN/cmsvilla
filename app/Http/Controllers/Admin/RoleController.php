@@ -59,7 +59,7 @@ class RoleController extends Controller
         $statement = DB::select("SHOW TABLE STATUS LIKE 'admins'");
         $ai_id = $statement[0]->Auto_increment;
         $ext = $request->file('photo')->extension();
-        $final_name = 'user-'.$ai_id.rand(1, 6000).'.'.$ext;
+        $final_name = 'user-'.$ai_id.time().rand(1, 6000).'.'.$ext;
         $request->file('photo')->move(public_path('uploads/'), $final_name);
         $data['photo'] = $final_name;
 
@@ -99,7 +99,7 @@ class RoleController extends Controller
             ]);
             unlink(public_path('uploads/'.$admin->photo));
             $ext = $request->file('photo')->extension();
-            $final_name = 'user-'.$id.'.'.$ext;
+            $final_name = 'user-'.$id.time().rand(1, 6000).'.'.$ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);
             $data['photo'] = $final_name;
         } else {
