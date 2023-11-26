@@ -91,7 +91,7 @@
                     {!! $contact->detail !!}
                 </div>
             </div> --}}
-            <form class="contact-form" action="{{ route('front.contact_form') }}" method="post">
+            <form action="https://sheetdb.io/api/v1/lmmq0z1jmtmeq" method="post" class="contact-form" id="sheetdb-form-primary">
             @csrf
             <div class="hero-form">
               <div class="flex-card">
@@ -105,7 +105,7 @@
                   <div class="control has-icons-left">
                     <input
                       class="input is-medium has-shadow"
-                      name="visitor_name"
+                      name="data[Name]"
                       type="text"
                       placeholder="Visitor Name"
                     />
@@ -116,7 +116,7 @@
                   <div class="control has-icons-left">
                     <input
                       class="input is-medium has-shadow"
-                      name="visitor_email"
+                      name="data[Email]"
                       type="email"
                       required
                       placeholder="Visitor Email "
@@ -128,7 +128,7 @@
                   <div class="control has-icons-left">
                     <input
                       class="input is-medium has-shadow"
-                      name="visitor_phone"
+                      name="data[Phone]"
                       type="text"
                       placeholder="Visitor Phone"
                     />
@@ -139,17 +139,17 @@
                   <div class="control has-icons-left">
                     <input
                       class="input is-medium has-shadow"
-                      name="visitor_message"
+                      name="data[Message]"
                       type="text"
                       placeholder="Visitor Message"
                     />
                   </div>
                 </div>
-                @if($g_setting->google_recaptcha_status == 'Show')
+                {{-- @if($g_setting->google_recaptcha_status == 'Show')
                         <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="{{ $g_setting->google_recaptcha_site_key }}"></div>
                         </div>
-                        @endif
+                        @endif --}}
       
                 <div class="field">
                   <div class="control" style="text-align: right">
